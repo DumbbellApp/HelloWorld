@@ -69,7 +69,7 @@ bool GameScene::init()
     menu->setPosition(Point::ZERO);
     this->addChild(menu);
     
-    m_text1 = Label::createWithSystemFont("", "HiraKakuProN-W6", 20);
+    m_text1 = Label::createWithSystemFont(" ", "HiraKakuProN-W6", 20);
     m_text1->setAnchorPoint(Vec2(0,1));
     m_text1->setPosition(Point(20, visibleSize.height));
     this->addChild(m_text1);
