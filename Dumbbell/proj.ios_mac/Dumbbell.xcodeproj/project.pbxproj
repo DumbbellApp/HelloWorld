@@ -60,6 +60,13 @@
 		521A8EAA19F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
+		AD2403F11C0AF9B100764E67 /* BlockManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD2403EF1C0AF9B100764E67 /* BlockManager.cpp */; };
+		AD2403F91C0B2B5B00764E67 /* ObstacleBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD2403F71C0B2B5B00764E67 /* ObstacleBlock.cpp */; };
+		AD2403FB1C0B460F00764E67 /* obstacle.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2403FA1C0B460F00764E67 /* obstacle.png */; };
+		AD2403FD1C0B4E1B00764E67 /* score_block.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2403FC1C0B4E1B00764E67 /* score_block.png */; };
+		AD2404001C0B514A00764E67 /* ScoreBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD2403FE1C0B514A00764E67 /* ScoreBlock.cpp */; };
+		AD2404091C0B634900764E67 /* akan.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AD2404081C0B634900764E67 /* akan.mp3 */; };
+		AD24040B1C0B636B00764E67 /* ookini.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AD24040A1C0B636B00764E67 /* ookini.mp3 */; };
 		B07511A41C0AB15100225219 /* Dumbbell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B07511A01C0AB15100225219 /* Dumbbell.cpp */; };
 		B07511A51C0AB15100225219 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B07511A21C0AB15100225219 /* GameScene.cpp */; };
 		B07511AA1C0AB19B00225219 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511A61C0AB19B00225219 /* check.png */; };
@@ -160,6 +167,16 @@
 		521A8EA819F11F5000D177D7 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		AD2403EF1C0AF9B100764E67 /* BlockManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlockManager.cpp; sourceTree = "<group>"; };
+		AD2403F01C0AF9B100764E67 /* BlockManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BlockManager.hpp; sourceTree = "<group>"; };
+		AD2403F71C0B2B5B00764E67 /* ObstacleBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ObstacleBlock.cpp; sourceTree = "<group>"; };
+		AD2403F81C0B2B5B00764E67 /* ObstacleBlock.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ObstacleBlock.hpp; sourceTree = "<group>"; };
+		AD2403FA1C0B460F00764E67 /* obstacle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = obstacle.png; sourceTree = "<group>"; };
+		AD2403FC1C0B4E1B00764E67 /* score_block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = score_block.png; sourceTree = "<group>"; };
+		AD2403FE1C0B514A00764E67 /* ScoreBlock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScoreBlock.cpp; sourceTree = "<group>"; };
+		AD2403FF1C0B514A00764E67 /* ScoreBlock.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScoreBlock.hpp; sourceTree = "<group>"; };
+		AD2404081C0B634900764E67 /* akan.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = akan.mp3; sourceTree = "<group>"; };
+		AD24040A1C0B636B00764E67 /* ookini.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ookini.mp3; sourceTree = "<group>"; };
 		B07511A01C0AB15100225219 /* Dumbbell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Dumbbell.cpp; sourceTree = "<group>"; };
 		B07511A11C0AB15100225219 /* Dumbbell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Dumbbell.hpp; sourceTree = "<group>"; };
 		B07511A21C0AB15100225219 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
@@ -298,6 +315,9 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AD2404071C0B630600764E67 /* se */,
+				AD2403FC1C0B4E1B00764E67 /* score_block.png */,
+				AD2403FA1C0B460F00764E67 /* obstacle.png */,
 				B07511A61C0AB19B00225219 /* check.png */,
 				B07511A71C0AB19B00225219 /* dumbbell_plate.png */,
 				B07511A81C0AB19B00225219 /* dumbbell_shaft.png */,
@@ -315,6 +335,12 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				AD2403FE1C0B514A00764E67 /* ScoreBlock.cpp */,
+				AD2403FF1C0B514A00764E67 /* ScoreBlock.hpp */,
+				AD2403F71C0B2B5B00764E67 /* ObstacleBlock.cpp */,
+				AD2403F81C0B2B5B00764E67 /* ObstacleBlock.hpp */,
+				AD2403EF1C0AF9B100764E67 /* BlockManager.cpp */,
+				AD2403F01C0AF9B100764E67 /* BlockManager.hpp */,
 				B07511A01C0AB15100225219 /* Dumbbell.cpp */,
 				B07511A11C0AB15100225219 /* Dumbbell.hpp */,
 				B07511A21C0AB15100225219 /* GameScene.cpp */,
@@ -374,6 +400,15 @@
 			name = Icons;
 			path = ios;
 			sourceTree = SOURCE_ROOT;
+		};
+		AD2404071C0B630600764E67 /* se */ = {
+			isa = PBXGroup;
+			children = (
+				AD2404081C0B634900764E67 /* akan.mp3 */,
+				AD24040A1C0B636B00764E67 /* ookini.mp3 */,
+			);
+			name = se;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -471,7 +506,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
+				AD2403FD1C0B4E1B00764E67 /* score_block.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
+				AD2403FB1C0B460F00764E67 /* obstacle.png in Resources */,
+				AD24040B1C0B636B00764E67 /* ookini.mp3 in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
@@ -479,6 +517,7 @@
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
 				B07511AC1C0AB19B00225219 /* dumbbell_shaft.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
+				AD2404091C0B634900764E67 /* akan.mp3 in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
@@ -522,11 +561,14 @@
 			files = (
 				B07511A41C0AB15100225219 /* Dumbbell.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				AD2403F11C0AF9B100764E67 /* BlockManager.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				B07511A51C0AB15100225219 /* GameScene.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				AD2404001C0B514A00764E67 /* ScoreBlock.cpp in Sources */,
+				AD2403F91C0B2B5B00764E67 /* ObstacleBlock.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

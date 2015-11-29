@@ -8,6 +8,7 @@
 
 #include "GameScene.hpp"
 #include "Dumbbell.hpp"
+#include "BlockManager.hpp"
 #include "ui/UICheckBox.h"
 
 USING_NS_CC;
@@ -35,6 +36,11 @@ bool GameScene::init()
         return false;
     }
     
+    m_score = 0;
+    m_hitPoint = 5;
+    m_leaveTime = 60;
+    m_playTime = 0;
+    
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
         
@@ -43,12 +49,38 @@ bool GameScene::init()
     m_dumbbell->m_preAnchorX = 0;
     addChild(m_dumbbell);
     
+    m_blockManager = BlockManager::create();
+    addChild(m_blockManager);
+    
+    // ラベル類
+    m_scoreHeaderLabel = Label::createWithSystemFont("Score", "HiraKakuProN-W6", 20);
+    m_scoreHeaderLabel->setAnchorPoint(Vec2(0,1));
+    m_scoreHeaderLabel->setPosition(Point(20, visibleSize.height * 0.8 - 5));
+    this->addChild(m_scoreHeaderLabel);
+    
+    m_scoreLabel = Label::createWithSystemFont("", "HiraKakuProN-W6", 20);
+    m_scoreLabel->setString(to_string(m_score));
+    m_scoreLabel->setAnchorPoint(Vec2(0,1));
+    m_scoreLabel->setPosition(Point(100, visibleSize.height * 0.8 - 5));
+    this->addChild(m_scoreLabel);
+    
+    m_leaveTimeHeaderLabel = Label::createWithSystemFont("Time", "HiraKakuProN-W6", 20);
+    m_leaveTimeHeaderLabel->setAnchorPoint(Vec2(0,1));
+    m_leaveTimeHeaderLabel->setPosition(Point(20, visibleSize.height * 0.8 + 15));
+    this->addChild(m_leaveTimeHeaderLabel);
+    
+    m_leaveTimeLabel = Label::createWithSystemFont("", "HiraKakuProN-W6", 20);
+    m_leaveTimeLabel->setString(to_string((int)m_leaveTime));
+    m_leaveTimeLabel->setAnchorPoint(Vec2(0,1));
+    m_leaveTimeLabel->setPosition(Point(100, visibleSize.height * 0.8 + 15));
+    this->addChild(m_leaveTimeLabel);
+    
+    
     //タップイベントを作成
     auto listener = EventListenerTouchOneByOne::create();
     listener->onTouchBegan = CC_CALLBACK_2(GameScene::onTouchBegan, this);
     listener->onTouchMoved = CC_CALLBACK_2(GameScene::onTouchMoved, this);
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-
     
 #ifdef COCOS2D_DEBUG
     m_isMove = false;
@@ -176,6 +208,44 @@ bool GameScene::init()
 }
 
 void GameScene::update(float delta){
+    m_playTime += delta;
+    m_leaveTime -= delta;
+    
+    int collisionCntObs = calcCollisionObstacleBlock();
+    m_hitPoint -= collisionCntObs;
+    
+    int collisionCntScr = calcCollisionScoreBlock();
+    m_score += collisionCntScr * 100;
+    
+    m_scoreLabel->setString(to_string(m_score));
+    m_leaveTimeLabel->setString(to_string(m_leaveTime));
+
+    
+    if (m_leaveTime < 0)
+    {
+        //終了
+        // create a scene. it's an autorelease object
+        auto scene = GameScene::createScene();
+        Director::getInstance()->replaceScene(scene);
+        log("ゲーム終了");
+        
+    }
+    
+    if (m_hitPoint <= 0)
+    {
+        //終了
+        // create a scene. it's an autorelease object
+        auto scene = GameScene::createScene();
+        Director::getInstance()->replaceScene(scene);
+        log("ゲーム終了");
+    }
+    
+    if (m_playTime >= 5) {
+        m_blockManager->createObstacleBlock();
+        m_blockManager->createScoreBlock();
+        m_playTime = 0;
+    }
+    
 #ifdef COCOS2D_DEBUG
     //水平移動のみ
     if(m_isHorizonMove)
@@ -222,6 +292,22 @@ float GameScene::calRotationRate(Touch* touch)
     Point touchPoint = Vec2(touch->getLocationInView().x, touch->getLocationInView().y);
     
     return touchPoint.x/visibleSize.width*2 - 1.f;
+}
+
+int GameScene::calcCollisionObstacleBlock()
+{
+    int collisionCnt = 0;
+    collisionCnt = m_blockManager->calcCollisionObstacleBlock(m_dumbbell);
+    
+    return collisionCnt;
+}
+
+int GameScene::calcCollisionScoreBlock()
+{
+    int collisionCnt = 0;
+    collisionCnt = m_blockManager->calcCollisionScoreBlock(m_dumbbell);
+    
+    return collisionCnt;
 }
 
 

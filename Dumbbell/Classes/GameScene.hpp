@@ -12,6 +12,7 @@
 USING_NS_CC;
 
 class Dumbbell;
+class BlockManager;
 
 class GameScene : public cocos2d::Layer
 {
@@ -27,10 +28,27 @@ public:
     void onTouchMoved(Touch *touch, Event *event);
     
     float calRotationRate(Touch* touch);
+    
+    int calcCollisionObstacleBlock();
+    int calcCollisionScoreBlock();
+    
 public:
     Dumbbell* m_dumbbell;
+    BlockManager* m_blockManager;
     Sprite* sprite;
     double m_rotationRate;
+    
+    int m_score;
+    int m_hitPoint;
+    float m_leaveTime;
+    float m_playTime;
+    
+    Label* m_scoreLabel;
+    Label* m_leaveTimeLabel;
+    
+    Label* m_scoreHeaderLabel;
+    Label* m_leaveTimeHeaderLabel;
+    
     
 #ifdef COCOS2D_DEBUG
     Label* m_text1;
