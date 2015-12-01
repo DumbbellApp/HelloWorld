@@ -13,7 +13,7 @@ USING_NS_CC;
 
 class Dumbbell;
 class BlockManager;
-
+class DumbbellController;
 class GameScene : public cocos2d::Layer
 {
 public:
@@ -34,6 +34,7 @@ public:
     
 public:
     Dumbbell* m_dumbbell;
+    DumbbellController* m_dumbbellcontroller;
     BlockManager* m_blockManager;
     Sprite* sprite;
     double m_rotationRate;

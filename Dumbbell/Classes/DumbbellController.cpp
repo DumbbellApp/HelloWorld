@@ -62,3 +62,26 @@ void DumbbellController::onTouchMoved(Touch *touch, Event *event)
         m_controller->runAction(move);
     }
 }
+
+double DumbbellController::getRotationRate()
+{
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    auto pos = m_controller->getPosition();
+    auto areaSize = m_controlArea->getContentSize();
+    auto rate = (pos.x - (visibleSize.width/2 - areaSize.width/2))/ areaSize.width;
+    return rate*2-1;
+}
+
+int DumbbellController::getMoveDirection()
+{
+    auto conPos = m_controller->getPosition();
+    auto areaPos = m_controlArea->getPosition();
+    return (conPos.y > areaPos.y ? 1 : -1);
+}
+
+
+
+
+
+
+
