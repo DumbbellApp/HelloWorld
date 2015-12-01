@@ -81,11 +81,11 @@ bool GameScene::init()
     addChild(dumbbelController);
     
     
-    //タップイベントを作成
-    auto listener = EventListenerTouchOneByOne::create();
-    listener->onTouchBegan = CC_CALLBACK_2(GameScene::onTouchBegan, this);
-    listener->onTouchMoved = CC_CALLBACK_2(GameScene::onTouchMoved, this);
-    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+//    //タップイベントを作成
+//    auto listener = EventListenerTouchOneByOne::create();
+//    listener->onTouchBegan = CC_CALLBACK_2(GameScene::onTouchBegan, this);
+//    listener->onTouchMoved = CC_CALLBACK_2(GameScene::onTouchMoved, this);
+//    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
     
 #ifdef COCOS2D_DEBUG
     m_isMove = false;

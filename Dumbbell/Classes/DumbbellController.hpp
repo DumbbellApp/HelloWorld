@@ -16,6 +16,8 @@ class DumbbellController : public Node
 {
 public:
     virtual bool init();
+    bool onTouchBegan(Touch *touch, Event *event);
+    void onTouchMoved(Touch *touch, Event *event);
     CREATE_FUNC(DumbbellController);
 public:
     Sprite* m_controlArea;
