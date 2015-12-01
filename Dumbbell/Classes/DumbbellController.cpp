@@ -76,7 +76,7 @@ int DumbbellController::getMoveDirection()
 {
     auto conPos = m_controller->getPosition();
     auto areaPos = m_controlArea->getPosition();
-    return (conPos.y > areaPos.y ? 1 : -1);
+    return (conPos.y >= areaPos.y ? 1 : -1);
 }
 
 
