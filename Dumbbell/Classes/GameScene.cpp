@@ -10,6 +10,7 @@
 #include "Dumbbell.hpp"
 #include "BlockManager.hpp"
 #include "ui/UICheckBox.h"
+#include "DumbbellController.hpp"
 
 USING_NS_CC;
 using namespace std;
@@ -75,12 +76,9 @@ bool GameScene::init()
     m_leaveTimeLabel->setPosition(Point(100, visibleSize.height * 0.8 + 15));
     this->addChild(m_leaveTimeLabel);
     
-    
-    //タップイベントを作成
-    auto listener = EventListenerTouchOneByOne::create();
-    listener->onTouchBegan = CC_CALLBACK_2(GameScene::onTouchBegan, this);
-    listener->onTouchMoved = CC_CALLBACK_2(GameScene::onTouchMoved, this);
-    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+    //ダンベルコントローラー
+    m_dumbbellcontroller = DumbbellController::create();
+    addChild(m_dumbbellcontroller);
     
 #ifdef COCOS2D_DEBUG
     m_isMove = false;
@@ -246,27 +244,16 @@ void GameScene::update(float delta){
         m_playTime = 0;
     }
     
-#ifdef COCOS2D_DEBUG
-    //水平移動のみ
-    if(m_isHorizonMove)
-    {
-        Size visibleSize = Director::getInstance()->getVisibleSize();
-        Vec2 origin = Director::getInstance()->getVisibleOrigin();
-        m_dumbbell->setAnchorPoint(Vec2(0,0.5));
-        m_dumbbell->setRotation(m_dumbbell->getRotation() + m_rotationRate*m_dumbbell->getRotationSpeed());
-        m_dumbbell->setPositionY(visibleSize.height/2 + origin.y);
-    }
-    else
-    {
-        //全方位移動
-        m_dumbbell->addRotation(m_rotationRate);
-    }
+    m_rotationRate = m_dumbbellcontroller->getRotationRate();
+    auto direction = m_dumbbellcontroller->getMoveDirection();
     
+    m_dumbbell->addRotation(m_rotationRate, direction);
     if (m_isMove)
     {
-        m_dumbbell->move();
+        m_dumbbell->move(direction);
     }
 
+#ifdef COCOS2D_DEBUG
     m_text1->setString(to_string(m_rotationRate));
     m_text2->setString(to_string(m_dumbbell->getRotationSpeed()));
     m_text3->setString(to_string(m_dumbbell->getMoveSpeed()));

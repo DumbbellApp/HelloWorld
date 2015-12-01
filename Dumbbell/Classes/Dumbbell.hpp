@@ -16,8 +16,8 @@ class Dumbbell : public Node
 public:
     virtual bool init();
     CREATE_FUNC(Dumbbell);
-    void addRotation(float rotationRate);
-    void move();
+    void addRotation(float rotationRate,int direction);
+    void move(int direction);
 
     CC_SYNTHESIZE(double, m_rotationSpeed, RotationSpeed);
     CC_SYNTHESIZE(double, m_moveSpeed, MoveSpeed);
