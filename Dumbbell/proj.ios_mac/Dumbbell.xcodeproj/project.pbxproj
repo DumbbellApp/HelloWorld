@@ -75,6 +75,7 @@
 		B07511AD1C0AB19B00225219 /* dumbbell_shaft2.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511A91C0AB19B00225219 /* dumbbell_shaft2.png */; };
 		B07511B21C0DE94F00225219 /* DumbbellController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B07511B01C0DE94F00225219 /* DumbbellController.cpp */; };
 		B07511B41C0DEB5300225219 /* control_area.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511B31C0DEB5300225219 /* control_area.png */; };
+		B07511B61C0DEF2000225219 /* controller.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511B51C0DEF2000225219 /* controller.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -190,6 +191,7 @@
 		B07511B01C0DE94F00225219 /* DumbbellController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DumbbellController.cpp; sourceTree = "<group>"; };
 		B07511B11C0DE94F00225219 /* DumbbellController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DumbbellController.hpp; sourceTree = "<group>"; };
 		B07511B31C0DEB5300225219 /* control_area.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = control_area.png; sourceTree = "<group>"; };
+		B07511B51C0DEF2000225219 /* controller.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = controller.png; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -320,6 +322,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B07511B51C0DEF2000225219 /* controller.png */,
 				B07511B31C0DEB5300225219 /* control_area.png */,
 				AD2404071C0B630600764E67 /* se */,
 				AD2403FC1C0B4E1B00764E67 /* score_block.png */,
@@ -516,6 +519,7 @@
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				AD2403FD1C0B4E1B00764E67 /* score_block.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
+				B07511B61C0DEF2000225219 /* controller.png in Resources */,
 				AD2403FB1C0B460F00764E67 /* obstacle.png in Resources */,
 				AD24040B1C0B636B00764E67 /* ookini.mp3 in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,

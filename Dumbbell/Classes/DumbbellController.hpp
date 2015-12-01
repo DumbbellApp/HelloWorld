@@ -19,6 +19,7 @@ public:
     CREATE_FUNC(DumbbellController);
 public:
     Sprite* m_controlArea;
+    Sprite* m_controller;
 };
 
 #endif /* DumbbellController_hpp */

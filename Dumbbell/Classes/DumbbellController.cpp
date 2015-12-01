@@ -19,5 +19,10 @@ bool DumbbellController::init() {
     m_controlArea->setPosition(Vec2(visibleSize.width/2, 100));
     addChild(m_controlArea);
     
+    m_controller = Sprite::create("controller.png");
+    m_controller->setAnchorPoint(Vec2(0.5,0.5));
+    m_controller->setPosition(Vec2(visibleSize.width/2, 100));
+    addChild(m_controller);
+    
     return true;
 }
