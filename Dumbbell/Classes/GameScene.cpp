@@ -10,6 +10,7 @@
 #include "Dumbbell.hpp"
 #include "BlockManager.hpp"
 #include "ui/UICheckBox.h"
+#include "DumbbellController.hpp"
 
 USING_NS_CC;
 using namespace std;
@@ -74,6 +75,10 @@ bool GameScene::init()
     m_leaveTimeLabel->setAnchorPoint(Vec2(0,1));
     m_leaveTimeLabel->setPosition(Point(100, visibleSize.height * 0.8 + 15));
     this->addChild(m_leaveTimeLabel);
+    
+    //ダンベルコントローラー
+    auto dumbbelController = DumbbellController::create();
+    addChild(dumbbelController);
     
     
     //タップイベントを作成
