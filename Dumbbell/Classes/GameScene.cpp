@@ -9,7 +9,7 @@
 #include "GameScene.hpp"
 #include "Dumbbell.hpp"
 #include "BlockManager.hpp"
-
+#include "ScoreLayer.hpp"
 #include "DumbbellController.hpp"
 
 #include "DebugLayer.hpp"
@@ -55,16 +55,8 @@ bool GameScene::init()
     addChild(m_blockManager);
     
     // ラベル類
-    m_scoreHeaderLabel = Label::createWithSystemFont("Score", "HiraKakuProN-W6", 20);
-    m_scoreHeaderLabel->setAnchorPoint(Vec2(0,1));
-    m_scoreHeaderLabel->setPosition(Point(20, visibleSize.height * 0.8 - 5));
-    this->addChild(m_scoreHeaderLabel);
-    
-    m_scoreLabel = Label::createWithSystemFont("", "HiraKakuProN-W6", 20);
-    m_scoreLabel->setString(to_string(m_score));
-    m_scoreLabel->setAnchorPoint(Vec2(0,1));
-    m_scoreLabel->setPosition(Point(100, visibleSize.height * 0.8 - 5));
-    this->addChild(m_scoreLabel);
+    m_scoreLayer = ScoreLayer::create();
+    addChild(m_scoreLayer, LAYER_UI);
     
     m_leaveTimeHeaderLabel = Label::createWithSystemFont("Time", "HiraKakuProN-W6", 20);
     m_leaveTimeHeaderLabel->setAnchorPoint(Vec2(0,1));
@@ -103,7 +95,7 @@ void GameScene::update(float delta){
     int collisionCntScr = calcCollisionScoreBlock();
     m_score += collisionCntScr * 100;
     
-    m_scoreLabel->setString(to_string(m_score));
+    m_scoreLayer->setScore(m_score);
     m_leaveTimeLabel->setString(to_string(m_leaveTime));
 
     

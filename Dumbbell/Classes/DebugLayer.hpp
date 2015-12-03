@@ -21,6 +21,7 @@ public:
 public:
     Dumbbell* m_dumbbell;
     DumbbellController* m_dumbbellController;
+    Menu* m_menu;
     Label* m_text1;
     Label* m_text2;
     Label* m_text3;
