@@ -10,6 +10,7 @@
 #include "Dumbbell.hpp"
 #include "BlockManager.hpp"
 #include "ScoreLayer.hpp"
+#include "TimeLayer.hpp"
 #include "DumbbellController.hpp"
 #include "BackGroundLayer.hpp"
 #include "DebugLayer.hpp"
@@ -58,16 +59,19 @@ bool GameScene::init()
     m_scoreLayer = ScoreLayer::create();
     addChild(m_scoreLayer, LAYER_UI);
     
-    m_leaveTimeHeaderLabel = Label::createWithSystemFont("Time", "HiraKakuProN-W6", 20);
-    m_leaveTimeHeaderLabel->setAnchorPoint(Vec2(0,1));
-    m_leaveTimeHeaderLabel->setPosition(Point(20, visibleSize.height * 0.8 + 15));
-    this->addChild(m_leaveTimeHeaderLabel);
+    m_timeLayer = TimeLayer::create();
+    addChild(m_timeLayer, LAYER_UI);
     
-    m_leaveTimeLabel = Label::createWithSystemFont("", "HiraKakuProN-W6", 20);
-    m_leaveTimeLabel->setString(to_string((int)m_leaveTime));
-    m_leaveTimeLabel->setAnchorPoint(Vec2(0,1));
-    m_leaveTimeLabel->setPosition(Point(100, visibleSize.height * 0.8 + 15));
-    this->addChild(m_leaveTimeLabel);
+//    m_leaveTimeHeaderLabel = Label::createWithSystemFont("Time", "HiraKakuProN-W6", 20);
+//    m_leaveTimeHeaderLabel->setAnchorPoint(Vec2(0,1));
+//    m_leaveTimeHeaderLabel->setPosition(Point(20, visibleSize.height * 0.8 + 15));
+//    this->addChild(m_leaveTimeHeaderLabel);
+//    
+//    m_leaveTimeLabel = Label::createWithSystemFont("", "HiraKakuProN-W6", 20);
+//    m_leaveTimeLabel->setString(to_string((int)m_leaveTime));
+//    m_leaveTimeLabel->setAnchorPoint(Vec2(0,1));
+//    m_leaveTimeLabel->setPosition(Point(100, visibleSize.height * 0.8 + 15));
+//    this->addChild(m_leaveTimeLabel);
     
     //ダンベルコントローラー
     m_dumbbellcontroller = DumbbellController::create();
@@ -101,7 +105,8 @@ void GameScene::update(float delta){
     m_score += collisionCntScr * 100;
     
     m_scoreLayer->setScore(m_score);
-    m_leaveTimeLabel->setString(to_string(m_leaveTime));
+    m_timeLayer->setTime(m_leaveTime);
+//    m_leaveTimeLabel->setString(to_string(m_leaveTime));
 
     
     if (m_leaveTime < 0)

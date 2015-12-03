@@ -82,6 +82,8 @@
 		B07511D21C10A39100225219 /* BackGroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B07511D01C10A39100225219 /* BackGroundLayer.cpp */; };
 		B07511E21C10A6FA00225219 /* bg.plist in Resources */ = {isa = PBXBuildFile; fileRef = B07511E01C10A6FA00225219 /* bg.plist */; };
 		B07511E31C10A6FA00225219 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511E11C10A6FA00225219 /* bg.png */; };
+		B07511EC1C10B1BE00225219 /* TimeLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B07511EA1C10B1BE00225219 /* TimeLayer.cpp */; };
+		B07511EE1C10B2C700225219 /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511ED1C10B2C700225219 /* time.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -208,6 +210,9 @@
 		B07511E01C10A6FA00225219 /* bg.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bg.plist; sourceTree = "<group>"; };
 		B07511E11C10A6FA00225219 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		B07511E41C10A99C00225219 /* BackGroundType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackGroundType.h; sourceTree = "<group>"; };
+		B07511EA1C10B1BE00225219 /* TimeLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimeLayer.cpp; sourceTree = "<group>"; };
+		B07511EB1C10B1BE00225219 /* TimeLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TimeLayer.hpp; sourceTree = "<group>"; };
+		B07511ED1C10B2C700225219 /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -342,6 +347,7 @@
 				B07511B51C0DEF2000225219 /* controller.png */,
 				B07511B31C0DEB5300225219 /* control_area.png */,
 				AD2404071C0B630600764E67 /* se */,
+				B07511ED1C10B2C700225219 /* time.png */,
 				B07511C31C1099C300225219 /* score.png */,
 				AD2403FC1C0B4E1B00764E67 /* score_block.png */,
 				AD2403FA1C0B460F00764E67 /* obstacle.png */,
@@ -457,6 +463,8 @@
 				B07511D01C10A39100225219 /* BackGroundLayer.cpp */,
 				B07511D11C10A39100225219 /* BackGroundLayer.hpp */,
 				B07511E41C10A99C00225219 /* BackGroundType.h */,
+				B07511EA1C10B1BE00225219 /* TimeLayer.cpp */,
+				B07511EB1C10B1BE00225219 /* TimeLayer.hpp */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -579,6 +587,7 @@
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				B07511B61C0DEF2000225219 /* controller.png in Resources */,
 				AD2403FB1C0B460F00764E67 /* obstacle.png in Resources */,
+				B07511EE1C10B2C700225219 /* time.png in Resources */,
 				B07511CB1C109D5100225219 /* jun.fnt in Resources */,
 				AD24040B1C0B636B00764E67 /* ookini.mp3 in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
@@ -641,6 +650,7 @@
 				AD2403F11C0AF9B100764E67 /* BlockManager.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				B07511C21C10967000225219 /* ScoreLayer.cpp in Sources */,
+				B07511EC1C10B1BE00225219 /* TimeLayer.cpp in Sources */,
 				B07511B21C0DE94F00225219 /* DumbbellController.cpp in Sources */,
 				B07511A51C0AB15100225219 /* GameScene.cpp in Sources */,
 				B07511BA1C108B9D00225219 /* DebugLayer.cpp in Sources */,
