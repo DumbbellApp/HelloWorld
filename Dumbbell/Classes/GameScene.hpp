@@ -24,10 +24,6 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(GameScene);
     void update(float delta);
-    bool onTouchBegan(Touch *touch, Event *event);
-    void onTouchMoved(Touch *touch, Event *event);
-    
-    float calRotationRate(Touch* touch);
     
     int calcCollisionObstacleBlock();
     int calcCollisionScoreBlock();
@@ -36,7 +32,6 @@ public:
     Dumbbell* m_dumbbell;
     DumbbellController* m_dumbbellcontroller;
     BlockManager* m_blockManager;
-    Sprite* sprite;
     double m_rotationRate;
     
     int m_score;
@@ -49,16 +44,6 @@ public:
     
     Label* m_scoreHeaderLabel;
     Label* m_leaveTimeHeaderLabel;
-    
-    
-#ifdef COCOS2D_DEBUG
-    Label* m_text1;
-    Label* m_text2;
-    Label* m_text3;
-    Label* m_text4;
-    bool m_isMove;
-    bool m_isHorizonMove;
-#endif
 };
 
 #endif /* GameScene_hpp */
