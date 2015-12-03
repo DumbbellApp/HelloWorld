@@ -12,6 +12,7 @@ USING_NS_CC;
 
 class Dumbbell;
 class DumbbellController;
+class BackGroundLayer;
 class DebugLayer : public Layer
 {
 public:
@@ -21,6 +22,7 @@ public:
 public:
     Dumbbell* m_dumbbell;
     DumbbellController* m_dumbbellController;
+    BackGroundLayer* m_backGroundLayer;
     Menu* m_menu;
     Label* m_text1;
     Label* m_text2;
