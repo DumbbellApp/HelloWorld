@@ -355,7 +355,9 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B07511CE1C10A28900225219 /* App */,
 				B07511BE1C1090D700225219 /* Debug */,
+				B07511CD1C10A26B00225219 /* UI */,
 				AD2403FE1C0B514A00764E67 /* ScoreBlock.cpp */,
 				AD2403FF1C0B514A00764E67 /* ScoreBlock.hpp */,
 				AD2403F71C0B2B5B00764E67 /* ObstacleBlock.cpp */,
@@ -366,12 +368,6 @@
 				B07511A11C0AB15100225219 /* Dumbbell.hpp */,
 				B07511A21C0AB15100225219 /* GameScene.cpp */,
 				B07511A31C0AB15100225219 /* GameScene.hpp */,
-				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
-				46880B8519C43A87006E1F66 /* AppDelegate.h */,
-				B07511B01C0DE94F00225219 /* DumbbellController.cpp */,
-				B07511B11C0DE94F00225219 /* DumbbellController.hpp */,
-				B07511C01C10967000225219 /* ScoreLayer.cpp */,
-				B07511C11C10967000225219 /* ScoreLayer.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -440,6 +436,26 @@
 				B07511B91C108B9C00225219 /* DebugLayer.hpp */,
 			);
 			name = Debug;
+			sourceTree = "<group>";
+		};
+		B07511CD1C10A26B00225219 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				B07511B01C0DE94F00225219 /* DumbbellController.cpp */,
+				B07511B11C0DE94F00225219 /* DumbbellController.hpp */,
+				B07511C01C10967000225219 /* ScoreLayer.cpp */,
+				B07511C11C10967000225219 /* ScoreLayer.hpp */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		B07511CE1C10A28900225219 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
+				46880B8519C43A87006E1F66 /* AppDelegate.h */,
+			);
+			name = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
