@@ -62,17 +62,6 @@ bool GameScene::init()
     m_timeLayer = TimeLayer::create();
     addChild(m_timeLayer, LAYER_UI);
     
-//    m_leaveTimeHeaderLabel = Label::createWithSystemFont("Time", "HiraKakuProN-W6", 20);
-//    m_leaveTimeHeaderLabel->setAnchorPoint(Vec2(0,1));
-//    m_leaveTimeHeaderLabel->setPosition(Point(20, visibleSize.height * 0.8 + 15));
-//    this->addChild(m_leaveTimeHeaderLabel);
-//    
-//    m_leaveTimeLabel = Label::createWithSystemFont("", "HiraKakuProN-W6", 20);
-//    m_leaveTimeLabel->setString(to_string((int)m_leaveTime));
-//    m_leaveTimeLabel->setAnchorPoint(Vec2(0,1));
-//    m_leaveTimeLabel->setPosition(Point(100, visibleSize.height * 0.8 + 15));
-//    this->addChild(m_leaveTimeLabel);
-    
     //ダンベルコントローラー
     m_dumbbellcontroller = DumbbellController::create();
     addChild(m_dumbbellcontroller, LAYER_UI);
@@ -106,8 +95,6 @@ void GameScene::update(float delta){
     
     m_scoreLayer->setScore(m_score);
     m_timeLayer->setTime(m_leaveTime);
-//    m_leaveTimeLabel->setString(to_string(m_leaveTime));
-
     
     if (m_leaveTime < 0)
     {
