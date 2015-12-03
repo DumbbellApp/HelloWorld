@@ -49,10 +49,10 @@ bool GameScene::init()
     m_dumbbell = Dumbbell::create();
     m_dumbbell->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
     m_dumbbell->m_preAnchorX = 0;
-    addChild(m_dumbbell);
+    addChild(m_dumbbell, LAYER_MAIN);
     
     m_blockManager = BlockManager::create();
-    addChild(m_blockManager);
+    addChild(m_blockManager, LAYER_MAIN);
     
     // ラベル類
     m_scoreLayer = ScoreLayer::create();
