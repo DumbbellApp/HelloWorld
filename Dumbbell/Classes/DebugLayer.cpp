@@ -10,6 +10,8 @@
 #include "Dumbbell.hpp"
 #include "DumbbellController.hpp"
 #include "ui/UICheckBox.h"
+#include "BackGroundLayer.hpp"
+#include "BackGroundType.h"
 using namespace std;
 
 bool DebugLayer::init() {
@@ -159,6 +161,55 @@ bool DebugLayer::init() {
 //    } );
 //    addChild(checkBox1);
 
+    //背景のでばっく機能
+    auto mItem8 = MenuItemImage::create("CloseNormal.png","CloseSelected.png",[this](Ref*sender){
+        m_backGroundLayer->chageBackGround(BackGroundType::Type1);
+    });
+    mItem8->setPosition(Point(0, visibleSize.height-80));
+    mItem8->setAnchorPoint(Vec2(0,1));
+    mItem8->setScale(0.5);
+    m_menu->addChild(mItem8);
+    
+    mItem8 = MenuItemImage::create("CloseNormal.png","CloseSelected.png",[this](Ref*sender){
+        m_backGroundLayer->chageBackGround(BackGroundType::Type2);
+    });
+    mItem8->setPosition(Point(20, visibleSize.height-80));
+    mItem8->setAnchorPoint(Vec2(0,1));
+    mItem8->setScale(0.5);
+    m_menu->addChild(mItem8);
+
+    mItem8 = MenuItemImage::create("CloseNormal.png","CloseSelected.png",[this](Ref*sender){
+        m_backGroundLayer->chageBackGround(BackGroundType::Type3);
+    });
+    mItem8->setPosition(Point(40, visibleSize.height-80));
+    mItem8->setAnchorPoint(Vec2(0,1));
+    mItem8->setScale(0.5);
+    m_menu->addChild(mItem8);
+    
+    mItem8 = MenuItemImage::create("CloseNormal.png","CloseSelected.png",[this](Ref*sender){
+        m_backGroundLayer->chageBackGround(BackGroundType::Type4);
+    });
+    mItem8->setPosition(Point(60, visibleSize.height-80));
+    mItem8->setAnchorPoint(Vec2(0,1));
+    mItem8->setScale(0.5);
+    m_menu->addChild(mItem8);
+    
+    mItem8 = MenuItemImage::create("CloseNormal.png","CloseSelected.png",[this](Ref*sender){
+        m_backGroundLayer->chageBackGround(BackGroundType::Type5);
+    });
+    mItem8->setPosition(Point(80, visibleSize.height-80));
+    mItem8->setAnchorPoint(Vec2(0,1));
+    mItem8->setScale(0.5);
+    m_menu->addChild(mItem8);
+    
+    mItem8 = MenuItemImage::create("CloseNormal.png","CloseSelected.png",[this](Ref*sender){
+        m_backGroundLayer->chageBackGround(BackGroundType::Type6);
+    });
+    mItem8->setPosition(Point(100, visibleSize.height-80));
+    mItem8->setAnchorPoint(Vec2(0,1));
+    mItem8->setScale(0.5);
+    m_menu->addChild(mItem8);
+    
     m_menu->setVisible(false);
     m_text1->setVisible(false);
     m_text2->setVisible(false);

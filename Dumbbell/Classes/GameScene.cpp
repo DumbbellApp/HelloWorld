@@ -11,7 +11,7 @@
 #include "BlockManager.hpp"
 #include "ScoreLayer.hpp"
 #include "DumbbellController.hpp"
-
+#include "BackGroundLayer.hpp"
 #include "DebugLayer.hpp"
 USING_NS_CC;
 using namespace std;
@@ -73,11 +73,16 @@ bool GameScene::init()
     m_dumbbellcontroller = DumbbellController::create();
     addChild(m_dumbbellcontroller, LAYER_UI);
     
+    //背景
+    auto bgLayer =  BackGroundLayer::create();
+    addChild(bgLayer,LAYER_BACKGROUND);
+    
 #ifdef COCOS2D_DEBUG
     //デバックレイヤー
     auto debugLayer = DebugLayer::create();
     debugLayer->m_dumbbell = m_dumbbell;
     debugLayer->m_dumbbellController = m_dumbbellcontroller;
+    debugLayer->m_backGroundLayer = bgLayer;
     addChild(debugLayer, 100);
 #endif
     
