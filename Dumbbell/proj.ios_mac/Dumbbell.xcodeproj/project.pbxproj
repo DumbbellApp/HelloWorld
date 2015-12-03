@@ -75,6 +75,10 @@
 		B07511B41C0DEB5300225219 /* control_area.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511B31C0DEB5300225219 /* control_area.png */; };
 		B07511B61C0DEF2000225219 /* controller.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511B51C0DEF2000225219 /* controller.png */; };
 		B07511BA1C108B9D00225219 /* DebugLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B07511B81C108B9C00225219 /* DebugLayer.cpp */; };
+		B07511C21C10967000225219 /* ScoreLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B07511C01C10967000225219 /* ScoreLayer.cpp */; };
+		B07511C41C1099C300225219 /* score.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511C31C1099C300225219 /* score.png */; };
+		B07511CB1C109D5100225219 /* jun.fnt in Resources */ = {isa = PBXBuildFile; fileRef = B07511C91C109D5100225219 /* jun.fnt */; };
+		B07511CC1C109D5100225219 /* jun.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511CA1C109D5100225219 /* jun.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -191,6 +195,11 @@
 		B07511B51C0DEF2000225219 /* controller.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = controller.png; sourceTree = "<group>"; };
 		B07511B81C108B9C00225219 /* DebugLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DebugLayer.cpp; sourceTree = "<group>"; };
 		B07511B91C108B9C00225219 /* DebugLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DebugLayer.hpp; sourceTree = "<group>"; };
+		B07511C01C10967000225219 /* ScoreLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScoreLayer.cpp; sourceTree = "<group>"; };
+		B07511C11C10967000225219 /* ScoreLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScoreLayer.hpp; sourceTree = "<group>"; };
+		B07511C31C1099C300225219 /* score.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = score.png; sourceTree = "<group>"; };
+		B07511C91C109D5100225219 /* jun.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jun.fnt; sourceTree = "<group>"; };
+		B07511CA1C109D5100225219 /* jun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jun.png; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -324,12 +333,15 @@
 				B07511B51C0DEF2000225219 /* controller.png */,
 				B07511B31C0DEB5300225219 /* control_area.png */,
 				AD2404071C0B630600764E67 /* se */,
+				B07511C31C1099C300225219 /* score.png */,
 				AD2403FC1C0B4E1B00764E67 /* score_block.png */,
 				AD2403FA1C0B460F00764E67 /* obstacle.png */,
 				B07511A61C0AB19B00225219 /* check.png */,
 				B07511A71C0AB19B00225219 /* dumbbell_plate.png */,
 				B07511A81C0AB19B00225219 /* dumbbell_shaft.png */,
 				B07511A91C0AB19B00225219 /* dumbbell_shaft2.png */,
+				B07511C91C109D5100225219 /* jun.fnt */,
+				B07511CA1C109D5100225219 /* jun.png */,
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
 				46880B7619C43A67006E1F66 /* CloseNormal.png */,
@@ -358,6 +370,8 @@
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				B07511B01C0DE94F00225219 /* DumbbellController.cpp */,
 				B07511B11C0DE94F00225219 /* DumbbellController.hpp */,
+				B07511C01C10967000225219 /* ScoreLayer.cpp */,
+				B07511C11C10967000225219 /* ScoreLayer.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -528,6 +542,7 @@
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				B07511B61C0DEF2000225219 /* controller.png in Resources */,
 				AD2403FB1C0B460F00764E67 /* obstacle.png in Resources */,
+				B07511CB1C109D5100225219 /* jun.fnt in Resources */,
 				AD24040B1C0B636B00764E67 /* ookini.mp3 in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
@@ -537,8 +552,10 @@
 				B07511AC1C0AB19B00225219 /* dumbbell_shaft.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				AD2404091C0B634900764E67 /* akan.mp3 in Resources */,
+				B07511CC1C109D5100225219 /* jun.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
+				B07511C41C1099C300225219 /* score.png in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				B07511AD1C0AB19B00225219 /* dumbbell_shaft2.png in Resources */,
@@ -583,6 +600,7 @@
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				AD2403F11C0AF9B100764E67 /* BlockManager.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				B07511C21C10967000225219 /* ScoreLayer.cpp in Sources */,
 				B07511B21C0DE94F00225219 /* DumbbellController.cpp in Sources */,
 				B07511A51C0AB15100225219 /* GameScene.cpp in Sources */,
 				B07511BA1C108B9D00225219 /* DebugLayer.cpp in Sources */,

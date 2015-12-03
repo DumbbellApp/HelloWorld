@@ -14,6 +14,7 @@ USING_NS_CC;
 class Dumbbell;
 class BlockManager;
 class DumbbellController;
+class ScoreLayer;
 class GameScene : public cocos2d::Layer
 {
 public:
@@ -39,6 +40,7 @@ public:
 public:
     Dumbbell* m_dumbbell;
     DumbbellController* m_dumbbellcontroller;
+    ScoreLayer* m_scoreLayer;
     BlockManager* m_blockManager;
     double m_rotationRate;
     
