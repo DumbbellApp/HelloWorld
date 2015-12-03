@@ -22,7 +22,7 @@ bool DebugLayer::init() {
     auto checkBox2 =  ui::CheckBox::create("dumbbell_plate.png", "check.png", ui::CheckBox::TextureResType::LOCAL);
     checkBox2->setScale(0.2);
     checkBox2->setAnchorPoint(Point(0,1));
-    checkBox2->setPosition(Vec2(visibleSize.width - 40, visibleSize.height - 40));
+    checkBox2->setPosition(Vec2(visibleSize.width - 20, visibleSize.height - 20));
     checkBox2->addEventListener( [this]( cocos2d::Ref* target , cocos2d::ui::CheckBox::EventType event_type ) {
         if( event_type == cocos2d::ui::CheckBox::EventType::SELECTED )
         {
