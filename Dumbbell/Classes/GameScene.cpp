@@ -79,14 +79,14 @@ bool GameScene::init()
     
     //ダンベルコントローラー
     m_dumbbellcontroller = DumbbellController::create();
-    addChild(m_dumbbellcontroller);
+    addChild(m_dumbbellcontroller, LAYER_UI);
     
 #ifdef COCOS2D_DEBUG
     //デバックレイヤー
     auto debugLayer = DebugLayer::create();
     debugLayer->m_dumbbell = m_dumbbell;
     debugLayer->m_dumbbellController = m_dumbbellcontroller;
-    addChild(debugLayer);
+    addChild(debugLayer, 100);
 #endif
     
     this->scheduleUpdate();

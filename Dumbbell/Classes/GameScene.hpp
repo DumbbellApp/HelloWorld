@@ -17,6 +17,14 @@ class DumbbellController;
 class GameScene : public cocos2d::Layer
 {
 public:
+    enum LAYER
+    {
+        LAYER_BACKGROUND = 1,
+        LAYER_MAIN,
+        LAYER_UI,
+        LAYER_POPUP,
+    };
+public:
     static cocos2d::Scene* createScene();
     
     virtual bool init();
