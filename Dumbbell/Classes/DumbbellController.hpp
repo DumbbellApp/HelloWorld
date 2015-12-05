@@ -16,14 +16,16 @@ class DumbbellController : public Node
 {
 public:
     virtual bool init();
+    virtual void onEnter();
     bool onTouchBegan(Touch *touch, Event *event);
     void onTouchMoved(Touch *touch, Event *event);
     CREATE_FUNC(DumbbellController);
     double getRotationRate();
-public:
+private:
     Sprite* m_controlArea;
     Sprite* m_controller;
     Node* m_touchArea;
+    bool isEnable;
 };
 
 #endif /* DumbbellController_hpp */

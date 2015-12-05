@@ -43,6 +43,9 @@ void TitleLayer::onEnter()
 }
 bool TitleLayer::onTouchBegan(Touch *touch, Event *event)
 {
+    if(!isVisible())
+        return false;
+    
     MSG_CHAGE_STATE msg(STATE::GAME);
     EventManager::getInstance()->dispatch(msg);
     return true;

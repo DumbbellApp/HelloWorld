@@ -41,6 +41,7 @@ void TimeLayer::onEnter()
     EventManager::getInstance()->addEventLister<MSG_CHAGE_STATE>([this](EventCustom* event){
         auto msg = static_cast<MSG_CHAGE_STATE*>(event->getUserData());
         if (msg->getStete() == STATE::GAME) {
+            setTime(60);
             setVisible(true);
         }
     });

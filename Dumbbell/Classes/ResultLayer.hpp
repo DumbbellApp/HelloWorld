@@ -17,7 +17,10 @@ public:
     virtual void onEnter();
     CREATE_FUNC(ResultLayer);
 public:
-    Sprite* m_resultSprite;
+    Sprite* m_resultBack;
+    Sprite* m_resultTitle;
+    Sprite* m_resultScore;
+    Sprite* m_resultBest;
 };
 
 #endif /* ResultLayer_hpp */

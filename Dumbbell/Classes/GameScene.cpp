@@ -96,22 +96,24 @@ void GameScene::update(float delta){
     MSG_CHAGE_TIME timeChangeMsg((int)m_leaveTime);
     EventManager::getInstance()->dispatch(timeChangeMsg);
     
-    if (m_leaveTime < 0)
-    {
-        //終了
-        // create a scene. it's an autorelease object
-        auto scene = GameScene::createScene();
-        Director::getInstance()->replaceScene(scene);
-        log("ゲーム終了");
-        
-    }
+//    if (m_leaveTime < 0)
+//    {
+//        //終了
+//        // create a scene. it's an autorelease object
+//        auto scene = GameScene::createScene();
+//        Director::getInstance()->replaceScene(scene);
+//        log("ゲーム終了");
+//        
+//    }
     
-    if (m_hitPoint <= 0)
+    if (m_hitPoint <= 4 || m_leaveTime < 0)
     {
         //終了
         // create a scene. it's an autorelease object
-        auto scene = GameScene::createScene();
-        Director::getInstance()->replaceScene(scene);
+//        auto scene = GameScene::createScene();
+//        Director::getInstance()->replaceScene(scene);
+        MSG_CHAGE_STATE msg(STATE::RESULT);
+        EventManager::getInstance()->dispatch(msg);
         log("ゲーム終了");
     }
     
@@ -136,8 +138,23 @@ void GameScene::onEnter()
     EventManager::getInstance()->addEventLister<MSG_CHAGE_STATE>([this](EventCustom* event){
         auto msg = static_cast<MSG_CHAGE_STATE*>(event->getUserData());
         if (msg->getStete() == STATE::GAME) {
+            //ゲーム開始時の初期化処理をここに書く
+            Size visibleSize = Director::getInstance()->getVisibleSize();
+            Vec2 origin = Director::getInstance()->getVisibleOrigin();
             this->scheduleUpdate();
+            m_score = 0;
+            m_hitPoint = 5;
+            m_leaveTime = 60;
+            m_playTime = 0;
+            m_dumbbell->setRotation(0);
+            m_dumbbell->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+            
         }
+        else if(msg->getStete() == STATE::RESULT)
+        {
+            this->unscheduleUpdate();
+        }
+        
     });
 }
 
