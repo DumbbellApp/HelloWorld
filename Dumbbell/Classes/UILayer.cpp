@@ -11,6 +11,7 @@
 #include "TitleLayer.hpp"
 #include "ScoreLayer.hpp"
 #include "TimeLayer.hpp"
+#include "ResultLayer.hpp"
 
 using namespace std;
 bool UILayer::init() {
@@ -29,6 +30,9 @@ bool UILayer::init() {
     
     m_timeLayer = TimeLayer::create();
     addChild(m_timeLayer);
+    
+    m_resultLayer = ResultLayer::create();
+    addChild(m_resultLayer);
     
     return true;
 }

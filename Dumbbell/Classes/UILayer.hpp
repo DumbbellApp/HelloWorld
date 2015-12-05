@@ -11,6 +11,7 @@
 class ScoreLayer;
 class TimeLayer;
 class TitleLayer;
+class ResultLayer;
 USING_NS_CC;
 class UILayer : public Layer
 {
@@ -21,6 +22,7 @@ public:
     ScoreLayer* m_scoreLayer;
     TimeLayer* m_timeLayer;
     TitleLayer* m_titleLayer;
+    ResultLayer* m_resultLayer;
 };
 
 #endif /* UILayer_hpp */
