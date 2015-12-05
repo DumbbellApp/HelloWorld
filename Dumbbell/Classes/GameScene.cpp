@@ -106,7 +106,7 @@ void GameScene::update(float delta){
 //        
 //    }
     
-    if (m_hitPoint <= 4 || m_leaveTime < 0)
+    if (m_hitPoint <= 0 || m_leaveTime < 0)
     {
         //終了
         // create a scene. it's an autorelease object
