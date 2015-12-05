@@ -65,6 +65,7 @@
 		AD2404001C0B514A00764E67 /* ScoreBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD2403FE1C0B514A00764E67 /* ScoreBlock.cpp */; };
 		AD2404091C0B634900764E67 /* akan.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AD2404081C0B634900764E67 /* akan.mp3 */; };
 		AD24040B1C0B636B00764E67 /* ookini.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AD24040A1C0B636B00764E67 /* ookini.mp3 */; };
+		B03452CD1C12C73300C01A7C /* dumbbell_controller.png in Resources */ = {isa = PBXBuildFile; fileRef = B03452CC1C12C73300C01A7C /* dumbbell_controller.png */; };
 		B07511A41C0AB15100225219 /* Dumbbell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B07511A01C0AB15100225219 /* Dumbbell.cpp */; };
 		B07511A51C0AB15100225219 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B07511A21C0AB15100225219 /* GameScene.cpp */; };
 		B07511AA1C0AB19B00225219 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511A61C0AB19B00225219 /* check.png */; };
@@ -186,6 +187,7 @@
 		AD2403FF1C0B514A00764E67 /* ScoreBlock.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScoreBlock.hpp; sourceTree = "<group>"; };
 		AD2404081C0B634900764E67 /* akan.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = akan.mp3; sourceTree = "<group>"; };
 		AD24040A1C0B636B00764E67 /* ookini.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ookini.mp3; sourceTree = "<group>"; };
+		B03452CC1C12C73300C01A7C /* dumbbell_controller.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dumbbell_controller.png; sourceTree = "<group>"; };
 		B07511A01C0AB15100225219 /* Dumbbell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Dumbbell.cpp; sourceTree = "<group>"; };
 		B07511A11C0AB15100225219 /* Dumbbell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Dumbbell.hpp; sourceTree = "<group>"; };
 		B07511A21C0AB15100225219 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				B07511D31C10A41C00225219 /* bg */,
+				B03452CC1C12C73300C01A7C /* dumbbell_controller.png */,
 				B07511B51C0DEF2000225219 /* controller.png */,
 				B07511B31C0DEB5300225219 /* control_area.png */,
 				AD2404071C0B630600764E67 /* se */,
@@ -594,6 +597,7 @@
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */,
+				B03452CD1C12C73300C01A7C /* dumbbell_controller.png in Resources */,
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
 				B07511AC1C0AB19B00225219 /* dumbbell_shaft.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,

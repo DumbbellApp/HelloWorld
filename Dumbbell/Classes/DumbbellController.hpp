@@ -24,6 +24,7 @@ public:
 public:
     Sprite* m_controlArea;
     Sprite* m_controller;
+    Node* m_touchArea;
 };
 
 #endif /* DumbbellController_hpp */
