@@ -14,6 +14,8 @@
 #include "DumbbellController.hpp"
 #include "BackGroundLayer.hpp"
 #include "DebugLayer.hpp"
+#include "TitleLayer.hpp"
+
 USING_NS_CC;
 using namespace std;
 Scene* GameScene::createScene()
@@ -43,6 +45,7 @@ bool GameScene::init()
     m_hitPoint = 5;
     m_leaveTime = 60;
     m_playTime = 0;
+    m_state = STATE::TITLE;
     
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -54,6 +57,9 @@ bool GameScene::init()
     
     m_blockManager = BlockManager::create();
     addChild(m_blockManager, LAYER_MAIN);
+    
+    m_titleLayer = TitleLayer::create();
+    addChild(m_titleLayer, LAYER_UI);
     
     // ラベル類
     m_scoreLayer = ScoreLayer::create();

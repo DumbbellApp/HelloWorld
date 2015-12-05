@@ -16,6 +16,7 @@ class BlockManager;
 class DumbbellController;
 class ScoreLayer;
 class TimeLayer;
+class TitleLayer;
 class GameScene : public cocos2d::Layer
 {
 public:
@@ -26,6 +27,13 @@ public:
         LAYER_UI,
         LAYER_POPUP,
     };
+    enum class STATE
+    {
+        TITLE,
+        GAME,
+        RESULT,
+    };
+
 public:
     static cocos2d::Scene* createScene();
     
@@ -43,6 +51,7 @@ public:
     DumbbellController* m_dumbbellcontroller;
     ScoreLayer* m_scoreLayer;
     TimeLayer* m_timeLayer;
+    TitleLayer* m_titleLayer;
     BlockManager* m_blockManager;
     double m_rotationRate;
     
@@ -56,6 +65,8 @@ public:
     
     Label* m_scoreHeaderLabel;
     Label* m_leaveTimeHeaderLabel;
+    
+    STATE m_state;
 };
 
 #endif /* GameScene_hpp */
