@@ -14,6 +14,7 @@ class TimeLayer : public Layer
 {
 public:
     virtual bool init();
+    virtual void onEnter();
     CREATE_FUNC(TimeLayer);
     void setTime(float time);
 public:

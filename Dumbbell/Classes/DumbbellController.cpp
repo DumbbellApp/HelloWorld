@@ -54,7 +54,7 @@ bool DumbbellController::onTouchBegan(Touch *touch, Event *event)
         m_controller->setPositionX(touch->getLocation().x);
         return true;
     }
-    return true;
+    return false;
 }
 
 void DumbbellController::onTouchMoved(Touch *touch, Event *event)
