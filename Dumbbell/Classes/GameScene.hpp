@@ -11,12 +11,12 @@
 
 USING_NS_CC;
 
+#include "GameStateType.h"
+
 class Dumbbell;
 class BlockManager;
 class DumbbellController;
-class ScoreLayer;
-class TimeLayer;
-class TitleLayer;
+class UILayer;
 class GameScene : public cocos2d::Layer
 {
 public:
@@ -27,18 +27,11 @@ public:
         LAYER_UI,
         LAYER_POPUP,
     };
-    enum class STATE
-    {
-        TITLE,
-        GAME,
-        RESULT,
-    };
-
 public:
     static cocos2d::Scene* createScene();
     
     virtual bool init();
-    
+    virtual void onEnter();
     // implement the "static create()" method manually
     CREATE_FUNC(GameScene);
     void update(float delta);
@@ -49,9 +42,7 @@ public:
 public:
     Dumbbell* m_dumbbell;
     DumbbellController* m_dumbbellcontroller;
-    ScoreLayer* m_scoreLayer;
-    TimeLayer* m_timeLayer;
-    TitleLayer* m_titleLayer;
+    UILayer* m_uiLayer;
     BlockManager* m_blockManager;
     double m_rotationRate;
     

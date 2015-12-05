@@ -9,13 +9,12 @@
 #include "GameScene.hpp"
 #include "Dumbbell.hpp"
 #include "BlockManager.hpp"
-#include "ScoreLayer.hpp"
-#include "TimeLayer.hpp"
 #include "DumbbellController.hpp"
 #include "BackGroundLayer.hpp"
 #include "DebugLayer.hpp"
-#include "TitleLayer.hpp"
-
+#include "UILayer.hpp"
+#include "EventManager.hpp"
+#include "Message.hpp"
 USING_NS_CC;
 using namespace std;
 Scene* GameScene::createScene()
@@ -57,17 +56,7 @@ bool GameScene::init()
     
     m_blockManager = BlockManager::create();
     addChild(m_blockManager, LAYER_MAIN);
-    
-    m_titleLayer = TitleLayer::create();
-    addChild(m_titleLayer, LAYER_UI);
-    
-    // ラベル類
-    m_scoreLayer = ScoreLayer::create();
-    addChild(m_scoreLayer, LAYER_UI);
-    
-    m_timeLayer = TimeLayer::create();
-    addChild(m_timeLayer, LAYER_UI);
-    
+        
     //ダンベルコントローラー
     m_dumbbellcontroller = DumbbellController::create();
     addChild(m_dumbbellcontroller, LAYER_UI);
@@ -75,6 +64,10 @@ bool GameScene::init()
     //背景
     auto bgLayer =  BackGroundLayer::create();
     addChild(bgLayer,LAYER_BACKGROUND);
+    
+    //UI
+    m_uiLayer = UILayer::create();
+    addChild(m_uiLayer, LAYER::LAYER_UI);
     
 #ifdef COCOS2D_DEBUG
     //デバックレイヤー
@@ -84,8 +77,6 @@ bool GameScene::init()
     debugLayer->m_backGroundLayer = bgLayer;
     addChild(debugLayer, 100);
 #endif
-    
-    this->scheduleUpdate();
     return true;
 }
 
@@ -98,9 +89,12 @@ void GameScene::update(float delta){
     
     int collisionCntScr = calcCollisionScoreBlock();
     m_score += collisionCntScr * 100;
+
+    MSG_CHAGE_SCORE scoreChageMsg(m_score);
+    EventManager::getInstance()->dispatch(scoreChageMsg);
     
-    m_scoreLayer->setScore(m_score);
-    m_timeLayer->setTime(m_leaveTime);
+    MSG_CHAGE_TIME timeChangeMsg((int)m_leaveTime);
+    EventManager::getInstance()->dispatch(timeChangeMsg);
     
     if (m_leaveTime < 0)
     {
@@ -132,6 +126,19 @@ void GameScene::update(float delta){
     m_dumbbell->addRotation(m_rotationRate);
     m_dumbbell->move();
 
+}
+
+void GameScene::onEnter()
+{
+    Layer::onEnter();
+    
+    //Stateが変わった時の処理
+    EventManager::getInstance()->addEventLister<MSG_CHAGE_STATE>([this](EventCustom* event){
+        auto msg = static_cast<MSG_CHAGE_STATE*>(event->getUserData());
+        if (msg->getStete() == STATE::GAME) {
+            this->scheduleUpdate();
+        }
+    });
 }
 
 int GameScene::calcCollisionObstacleBlock()

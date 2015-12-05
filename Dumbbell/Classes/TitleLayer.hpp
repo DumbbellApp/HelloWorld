@@ -14,7 +14,9 @@ class TitleLayer : public Layer
 {
 public:
     virtual bool init();
+    virtual void onEnter();
     CREATE_FUNC(TitleLayer);
+    bool onTouchBegan(Touch *touch, Event *event);
 public:
     Sprite* m_titleSprite;
 };

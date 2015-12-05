@@ -13,6 +13,7 @@ class ScoreLayer : public Layer
 {
 public:
     virtual bool init();
+    virtual void onEnter();
     CREATE_FUNC(ScoreLayer);
     void setScore(int score);
 public:

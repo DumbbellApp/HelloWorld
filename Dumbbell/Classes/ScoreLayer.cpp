@@ -8,6 +8,9 @@
 
 #include "ScoreLayer.hpp"
 #include "iomanip"
+#include "EventManager.hpp"
+#include "Message.hpp"
+
 using namespace std;
 bool ScoreLayer::init() {
     if (!Layer::init()) {
@@ -29,7 +32,28 @@ bool ScoreLayer::init() {
     m_scoreLabel->setPosition(Point(visibleSize.width - 100, visibleSize.height - 64));
     addChild(m_scoreLabel);
     
+    setVisible(false);
+    
     return true;
+}
+
+void ScoreLayer::onEnter()
+{
+    Layer::onEnter();
+    
+    //Stateにより，UIの表示，非表示を切り替える
+    EventManager::getInstance()->addEventLister<MSG_CHAGE_STATE>([this](EventCustom* event){
+        auto msg = static_cast<MSG_CHAGE_STATE*>(event->getUserData());
+        if (msg->getStete() == STATE::GAME) {
+            setVisible(true);
+        }
+    });
+    
+    //スコアが変更した時に呼び出されるMsg
+    EventManager::getInstance()->addEventLister<MSG_CHAGE_SCORE>([this](EventCustom* event){
+        auto msg = static_cast<MSG_CHAGE_SCORE*>(event->getUserData());
+        setScore(msg->getScore());
+    });
 }
 
 void ScoreLayer::setScore(int score)
