@@ -29,6 +29,7 @@ bool BackGroundLayer::init() {
     m_nextBackGroundSprite->setPosition(Point(visibleSize.width/2,visibleSize.height/2));
     auto size2 = m_nextBackGroundSprite->getContentSize();
     m_nextBackGroundSprite->setScale( visibleSize.width/size2.width, visibleSize.height/size2.height);
+    m_nextBackGroundSprite->setVisible(false);
     addChild(m_nextBackGroundSprite, LAYER_NEXT);
     
     return true;
@@ -44,12 +45,14 @@ void BackGroundLayer::chageBackGround(BackGroundType type)
     auto frame = SpriteFrameCache::getInstance()->getSpriteFrameByName(spriteName);
     m_nextBackGroundSprite->setTexture(frame->getTexture());
     m_nextBackGroundSprite->setTextureRect(frame->getRect());
+    m_nextBackGroundSprite->setVisible(true);
     
     auto fade =  FadeOut::create(3);
     auto callback = CallFunc::create([this, frame](){
         m_nowBackGroundSprite->setTexture(frame->getTexture());
         m_nowBackGroundSprite->setTextureRect(frame->getRect());
         m_nowBackGroundSprite->setOpacity(255);
+        m_nextBackGroundSprite->setVisible(true);
         m_isFading = false;
     });
     m_nowBackGroundSprite->runAction(Sequence::create(fade,callback, NULL));
