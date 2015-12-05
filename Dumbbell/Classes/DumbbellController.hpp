@@ -20,7 +20,6 @@ public:
     void onTouchMoved(Touch *touch, Event *event);
     CREATE_FUNC(DumbbellController);
     double getRotationRate();
-    int getMoveDirection();
 public:
     Sprite* m_controlArea;
     Sprite* m_controller;

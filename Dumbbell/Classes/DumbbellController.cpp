@@ -77,13 +77,6 @@ double DumbbellController::getRotationRate()
     return rate*2-1;
 }
 
-int DumbbellController::getMoveDirection()
-{
-    auto conPos = m_controller->getPosition();
-    auto areaPos = m_controlArea->getPosition();
-    return (conPos.y >= areaPos.y ? 1 : -1);
-}
-
 
 
 

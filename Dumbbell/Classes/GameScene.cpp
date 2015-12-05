@@ -122,10 +122,9 @@ void GameScene::update(float delta){
     }
     
     m_rotationRate = m_dumbbellcontroller->getRotationRate();
-    auto direction = m_dumbbellcontroller->getMoveDirection();
     
-    m_dumbbell->addRotation(m_rotationRate, direction);
-    m_dumbbell->move(direction);
+    m_dumbbell->addRotation(m_rotationRate);
+    m_dumbbell->move();
 
 }
 
