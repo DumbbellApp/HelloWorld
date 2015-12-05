@@ -7,6 +7,8 @@
 //
 
 #include "DumbbellController.hpp"
+#include "EventManager.hpp"
+#include "Message.hpp"
 
 bool DumbbellController::init() {
     if (!Node::init()) {
@@ -32,7 +34,7 @@ bool DumbbellController::init() {
     m_touchArea = Node::create();
     m_touchArea->setAnchorPoint(Vec2(0.5,0.5));
     m_touchArea->setPosition(Vec2(visibleSize.width/2, 100));
-    m_touchArea->setContentSize(Size(550,120));
+    m_touchArea->setContentSize(Size(550,150));
     addChild(m_touchArea);
     
     //タップイベントを作成
@@ -41,11 +43,33 @@ bool DumbbellController::init() {
     listener->onTouchMoved = CC_CALLBACK_2(DumbbellController::onTouchMoved, this);
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, m_touchArea);
 
+    isEnable = false;
     return true;
+}
+
+void DumbbellController::onEnter()
+{
+    Node::onEnter();
+    
+    EventManager::getInstance()->addEventLister<MSG_CHAGE_STATE>([this](EventCustom* event){
+        auto msg = static_cast<MSG_CHAGE_STATE*>(event->getUserData());
+        if (msg->getStete() == STATE::GAME) {
+            isEnable = true;
+            Size visibleSize = Director::getInstance()->getVisibleSize();
+            m_controller->setPosition(Vec2(visibleSize.width/2, 100));
+        }
+        else
+        {
+            isEnable = false;
+        }
+    });
 }
 
 bool DumbbellController::onTouchBegan(Touch *touch, Event *event)
 {
+    if(!isEnable)
+        return false;
+
     auto target = (Sprite*)event->getCurrentTarget();
     Rect targetBox = target->getBoundingBox();
     Point touchPoint = Vec2(touch->getLocation().x, touch->getLocation().y);
@@ -59,6 +83,9 @@ bool DumbbellController::onTouchBegan(Touch *touch, Event *event)
 
 void DumbbellController::onTouchMoved(Touch *touch, Event *event)
 {
+    if(!isEnable)
+        return;
+    
     auto target = (Sprite*)event->getCurrentTarget();
     Rect targetBox = target->getBoundingBox();
     Point touchPoint = Vec2(touch->getLocation().x, touch->getLocation().y);

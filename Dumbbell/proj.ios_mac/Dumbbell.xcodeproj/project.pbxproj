@@ -71,6 +71,11 @@
 		B03452D61C12D11A00C01A7C /* UILayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B03452D41C12D11A00C01A7C /* UILayer.cpp */; };
 		B03452D91C12D2B800C01A7C /* EventManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B03452D71C12D2B800C01A7C /* EventManager.cpp */; };
 		B03452DC1C12D7D900C01A7C /* Message.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B03452DA1C12D7D900C01A7C /* Message.cpp */; };
+		B03452E11C13438500C01A7C /* ResultLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B03452DF1C13438500C01A7C /* ResultLayer.cpp */; };
+		B03452E31C13448E00C01A7C /* result_back.png in Resources */ = {isa = PBXBuildFile; fileRef = B03452E21C13448E00C01A7C /* result_back.png */; };
+		B03452E51C13466900C01A7C /* nice_play.png in Resources */ = {isa = PBXBuildFile; fileRef = B03452E41C13466900C01A7C /* nice_play.png */; };
+		B03452E71C13468700C01A7C /* best.png in Resources */ = {isa = PBXBuildFile; fileRef = B03452E61C13468700C01A7C /* best.png */; };
+		B03452E91C13512300C01A7C /* retry_button.png in Resources */ = {isa = PBXBuildFile; fileRef = B03452E81C13512300C01A7C /* retry_button.png */; };
 		B07511A41C0AB15100225219 /* Dumbbell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B07511A01C0AB15100225219 /* Dumbbell.cpp */; };
 		B07511A51C0AB15100225219 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B07511A21C0AB15100225219 /* GameScene.cpp */; };
 		B07511AA1C0AB19B00225219 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511A61C0AB19B00225219 /* check.png */; };
@@ -203,6 +208,12 @@
 		B03452DA1C12D7D900C01A7C /* Message.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Message.cpp; sourceTree = "<group>"; };
 		B03452DB1C12D7D900C01A7C /* Message.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Message.hpp; sourceTree = "<group>"; };
 		B03452DD1C12D85D00C01A7C /* GameStateType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameStateType.h; sourceTree = "<group>"; };
+		B03452DF1C13438500C01A7C /* ResultLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResultLayer.cpp; sourceTree = "<group>"; };
+		B03452E01C13438500C01A7C /* ResultLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ResultLayer.hpp; sourceTree = "<group>"; };
+		B03452E21C13448E00C01A7C /* result_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = result_back.png; sourceTree = "<group>"; };
+		B03452E41C13466900C01A7C /* nice_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nice_play.png; sourceTree = "<group>"; };
+		B03452E61C13468700C01A7C /* best.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = best.png; sourceTree = "<group>"; };
+		B03452E81C13512300C01A7C /* retry_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = retry_button.png; sourceTree = "<group>"; };
 		B07511A01C0AB15100225219 /* Dumbbell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Dumbbell.cpp; sourceTree = "<group>"; };
 		B07511A11C0AB15100225219 /* Dumbbell.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Dumbbell.hpp; sourceTree = "<group>"; };
 		B07511A21C0AB15100225219 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
@@ -360,6 +371,10 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B03452E81C13512300C01A7C /* retry_button.png */,
+				B03452E21C13448E00C01A7C /* result_back.png */,
+				B03452E41C13466900C01A7C /* nice_play.png */,
+				B03452E61C13468700C01A7C /* best.png */,
 				B07511D31C10A41C00225219 /* bg */,
 				B03452D21C12CFBF00C01A7C /* title.png */,
 				B03452CC1C12C73300C01A7C /* dumbbell_controller.png */,
@@ -493,6 +508,8 @@
 				B03452D01C12CF4500C01A7C /* TitleLayer.hpp */,
 				B03452D41C12D11A00C01A7C /* UILayer.cpp */,
 				B03452D51C12D11A00C01A7C /* UILayer.hpp */,
+				B03452DF1C13438500C01A7C /* ResultLayer.cpp */,
+				B03452E01C13438500C01A7C /* ResultLayer.hpp */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -619,9 +636,12 @@
 				B07511CB1C109D5100225219 /* jun.fnt in Resources */,
 				AD24040B1C0B636B00764E67 /* ookini.mp3 in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
+				B03452E71C13468700C01A7C /* best.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
+				B03452E31C13448E00C01A7C /* result_back.png in Resources */,
 				46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */,
+				B03452E51C13466900C01A7C /* nice_play.png in Resources */,
 				B03452CD1C12C73300C01A7C /* dumbbell_controller.png in Resources */,
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
 				B07511AC1C0AB19B00225219 /* dumbbell_shaft.png in Resources */,
@@ -629,6 +649,7 @@
 				B07511E31C10A6FA00225219 /* bg.png in Resources */,
 				AD2404091C0B634900764E67 /* akan.mp3 in Resources */,
 				B07511CC1C109D5100225219 /* jun.png in Resources */,
+				B03452E91C13512300C01A7C /* retry_button.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				B07511C41C1099C300225219 /* score.png in Resources */,
@@ -680,6 +701,7 @@
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				AD2403F11C0AF9B100764E67 /* BlockManager.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				B03452E11C13438500C01A7C /* ResultLayer.cpp in Sources */,
 				B07511C21C10967000225219 /* ScoreLayer.cpp in Sources */,
 				B03452D61C12D11A00C01A7C /* UILayer.cpp in Sources */,
 				B07511EC1C10B1BE00225219 /* TimeLayer.cpp in Sources */,
