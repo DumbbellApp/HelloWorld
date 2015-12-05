@@ -34,7 +34,7 @@ bool DumbbellController::init() {
     m_touchArea = Node::create();
     m_touchArea->setAnchorPoint(Vec2(0.5,0.5));
     m_touchArea->setPosition(Vec2(visibleSize.width/2, 100));
-    m_touchArea->setContentSize(Size(550,120));
+    m_touchArea->setContentSize(Size(550,150));
     addChild(m_touchArea);
     
     //タップイベントを作成
