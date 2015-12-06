@@ -53,7 +53,7 @@ bool ResultLayer::init() {
     menu->setPosition(Vec2(m_resultBack->getContentSize().width/2, 60));
     m_resultBack->addChild(menu);
     
-//    setVisible(false);
+    setVisible(false);
     return true;
 }
 
