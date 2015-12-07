@@ -65,6 +65,12 @@
 		AD2404001C0B514A00764E67 /* ScoreBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD2403FE1C0B514A00764E67 /* ScoreBlock.cpp */; };
 		AD2404091C0B634900764E67 /* akan.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AD2404081C0B634900764E67 /* akan.mp3 */; };
 		AD24040B1C0B636B00764E67 /* ookini.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AD24040A1C0B636B00764E67 /* ookini.mp3 */; };
+		AD2404351C15D46D00764E67 /* dumbbell_right.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2404331C15D46D00764E67 /* dumbbell_right.png */; };
+		AD2404361C15D46D00764E67 /* dumbbell_left.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2404341C15D46D00764E67 /* dumbbell_left.png */; };
+		AD24043B1C15D4B100764E67 /* score_block_left.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2404381C15D4B100764E67 /* score_block_left.png */; };
+		AD24043C1C15D4B100764E67 /* score_block_right.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2404391C15D4B100764E67 /* score_block_right.png */; };
+		AD24043D1C15D4B100764E67 /* score_block_any.png in Resources */ = {isa = PBXBuildFile; fileRef = AD24043A1C15D4B100764E67 /* score_block_any.png */; };
+		AD24043F1C15D4E400764E67 /* obstacle_block.png in Resources */ = {isa = PBXBuildFile; fileRef = AD24043E1C15D4E400764E67 /* obstacle_block.png */; };
 		B03452CD1C12C73300C01A7C /* dumbbell_controller.png in Resources */ = {isa = PBXBuildFile; fileRef = B03452CC1C12C73300C01A7C /* dumbbell_controller.png */; };
 		B03452D11C12CF4500C01A7C /* TitleLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B03452CF1C12CF4500C01A7C /* TitleLayer.cpp */; };
 		B03452D31C12CFBF00C01A7C /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = B03452D21C12CFBF00C01A7C /* title.png */; };
@@ -79,9 +85,6 @@
 		B07511A41C0AB15100225219 /* Dumbbell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B07511A01C0AB15100225219 /* Dumbbell.cpp */; };
 		B07511A51C0AB15100225219 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B07511A21C0AB15100225219 /* GameScene.cpp */; };
 		B07511AA1C0AB19B00225219 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511A61C0AB19B00225219 /* check.png */; };
-		B07511AB1C0AB19B00225219 /* dumbbell_plate.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511A71C0AB19B00225219 /* dumbbell_plate.png */; };
-		B07511AC1C0AB19B00225219 /* dumbbell_shaft.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511A81C0AB19B00225219 /* dumbbell_shaft.png */; };
-		B07511AD1C0AB19B00225219 /* dumbbell_shaft2.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511A91C0AB19B00225219 /* dumbbell_shaft2.png */; };
 		B07511B21C0DE94F00225219 /* DumbbellController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B07511B01C0DE94F00225219 /* DumbbellController.cpp */; };
 		B07511B41C0DEB5300225219 /* control_area.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511B31C0DEB5300225219 /* control_area.png */; };
 		B07511B61C0DEF2000225219 /* controller.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511B51C0DEF2000225219 /* controller.png */; };
@@ -197,6 +200,12 @@
 		AD2403FF1C0B514A00764E67 /* ScoreBlock.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScoreBlock.hpp; sourceTree = "<group>"; };
 		AD2404081C0B634900764E67 /* akan.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = akan.mp3; sourceTree = "<group>"; };
 		AD24040A1C0B636B00764E67 /* ookini.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ookini.mp3; sourceTree = "<group>"; };
+		AD2404331C15D46D00764E67 /* dumbbell_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dumbbell_right.png; sourceTree = "<group>"; };
+		AD2404341C15D46D00764E67 /* dumbbell_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dumbbell_left.png; sourceTree = "<group>"; };
+		AD2404381C15D4B100764E67 /* score_block_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = score_block_left.png; sourceTree = "<group>"; };
+		AD2404391C15D4B100764E67 /* score_block_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = score_block_right.png; sourceTree = "<group>"; };
+		AD24043A1C15D4B100764E67 /* score_block_any.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = score_block_any.png; sourceTree = "<group>"; };
+		AD24043E1C15D4E400764E67 /* obstacle_block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = obstacle_block.png; sourceTree = "<group>"; };
 		B03452CC1C12C73300C01A7C /* dumbbell_controller.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dumbbell_controller.png; sourceTree = "<group>"; };
 		B03452CF1C12CF4500C01A7C /* TitleLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleLayer.cpp; sourceTree = "<group>"; };
 		B03452D01C12CF4500C01A7C /* TitleLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TitleLayer.hpp; sourceTree = "<group>"; };
@@ -219,9 +228,6 @@
 		B07511A21C0AB15100225219 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
 		B07511A31C0AB15100225219 /* GameScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameScene.hpp; sourceTree = "<group>"; };
 		B07511A61C0AB19B00225219 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
-		B07511A71C0AB19B00225219 /* dumbbell_plate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dumbbell_plate.png; sourceTree = "<group>"; };
-		B07511A81C0AB19B00225219 /* dumbbell_shaft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dumbbell_shaft.png; sourceTree = "<group>"; };
-		B07511A91C0AB19B00225219 /* dumbbell_shaft2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dumbbell_shaft2.png; sourceTree = "<group>"; };
 		B07511B01C0DE94F00225219 /* DumbbellController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DumbbellController.cpp; sourceTree = "<group>"; };
 		B07511B11C0DE94F00225219 /* DumbbellController.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DumbbellController.hpp; sourceTree = "<group>"; };
 		B07511B31C0DEB5300225219 /* control_area.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = control_area.png; sourceTree = "<group>"; };
@@ -374,9 +380,11 @@
 				B03452E81C13512300C01A7C /* retry_button.png */,
 				B03452E21C13448E00C01A7C /* result_back.png */,
 				B03452E41C13466900C01A7C /* nice_play.png */,
+				AD2404321C15D42E00764E67 /* dumbbell */,
 				B03452E61C13468700C01A7C /* best.png */,
 				B07511D31C10A41C00225219 /* bg */,
 				B03452D21C12CFBF00C01A7C /* title.png */,
+				AD2404371C15D49600764E67 /* block */,
 				B03452CC1C12C73300C01A7C /* dumbbell_controller.png */,
 				B07511B51C0DEF2000225219 /* controller.png */,
 				B07511B31C0DEB5300225219 /* control_area.png */,
@@ -386,9 +394,6 @@
 				AD2403FC1C0B4E1B00764E67 /* score_block.png */,
 				AD2403FA1C0B460F00764E67 /* obstacle.png */,
 				B07511A61C0AB19B00225219 /* check.png */,
-				B07511A71C0AB19B00225219 /* dumbbell_plate.png */,
-				B07511A81C0AB19B00225219 /* dumbbell_shaft.png */,
-				B07511A91C0AB19B00225219 /* dumbbell_shaft2.png */,
 				B07511C91C109D5100225219 /* jun.fnt */,
 				B07511CA1C109D5100225219 /* jun.png */,
 				521A8EA819F11F5000D177D7 /* fonts */,
@@ -407,15 +412,9 @@
 				B07511CE1C10A28900225219 /* App */,
 				B07511BE1C1090D700225219 /* Debug */,
 				B07511CD1C10A26B00225219 /* UI */,
-				AD2403FE1C0B514A00764E67 /* ScoreBlock.cpp */,
-				AD2403FF1C0B514A00764E67 /* ScoreBlock.hpp */,
-				AD2403F71C0B2B5B00764E67 /* ObstacleBlock.cpp */,
-				AD2403F81C0B2B5B00764E67 /* ObstacleBlock.hpp */,
-				AD2403EF1C0AF9B100764E67 /* BlockManager.cpp */,
-				AD2403F01C0AF9B100764E67 /* BlockManager.hpp */,
-				B07511A01C0AB15100225219 /* Dumbbell.cpp */,
-				B07511A11C0AB15100225219 /* Dumbbell.hpp */,
+				AD2404301C15D35900764E67 /* Block */,
 				B07511A21C0AB15100225219 /* GameScene.cpp */,
+				AD2404311C15D36400764E67 /* Dumbbell */,
 				B07511A31C0AB15100225219 /* GameScene.hpp */,
 				B03452D71C12D2B800C01A7C /* EventManager.cpp */,
 				B03452D81C12D2B800C01A7C /* EventManager.hpp */,
@@ -483,6 +482,48 @@
 			name = se;
 			sourceTree = "<group>";
 		};
+		AD2404301C15D35900764E67 /* Block */ = {
+			isa = PBXGroup;
+			children = (
+				AD2403FE1C0B514A00764E67 /* ScoreBlock.cpp */,
+				AD2403FF1C0B514A00764E67 /* ScoreBlock.hpp */,
+				AD2403F71C0B2B5B00764E67 /* ObstacleBlock.cpp */,
+				AD2403F81C0B2B5B00764E67 /* ObstacleBlock.hpp */,
+				AD2403EF1C0AF9B100764E67 /* BlockManager.cpp */,
+				AD2403F01C0AF9B100764E67 /* BlockManager.hpp */,
+			);
+			name = Block;
+			sourceTree = "<group>";
+		};
+		AD2404311C15D36400764E67 /* Dumbbell */ = {
+			isa = PBXGroup;
+			children = (
+				B07511A01C0AB15100225219 /* Dumbbell.cpp */,
+				B07511A11C0AB15100225219 /* Dumbbell.hpp */,
+			);
+			name = Dumbbell;
+			sourceTree = "<group>";
+		};
+		AD2404321C15D42E00764E67 /* dumbbell */ = {
+			isa = PBXGroup;
+			children = (
+				AD2404331C15D46D00764E67 /* dumbbell_right.png */,
+				AD2404341C15D46D00764E67 /* dumbbell_left.png */,
+			);
+			name = dumbbell;
+			sourceTree = "<group>";
+		};
+		AD2404371C15D49600764E67 /* block */ = {
+			isa = PBXGroup;
+			children = (
+				AD24043E1C15D4E400764E67 /* obstacle_block.png */,
+				AD2404381C15D4B100764E67 /* score_block_left.png */,
+				AD2404391C15D4B100764E67 /* score_block_right.png */,
+				AD24043A1C15D4B100764E67 /* score_block_any.png */,
+			);
+			name = block;
+			sourceTree = "<group>";
+		};
 		B07511BE1C1090D700225219 /* Debug */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,21 +536,21 @@
 		B07511CD1C10A26B00225219 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				B07511B01C0DE94F00225219 /* DumbbellController.cpp */,
-				B07511B11C0DE94F00225219 /* DumbbellController.hpp */,
-				B07511C01C10967000225219 /* ScoreLayer.cpp */,
-				B07511C11C10967000225219 /* ScoreLayer.hpp */,
 				B07511D01C10A39100225219 /* BackGroundLayer.cpp */,
 				B07511D11C10A39100225219 /* BackGroundLayer.hpp */,
 				B07511E41C10A99C00225219 /* BackGroundType.h */,
+				B07511B01C0DE94F00225219 /* DumbbellController.cpp */,
+				B07511B11C0DE94F00225219 /* DumbbellController.hpp */,
+				B03452DF1C13438500C01A7C /* ResultLayer.cpp */,
+				B03452E01C13438500C01A7C /* ResultLayer.hpp */,
+				B07511C01C10967000225219 /* ScoreLayer.cpp */,
+				B07511C11C10967000225219 /* ScoreLayer.hpp */,
 				B07511EA1C10B1BE00225219 /* TimeLayer.cpp */,
 				B07511EB1C10B1BE00225219 /* TimeLayer.hpp */,
 				B03452CF1C12CF4500C01A7C /* TitleLayer.cpp */,
 				B03452D01C12CF4500C01A7C /* TitleLayer.hpp */,
 				B03452D41C12D11A00C01A7C /* UILayer.cpp */,
 				B03452D51C12D11A00C01A7C /* UILayer.hpp */,
-				B03452DF1C13438500C01A7C /* ResultLayer.cpp */,
-				B03452E01C13438500C01A7C /* ResultLayer.hpp */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -639,12 +680,13 @@
 				B03452E71C13468700C01A7C /* best.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
+				AD24043C1C15D4B100764E67 /* score_block_right.png in Resources */,
 				B03452E31C13448E00C01A7C /* result_back.png in Resources */,
+				AD24043D1C15D4B100764E67 /* score_block_any.png in Resources */,
 				46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */,
 				B03452E51C13466900C01A7C /* nice_play.png in Resources */,
 				B03452CD1C12C73300C01A7C /* dumbbell_controller.png in Resources */,
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
-				B07511AC1C0AB19B00225219 /* dumbbell_shaft.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				B07511E31C10A6FA00225219 /* bg.png in Resources */,
 				AD2404091C0B634900764E67 /* akan.mp3 in Resources */,
@@ -656,22 +698,24 @@
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
 				B03452D31C12CFBF00C01A7C /* title.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
-				B07511AD1C0AB19B00225219 /* dumbbell_shaft2.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
+				AD24043B1C15D4B100764E67 /* score_block_left.png in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
+				AD2404361C15D46D00764E67 /* dumbbell_left.png in Resources */,
 				B07511E21C10A6FA00225219 /* bg.plist in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
-				B07511AB1C0AB19B00225219 /* dumbbell_plate.png in Resources */,
 				B07511AA1C0AB19B00225219 /* check.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				B07511B41C0DEB5300225219 /* control_area.png in Resources */,
+				AD2404351C15D46D00764E67 /* dumbbell_right.png in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
 				46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
+				AD24043F1C15D4E400764E67 /* obstacle_block.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
