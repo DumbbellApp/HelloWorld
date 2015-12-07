@@ -17,10 +17,7 @@ public:
     virtual bool init();
     CREATE_FUNC(ScoreBlock);
     
-//    bool corisionCalc();
-    
     Sprite* m_sprite;
-    //    Rect m_rect;
     
 };
 

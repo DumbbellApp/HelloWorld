@@ -28,9 +28,8 @@ public:
     void move();
     int calcCollisionObstacleBlock(Dumbbell* dumbbell);
     int calcCollisionScoreBlock(Dumbbell* dumbbell);
-    
-//    Sprite* m_sprite;
-//    Rect m_rect;
+
+    bool isHitCCSprite(Sprite* sprite, Point glPoint);
     
     std::vector<ObstacleBlock*> m_obstacles;
     std::vector<ScoreBlock*> m_scoreBlock;

@@ -24,7 +24,6 @@ public:
     CC_SYNTHESIZE(double, m_shaftlength, ShaftLength);
 
 public:
-    Sprite* m_shaft;
     Sprite* m_plateR;
     Sprite* m_plateL;
     double m_preAnchorX;

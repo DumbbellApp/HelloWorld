@@ -88,7 +88,19 @@ int BlockManager::calcCollisionObstacleBlock(Dumbbell* dumbbell)
         Rect rect = (*itr)->boundingBox();
         
         //障害物とダンベルかさなっているか
-        if(rect.intersectsRect(dumbbell->boundingBox())) {
+        if(isHitCCSprite(dumbbell->m_plateR, (*itr)->getPosition())) {
+            collisionCnt++;
+            (*itr)->removeFromParent();
+            m_obstacles.erase(itr);
+            
+            //音楽を再生する
+            //
+            int soundID;
+            soundID = CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("akan.mp3");
+            log("障害物に衝突");
+            continue;
+        }
+        else if (isHitCCSprite(dumbbell->m_plateL, (*itr)->getPosition())) {
             collisionCnt++;
             (*itr)->removeFromParent();
             m_obstacles.erase(itr);
@@ -112,11 +124,22 @@ int BlockManager::calcCollisionScoreBlock(Dumbbell *dumbbell)
     int collisionCnt = 0;
     
     for (auto itr = m_scoreBlock.begin(); itr != m_scoreBlock.end(); ) {
-        //pImg1とpImg2の表示領域を取得
-        Rect rect = (*itr)->boundingBox();
+
         
         //障害物とダンベルかさなっているか
-        if(rect.intersectsRect(dumbbell->boundingBox())) {
+        if(isHitCCSprite(dumbbell->m_plateR, (*itr)->getPosition())) {
+            collisionCnt++;
+            (*itr)->removeFromParent();
+            m_scoreBlock.erase(itr);
+            
+            //音楽を再生する
+            //
+            int soundID;
+            soundID = CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("ookini.mp3");
+            log("スコアブロック獲得");
+            continue;
+        }
+        else if (isHitCCSprite(dumbbell->m_plateL, (*itr)->getPosition())) {
             collisionCnt++;
             (*itr)->removeFromParent();
             m_scoreBlock.erase(itr);
@@ -133,4 +156,49 @@ int BlockManager::calcCollisionScoreBlock(Dumbbell *dumbbell)
     }
     
     return collisionCnt;
+}
+
+bool BlockManager::isHitCCSprite(Sprite* sprite, Point glPoint)
+{
+    // 変換前のスプライトの矩形を求める
+    Size size = sprite->getContentSize();
+    
+    Point v[4] = {
+        Vec2(0,0),
+        Vec2(0, size.height),
+        Vec2(size.width, size.height),
+        Vec2(size.width, 0),
+    };
+    
+    // 矩形をワールド座標に変換する
+    AffineTransform affine = sprite->nodeToWorldTransform();
+    
+    for( int i=0; i<4; i++ ) {
+        v[i] = PointApplyAffineTransform(v[i], affine);
+    }
+    
+    // 外積判定用のベクトルを求める
+    Point vec[4] = {
+        v[1] - v[0],
+        v[2] - v[1],
+        v[3] - v[2],
+        v[0] - v[3],
+    };
+    
+    Point vecP[4] = {
+        v[0] - glPoint,
+        v[1] - glPoint,
+        v[2] - glPoint,
+        v[3] - glPoint,
+    };
+    
+    // 外積計算 求めた外積の向きが揃っていれば点は内包されている
+    // （この例の場合は正方向に揃っていれば内包されている）
+    for( int i=0; i<4; i++ ) {
+        if( (vec[i].x * vecP[i].y - vec[i].y * vecP[i].x) < 0 ) {
+            return false;
+        }
+    }
+    
+    return true;
 }
