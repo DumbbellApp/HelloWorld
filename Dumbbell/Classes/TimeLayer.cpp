@@ -45,6 +45,11 @@ void TimeLayer::onEnter()
             auto fade = FadeIn::create(1);
             this->runAction(fade);
         }
+        else if(msg->getStete() == STATE::RESULT)
+        {
+            auto fade = FadeOut::create(2);
+            this->runAction(fade);
+        }
     });
     
     EventManager::getInstance()->addEventLister<MSG_CHAGE_TIME>([this](EventCustom* event){

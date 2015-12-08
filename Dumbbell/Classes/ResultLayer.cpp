@@ -56,7 +56,6 @@ bool ResultLayer::init() {
     m_resultBack->setCascadeOpacityEnabled(true);
     m_resultBack->setOpacity(0);
 
-    
     return true;
 }
 
