@@ -50,6 +50,11 @@ void ScoreLayer::onEnter()
             auto fade = FadeIn::create(1);
             this->runAction(fade);
         }
+        else if(msg->getStete() == STATE::RESULT)
+        {
+            auto fade = FadeOut::create(2);
+            this->runAction(fade);
+        }
     });
     
     //スコアが変更した時に呼び出されるMsg
