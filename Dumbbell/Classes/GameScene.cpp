@@ -15,6 +15,8 @@
 #include "UILayer.hpp"
 #include "EventManager.hpp"
 #include "Message.hpp"
+#include "ScoreManager.hpp"
+
 USING_NS_CC;
 using namespace std;
 Scene* GameScene::createScene()
@@ -88,31 +90,14 @@ void GameScene::update(float delta){
     int collisionCntObs = calcCollisionObstacleBlock();
     m_hitPoint -= collisionCntObs;
     
-    int collisionCntScr = calcCollisionScoreBlock();
-    m_score += collisionCntScr * 100;
+    ScoreManager::getInstance()->addScore(calcCollisionScoreBlock());
 
-    MSG_CHAGE_SCORE scoreChageMsg(m_score);
-    EventManager::getInstance()->dispatch(scoreChageMsg);
-    
     MSG_CHAGE_TIME timeChangeMsg((int)m_leaveTime);
     EventManager::getInstance()->dispatch(timeChangeMsg);
-    
-//    if (m_leaveTime < 0)
-//    {
-//        //終了
-//        // create a scene. it's an autorelease object
-//        auto scene = GameScene::createScene();
-//        Director::getInstance()->replaceScene(scene);
-//        log("ゲーム終了");
-//        
-//    }
     
     if (m_hitPoint <= 0 || m_leaveTime < 0)
     {
         //終了
-        // create a scene. it's an autorelease object
-//        auto scene = GameScene::createScene();
-//        Director::getInstance()->replaceScene(scene);
         MSG_CHAGE_STATE msg(STATE::RESULT);
         EventManager::getInstance()->dispatch(msg);
         log("ゲーム終了");
