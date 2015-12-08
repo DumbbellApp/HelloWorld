@@ -11,6 +11,8 @@
 #include "Message.hpp"
 #include "GameStateType.h"
 #include "EventManager.hpp"
+#include "DumbbellMenuItemImage.hpp"
+
 using namespace std;
 bool ResultLayer::init() {
     if (!Layer::init()) {
@@ -43,15 +45,17 @@ bool ResultLayer::init() {
     m_resultBack->addChild(m_resultBest);
     
     
-    auto button = MenuItemImage::create("retry_button.png", "retry_button.png", [](Ref*sender){
+    auto button = DumbellMenuItemImage::create("retry_button.png", "retry_button.png", [](Ref*sender){
         MSG_CHAGE_STATE msg(STATE::GAME);
         EventManager::getInstance()->dispatch(msg);
     });
+    
     button->setScale(0.4);
-    auto menu = Menu::create(button, NULL);
-    menu->setAnchorPoint(Vec2(0.5,0.5));
-    menu->setPosition(Vec2(m_resultBack->getContentSize().width/2, 60));
-    m_resultBack->addChild(menu);
+    m_menu = Menu::create(button, NULL);
+    m_menu->setAnchorPoint(Vec2(0.5,0.5));
+    m_menu->setPosition(Vec2(m_resultBack->getContentSize().width/2, 60));
+    m_menu->setEnabled(false);
+    m_resultBack->addChild(m_menu);
     
     m_resultBack->setCascadeOpacityEnabled(true);
     m_resultBack->setOpacity(0);
@@ -67,10 +71,12 @@ void ResultLayer::onEnter()
         auto msg = static_cast<MSG_CHAGE_STATE*>(event->getUserData());
         if (msg->getStete() == STATE::RESULT) {
             auto fade = FadeIn::create(2);
-            m_resultBack->runAction(fade);
+            auto callback = CallFunc::create([this](){m_menu->setEnabled(true);});
+            m_resultBack->runAction(Sequence::create(fade, callback, NULL) );
         }
         else
         {
+            m_menu->setEnabled(false);
             m_resultBack->setOpacity(0);
         }
     });

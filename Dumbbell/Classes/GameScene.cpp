@@ -42,7 +42,7 @@ bool GameScene::init()
         return false;
     }
     
-    m_hitPoint = 5;
+    m_hitPoint = 1;
     m_leaveTime = 60;
     m_playTime = 0;
     m_state = STATE::TITLE;
@@ -127,7 +127,7 @@ void GameScene::onEnter()
             Size visibleSize = Director::getInstance()->getVisibleSize();
             Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-            m_hitPoint = 5;
+            m_hitPoint = 1;
             m_leaveTime = 60;
             m_playTime = 0;
             m_dumbbell->setRotation(0);

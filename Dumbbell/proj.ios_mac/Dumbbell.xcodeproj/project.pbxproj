@@ -72,6 +72,7 @@
 		AD24043D1C15D4B100764E67 /* score_block_any.png in Resources */ = {isa = PBXBuildFile; fileRef = AD24043A1C15D4B100764E67 /* score_block_any.png */; };
 		AD24043F1C15D4E400764E67 /* obstacle_block.png in Resources */ = {isa = PBXBuildFile; fileRef = AD24043E1C15D4E400764E67 /* obstacle_block.png */; };
 		B0109E001C17283900945BE9 /* ScoreManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0109DFE1C17283900945BE9 /* ScoreManager.cpp */; };
+		B0109E071C17335A00945BE9 /* DumbbellMenuItemImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0109E051C17335A00945BE9 /* DumbbellMenuItemImage.cpp */; };
 		B03452CD1C12C73300C01A7C /* dumbbell_controller.png in Resources */ = {isa = PBXBuildFile; fileRef = B03452CC1C12C73300C01A7C /* dumbbell_controller.png */; };
 		B03452D11C12CF4500C01A7C /* TitleLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B03452CF1C12CF4500C01A7C /* TitleLayer.cpp */; };
 		B03452D31C12CFBF00C01A7C /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = B03452D21C12CFBF00C01A7C /* title.png */; };
@@ -209,6 +210,8 @@
 		AD24043E1C15D4E400764E67 /* obstacle_block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = obstacle_block.png; sourceTree = "<group>"; };
 		B0109DFE1C17283900945BE9 /* ScoreManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScoreManager.cpp; sourceTree = "<group>"; };
 		B0109DFF1C17283900945BE9 /* ScoreManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScoreManager.hpp; sourceTree = "<group>"; };
+		B0109E051C17335A00945BE9 /* DumbbellMenuItemImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DumbbellMenuItemImage.cpp; sourceTree = "<group>"; };
+		B0109E061C17335A00945BE9 /* DumbbellMenuItemImage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DumbbellMenuItemImage.hpp; sourceTree = "<group>"; };
 		B03452CC1C12C73300C01A7C /* dumbbell_controller.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dumbbell_controller.png; sourceTree = "<group>"; };
 		B03452CF1C12CF4500C01A7C /* TitleLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleLayer.cpp; sourceTree = "<group>"; };
 		B03452D01C12CF4500C01A7C /* TitleLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TitleLayer.hpp; sourceTree = "<group>"; };
@@ -556,6 +559,8 @@
 				B03452D01C12CF4500C01A7C /* TitleLayer.hpp */,
 				B03452D41C12D11A00C01A7C /* UILayer.cpp */,
 				B03452D51C12D11A00C01A7C /* UILayer.hpp */,
+				B0109E051C17335A00945BE9 /* DumbbellMenuItemImage.cpp */,
+				B0109E061C17335A00945BE9 /* DumbbellMenuItemImage.hpp */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -756,6 +761,7 @@
 				B03452D61C12D11A00C01A7C /* UILayer.cpp in Sources */,
 				B07511EC1C10B1BE00225219 /* TimeLayer.cpp in Sources */,
 				B03452D91C12D2B800C01A7C /* EventManager.cpp in Sources */,
+				B0109E071C17335A00945BE9 /* DumbbellMenuItemImage.cpp in Sources */,
 				B07511B21C0DE94F00225219 /* DumbbellController.cpp in Sources */,
 				B07511A51C0AB15100225219 /* GameScene.cpp in Sources */,
 				B07511BA1C108B9D00225219 /* DebugLayer.cpp in Sources */,
