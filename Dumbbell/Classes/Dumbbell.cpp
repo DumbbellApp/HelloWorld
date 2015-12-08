@@ -64,6 +64,20 @@ void Dumbbell::move()
     auto moveRate = (1 - fabs(getAnchorPoint().x)*2);
     
     auto rad = -getRotation()*M_PI/180;
-    Vec2 housenn(-sin(rad), cos(rad));
-    setPosition(getPosition() + (housenn*moveRate*m_moveSpeed));
+    double threshold = 0.5;
+    if(moveRate > threshold)
+    {
+        m_moveDirection = Vec2(-sin(rad), cos(rad));
+    }
+    else
+    {
+        //0~1の範囲に
+        double rate = moveRate/threshold;
+        
+        m_moveDirection = (1-rate*rate)*m_moveDirection + rate*rate*Vec2(-sin(rad), cos(rad));
+        m_moveDirection = m_moveDirection/m_moveDirection.length();
+        moveRate = 0.5;
+    }
+    
+    setPosition(getPosition() + (m_moveDirection*moveRate*m_moveSpeed));
 }

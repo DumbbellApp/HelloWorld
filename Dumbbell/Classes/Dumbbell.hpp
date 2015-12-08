@@ -27,6 +27,7 @@ public:
     Sprite* m_plateR;
     Sprite* m_plateL;
     double m_preAnchorX;
+    Vec2 m_moveDirection;
 };
 
 
