@@ -21,12 +21,6 @@ bool BlockManager::init()
     
     auto winSize = Director::getInstance()->getWinSize();
     
-    //spriteで生成
-    auto obstacle = ObstacleBlock::create();
-    obstacle->setPosition(Vec2(winSize.width /2.0, winSize.height));
-    addChild(obstacle);
-    m_obstacles.push_back(obstacle);
-    
     CocosDenshion::SimpleAudioEngine::getInstance()->setEffectsVolume(0.5);
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("akan.mp3");
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("ookini.mp3");
@@ -49,10 +43,12 @@ void BlockManager::createObstacleBlock()
     
     srand((unsigned int)time(NULL));
     int rand_x = rand() % (int)winSize.width;
+    float speed = (float)(rand() % 4 + 4) / 5;
     
     //spriteで生成
     auto obstacle = ObstacleBlock::create();
     obstacle->setPosition(Vec2(rand_x, winSize.height + 30));
+    obstacle->setMoveSpeed(speed);
     addChild(obstacle);
     m_obstacles.push_back(obstacle);
 }
@@ -62,8 +58,8 @@ void BlockManager::createScoreBlock()
     auto winSize = Director::getInstance()->getWinSize();
     
     srand((unsigned int)time(NULL));
-    int rand_x = rand() % (int)winSize.width;
-    int rand_y = rand() % (int)winSize.height;
+    int rand_x = rand() % ((int)winSize.width - 30) + 15;
+    int rand_y = rand() % ((int)winSize.height - 80) + 60;
     
     //spriteで生成
     auto scoreBlock = ScoreBlock::create();

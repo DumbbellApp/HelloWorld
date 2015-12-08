@@ -16,7 +16,7 @@ bool ScoreBlock::init(){
     //spriteで生成
     auto scoreBlock = Sprite::create("score_block_any.png");
     scoreBlock->setAnchorPoint(Point(0.5,0.5));
-    scoreBlock->setScale(0.02);
+    scoreBlock->setScale(0.7);
     addChild(scoreBlock);
     
     return true;

@@ -34,11 +34,11 @@ bool Dumbbell::init() {
     addChild(m_plateL);
     
     
-//    ssetContentSize(Size(m_shaft->getContentSize().width*m_shaftlength, m_shaft->getContentSize().height));
+//    setContentSize(Size(m_shaft->getContentSize().width*m_shaftlength, m_shaft->getContentSize().height));
     setAnchorPoint(Vec2(0.0,0.5));
     
     m_rotationSpeed = 10;
-    m_moveSpeed = 1;
+    m_moveSpeed = 6;
     return true;
 }
 

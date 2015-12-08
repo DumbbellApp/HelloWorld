@@ -51,6 +51,7 @@ bool GameScene::init()
         
     m_dumbbell = Dumbbell::create();
     m_dumbbell->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+    m_dumbbell->setScale(0.7);
     m_dumbbell->m_preAnchorX = 0;
     addChild(m_dumbbell, LAYER_MAIN);
     

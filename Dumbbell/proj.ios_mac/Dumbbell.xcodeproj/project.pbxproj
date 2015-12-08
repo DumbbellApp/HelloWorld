@@ -410,17 +410,17 @@
 			isa = PBXGroup;
 			children = (
 				B07511CE1C10A28900225219 /* App */,
-				B07511BE1C1090D700225219 /* Debug */,
-				B07511CD1C10A26B00225219 /* UI */,
 				AD2404301C15D35900764E67 /* Block */,
-				B07511A21C0AB15100225219 /* GameScene.cpp */,
+				B07511BE1C1090D700225219 /* Debug */,
 				AD2404311C15D36400764E67 /* Dumbbell */,
-				B07511A31C0AB15100225219 /* GameScene.hpp */,
 				B03452D71C12D2B800C01A7C /* EventManager.cpp */,
 				B03452D81C12D2B800C01A7C /* EventManager.hpp */,
+				B07511A21C0AB15100225219 /* GameScene.cpp */,
+				B07511A31C0AB15100225219 /* GameScene.hpp */,
+				B03452DD1C12D85D00C01A7C /* GameStateType.h */,
 				B03452DA1C12D7D900C01A7C /* Message.cpp */,
 				B03452DB1C12D7D900C01A7C /* Message.hpp */,
-				B03452DD1C12D85D00C01A7C /* GameStateType.h */,
+				B07511CD1C10A26B00225219 /* UI */,
 			);
 			name = Classes;
 			path = ../Classes;
