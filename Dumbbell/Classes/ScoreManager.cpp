@@ -31,6 +31,13 @@ ScoreManager::ScoreManager()
 bool ScoreManager::init(void)
 {
     m_score = 0;
+    
+    EventManager::getInstance()->addEventLister<MSG_CHAGE_STATE>([this](EventCustom* event){
+        auto msg = static_cast<MSG_CHAGE_STATE*>(event->getUserData());
+        if (msg->getStete() == STATE::GAME) {
+            m_score = 0;
+        }
+    });
     return true;
 }
 

@@ -127,7 +127,7 @@ void GameScene::onEnter()
             //ゲーム開始時の初期化処理をここに書く
             Size visibleSize = Director::getInstance()->getVisibleSize();
             Vec2 origin = Director::getInstance()->getVisibleOrigin();
-            m_score = 0;
+
             m_hitPoint = 5;
             m_leaveTime = 60;
             m_playTime = 0;

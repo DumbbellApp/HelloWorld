@@ -46,7 +46,6 @@ public:
     BlockManager* m_blockManager;
     double m_rotationRate;
     
-    int m_score;
     int m_hitPoint;
     float m_leaveTime;
     float m_playTime;
