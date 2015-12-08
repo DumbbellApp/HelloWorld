@@ -53,7 +53,10 @@ bool ResultLayer::init() {
     menu->setPosition(Vec2(m_resultBack->getContentSize().width/2, 60));
     m_resultBack->addChild(menu);
     
-    setVisible(false);
+    m_resultBack->setCascadeOpacityEnabled(true);
+    m_resultBack->setOpacity(0);
+
+    
     return true;
 }
 
@@ -64,12 +67,12 @@ void ResultLayer::onEnter()
     EventManager::getInstance()->addEventLister<MSG_CHAGE_STATE>([this](EventCustom* event){
         auto msg = static_cast<MSG_CHAGE_STATE*>(event->getUserData());
         if (msg->getStete() == STATE::RESULT) {
-            setVisible(true);
-            //結果の表示のコードをここに書く予定
+            auto fade = FadeIn::create(2);
+            m_resultBack->runAction(fade);
         }
         else
         {
-            setVisible(false);
+            m_resultBack->setOpacity(0);
         }
     });
 }
