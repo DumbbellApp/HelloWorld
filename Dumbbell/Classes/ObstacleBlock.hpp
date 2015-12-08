@@ -18,14 +18,13 @@ public:
     CREATE_FUNC(ObstacleBlock);
     
     void move();
-//    bool corisionCalc();
+    void setMoveSpeed(float speed);
     
     Sprite* m_sprite;
-    //    Rect m_rect;
+    float m_moveSpeed;
     
-    
-    
-    
+private:
+    ObstacleBlock();
 };
 
 #endif /* defined(ObstacleBlock_hpp) */

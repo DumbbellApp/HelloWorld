@@ -15,31 +15,30 @@ bool Dumbbell::init() {
     m_preAnchorX = 0;
     m_shaftlength = 10;
     
-    m_shaft = Sprite::create("dumbbell_shaft2.png");
-    m_shaft->setAnchorPoint(Point(0.5,0.5));
-    m_shaft->setScale(m_shaftlength, 1);
-    m_shaft->setPosition(Point::ZERO);
-    addChild(m_shaft);
+//    m_shaft = Sprite::create("dumbbell_shaft2.png");
+//    m_shaft->setAnchorPoint(Point(0.5,0.5));
+//    m_shaft->setScale(m_shaftlength, 1);
+//    m_shaft->setPosition(Point::ZERO);
+//    addChild(m_shaft);
     
-    m_plateR = Sprite::create("dumbbell_plate.png");
+    m_plateR = Sprite::create("dumbbell_right.png");
     m_plateR->setAnchorPoint(Point(0.5,0.5));
-    m_plateR->setScale(0.2/m_shaft->getScaleX(), 0.2*m_shaft->getScaleY());
-    m_plateR->setPositionX(m_shaft->getContentSize().width);
-    m_plateR->setPositionY(m_shaft->getContentSize().height/2.0);
-    m_shaft->addChild(m_plateR);
+    m_plateR->setPositionX(this->getPosition().x + m_plateR->getContentSize().width / 2 - 20);
+    m_plateR->setPositionY(0);
+    addChild(m_plateR);
 
-    m_plateL = Sprite::create("dumbbell_plate.png");
+    m_plateL = Sprite::create("dumbbell_left.png");
     m_plateL->setAnchorPoint(Point(0.5,0.5));
-    m_plateL->setScale(0.2/m_shaft->getScaleX(), 0.2*m_shaft->getScaleY());
-    m_plateL->setPositionY(m_shaft->getContentSize().height/2);
-    m_shaft->addChild(m_plateL);
+    m_plateL->setPositionX(this->getPosition().x - m_plateR->getContentSize().width / 2 + 20);
+    m_plateL->setPositionY(0);
+    addChild(m_plateL);
     
     
-    setContentSize(Size(m_shaft->getContentSize().width*m_shaftlength, m_shaft->getContentSize().height));
+//    setContentSize(Size(m_shaft->getContentSize().width*m_shaftlength, m_shaft->getContentSize().height));
     setAnchorPoint(Vec2(0.0,0.5));
     
     m_rotationSpeed = 10;
-    m_moveSpeed = 1;
+    m_moveSpeed = 6;
     return true;
 }
 

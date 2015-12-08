@@ -116,13 +116,13 @@ bool DebugLayer::init() {
     
     auto mItem5 = MenuItemImage::create("CloseNormal.png","CloseSelected.png",[this](Ref*sender){
         m_dumbbell->setShaftLength(m_dumbbell->getShaftLength() + 0.5);
-        m_dumbbell->m_shaft->setScale(m_dumbbell->getShaftLength(), 1);
-        m_dumbbell->setContentSize(Size(m_dumbbell->m_shaft->getContentSize().width*m_dumbbell->getShaftLength(), m_dumbbell->m_shaft->getContentSize().height));
+        m_dumbbell->setScale(m_dumbbell->getShaftLength(), 1);
+        m_dumbbell->setContentSize(Size(m_dumbbell->getContentSize().width*m_dumbbell->getShaftLength(), m_dumbbell->getContentSize().height));
     });
     auto mItem6 = MenuItemImage::create("CloseNormal.png","CloseSelected.png",[this](Ref*sender){
         m_dumbbell->setShaftLength(m_dumbbell->getShaftLength() - 0.5);
-        m_dumbbell->m_shaft->setScale(m_dumbbell->getShaftLength(), 1);
-        m_dumbbell->setContentSize(Size(m_dumbbell->m_shaft->getContentSize().width*m_dumbbell->getShaftLength(), m_dumbbell->m_shaft->getContentSize().height));
+        m_dumbbell->setScale(m_dumbbell->getShaftLength(), 1);
+        m_dumbbell->setContentSize(Size(m_dumbbell->getContentSize().width*m_dumbbell->getShaftLength(), m_dumbbell->getContentSize().height));
     });
     
     mItem5->setPosition(Point(200, visibleSize.height-60));
