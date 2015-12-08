@@ -46,7 +46,12 @@ bool TitleLayer::onTouchBegan(Touch *touch, Event *event)
     if(!isVisible())
         return false;
     
-    MSG_CHAGE_STATE msg(STATE::GAME);
-    EventManager::getInstance()->dispatch(msg);
+    auto fade = FadeOut::create(1);
+    auto callback = CallFunc::create([this](){
+        MSG_CHAGE_STATE msg(STATE::GAME);
+        EventManager::getInstance()->dispatch(msg);
+    });
+    m_titleSprite->runAction(Sequence::create(fade, callback, NULL));
+
     return true;
 }

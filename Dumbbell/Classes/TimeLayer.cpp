@@ -29,8 +29,8 @@ bool TimeLayer::init() {
     m_timeLabel->setPosition(Point(150, visibleSize.height - 64));
     addChild(m_timeLabel);
     
-    setVisible(false);
-    
+    setOpacity(0);
+    setCascadeOpacityEnabled(true);
     return true;
 }
 
@@ -42,7 +42,8 @@ void TimeLayer::onEnter()
         auto msg = static_cast<MSG_CHAGE_STATE*>(event->getUserData());
         if (msg->getStete() == STATE::GAME) {
             setTime(60);
-            setVisible(true);
+            auto fade = FadeIn::create(1);
+            this->runAction(fade);
         }
     });
     

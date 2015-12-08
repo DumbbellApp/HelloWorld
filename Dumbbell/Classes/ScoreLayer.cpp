@@ -32,7 +32,8 @@ bool ScoreLayer::init() {
     m_scoreLabel->setPosition(Point(visibleSize.width - 100, visibleSize.height - 64));
     addChild(m_scoreLabel);
     
-    setVisible(false);
+    setOpacity(0);
+    setCascadeOpacityEnabled(true);
     
     return true;
 }
@@ -46,7 +47,8 @@ void ScoreLayer::onEnter()
         auto msg = static_cast<MSG_CHAGE_STATE*>(event->getUserData());
         if (msg->getStete() == STATE::GAME) {
             setScore(0);
-            setVisible(true);
+            auto fade = FadeIn::create(1);
+            this->runAction(fade);
         }
     });
     

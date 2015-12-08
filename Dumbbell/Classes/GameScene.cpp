@@ -142,7 +142,6 @@ void GameScene::onEnter()
             //ゲーム開始時の初期化処理をここに書く
             Size visibleSize = Director::getInstance()->getVisibleSize();
             Vec2 origin = Director::getInstance()->getVisibleOrigin();
-            this->scheduleUpdate();
             m_score = 0;
             m_hitPoint = 5;
             m_leaveTime = 60;
@@ -150,6 +149,11 @@ void GameScene::onEnter()
             m_dumbbell->setRotation(0);
             m_dumbbell->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
             
+            auto func = CallFunc::create([this](){
+                this->scheduleUpdate();
+            });
+            this->runAction(Sequence::create(DelayTime::create(1),func, NULL));
+
         }
         else if(msg->getStete() == STATE::RESULT)
         {
