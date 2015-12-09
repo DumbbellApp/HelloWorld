@@ -7,6 +7,9 @@
 //
 
 #include "BackGroundLayer.hpp"
+#include "BackGroundManager.hpp"
+#include "Message.hpp"
+#include "EventManager.hpp"
 
 using namespace std;
 bool BackGroundLayer::init() {
@@ -32,7 +35,21 @@ bool BackGroundLayer::init() {
     m_nextBackGroundSprite->setVisible(false);
     addChild(m_nextBackGroundSprite, LAYER_NEXT);
     
+    auto manager = BackGroundManager::create();
+    addChild(manager);
+    
     return true;
+}
+
+void BackGroundLayer::onEnter()
+{
+    Layer::onEnter();
+    
+    EventManager::getInstance()->addEventLister<MSG_CHAGE_BACK>([this](EventCustom* event){
+        auto msg = static_cast<MSG_CHAGE_BACK*>(event->getUserData());
+        auto type = msg->getBGType();
+        chageBackGround(type);
+    });
 }
 
 void BackGroundLayer::chageBackGround(BackGroundType type)

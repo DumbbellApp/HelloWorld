@@ -9,6 +9,7 @@
 #ifndef ScoreLayer_hpp
 #define ScoreLayer_hpp
 USING_NS_CC;
+enum class BackGroundType;
 class ScoreLayer : public Layer
 {
 public:
@@ -17,9 +18,14 @@ public:
     CREATE_FUNC(ScoreLayer);
     void setScore(int score);
 public:
-    Label* m_scoreLabel;
-    Sprite* m_scoreSprite;
+    Label* m_scoreLabelSiro;
+    Label* m_scoreLabelKuro;
+    Sprite* m_scoreSpriteSiro;
+    Sprite* m_scoreSpriteKuro;
+    Node* m_kuro;
+    Node* m_siro;
     int m_score;
+    BackGroundType m_backGroundType;
 };
 
 #endif /* ScoreLayer_hpp */

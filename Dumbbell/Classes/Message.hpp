@@ -47,4 +47,18 @@ public:
     CC_SYNTHESIZE(int, m_time, Time)
     static string id;
 };
+
+//背景が変更した時のメッセージ
+enum class BackGroundType;
+class MSG_CHAGE_BACK
+{
+public:
+    MSG_CHAGE_BACK(BackGroundType time)
+    {
+        m_backGroundType = time;
+    }
+    CC_SYNTHESIZE(BackGroundType, m_backGroundType, BGType)
+    static string id;
+};
+
 #endif /* Message_hpp */

@@ -73,6 +73,13 @@
 		AD24043F1C15D4E400764E67 /* obstacle_block.png in Resources */ = {isa = PBXBuildFile; fileRef = AD24043E1C15D4E400764E67 /* obstacle_block.png */; };
 		B0109E001C17283900945BE9 /* ScoreManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0109DFE1C17283900945BE9 /* ScoreManager.cpp */; };
 		B0109E071C17335A00945BE9 /* DumbbellMenuItemImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0109E051C17335A00945BE9 /* DumbbellMenuItemImage.cpp */; };
+		B0109E0B1C188C0000945BE9 /* kuro.fnt in Resources */ = {isa = PBXBuildFile; fileRef = B0109E091C188C0000945BE9 /* kuro.fnt */; };
+		B0109E0C1C188C0000945BE9 /* kuro.png in Resources */ = {isa = PBXBuildFile; fileRef = B0109E0A1C188C0000945BE9 /* kuro.png */; };
+		B0109E0F1C188C0E00945BE9 /* siro.fnt in Resources */ = {isa = PBXBuildFile; fileRef = B0109E0D1C188C0E00945BE9 /* siro.fnt */; };
+		B0109E101C188C0E00945BE9 /* siro.png in Resources */ = {isa = PBXBuildFile; fileRef = B0109E0E1C188C0E00945BE9 /* siro.png */; };
+		B0109E131C188E8100945BE9 /* BackGroundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0109E111C188E8100945BE9 /* BackGroundManager.cpp */; };
+		B0109E161C189F6C00945BE9 /* score_siro.png in Resources */ = {isa = PBXBuildFile; fileRef = B0109E141C189F6C00945BE9 /* score_siro.png */; };
+		B0109E171C189F6C00945BE9 /* time_siro.png in Resources */ = {isa = PBXBuildFile; fileRef = B0109E151C189F6C00945BE9 /* time_siro.png */; };
 		B03452CD1C12C73300C01A7C /* dumbbell_controller.png in Resources */ = {isa = PBXBuildFile; fileRef = B03452CC1C12C73300C01A7C /* dumbbell_controller.png */; };
 		B03452D11C12CF4500C01A7C /* TitleLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B03452CF1C12CF4500C01A7C /* TitleLayer.cpp */; };
 		B03452D31C12CFBF00C01A7C /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = B03452D21C12CFBF00C01A7C /* title.png */; };
@@ -92,14 +99,12 @@
 		B07511B61C0DEF2000225219 /* controller.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511B51C0DEF2000225219 /* controller.png */; };
 		B07511BA1C108B9D00225219 /* DebugLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B07511B81C108B9C00225219 /* DebugLayer.cpp */; };
 		B07511C21C10967000225219 /* ScoreLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B07511C01C10967000225219 /* ScoreLayer.cpp */; };
-		B07511C41C1099C300225219 /* score.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511C31C1099C300225219 /* score.png */; };
-		B07511CB1C109D5100225219 /* jun.fnt in Resources */ = {isa = PBXBuildFile; fileRef = B07511C91C109D5100225219 /* jun.fnt */; };
-		B07511CC1C109D5100225219 /* jun.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511CA1C109D5100225219 /* jun.png */; };
+		B07511C41C1099C300225219 /* score_kuro.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511C31C1099C300225219 /* score_kuro.png */; };
 		B07511D21C10A39100225219 /* BackGroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B07511D01C10A39100225219 /* BackGroundLayer.cpp */; };
 		B07511E21C10A6FA00225219 /* bg.plist in Resources */ = {isa = PBXBuildFile; fileRef = B07511E01C10A6FA00225219 /* bg.plist */; };
 		B07511E31C10A6FA00225219 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511E11C10A6FA00225219 /* bg.png */; };
 		B07511EC1C10B1BE00225219 /* TimeLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B07511EA1C10B1BE00225219 /* TimeLayer.cpp */; };
-		B07511EE1C10B2C700225219 /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511ED1C10B2C700225219 /* time.png */; };
+		B07511EE1C10B2C700225219 /* time_kuro.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511ED1C10B2C700225219 /* time_kuro.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -212,6 +217,14 @@
 		B0109DFF1C17283900945BE9 /* ScoreManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScoreManager.hpp; sourceTree = "<group>"; };
 		B0109E051C17335A00945BE9 /* DumbbellMenuItemImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DumbbellMenuItemImage.cpp; sourceTree = "<group>"; };
 		B0109E061C17335A00945BE9 /* DumbbellMenuItemImage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DumbbellMenuItemImage.hpp; sourceTree = "<group>"; };
+		B0109E091C188C0000945BE9 /* kuro.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kuro.fnt; sourceTree = "<group>"; };
+		B0109E0A1C188C0000945BE9 /* kuro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kuro.png; sourceTree = "<group>"; };
+		B0109E0D1C188C0E00945BE9 /* siro.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = siro.fnt; sourceTree = "<group>"; };
+		B0109E0E1C188C0E00945BE9 /* siro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = siro.png; sourceTree = "<group>"; };
+		B0109E111C188E8100945BE9 /* BackGroundManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BackGroundManager.cpp; sourceTree = "<group>"; };
+		B0109E121C188E8100945BE9 /* BackGroundManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BackGroundManager.hpp; sourceTree = "<group>"; };
+		B0109E141C189F6C00945BE9 /* score_siro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = score_siro.png; sourceTree = "<group>"; };
+		B0109E151C189F6C00945BE9 /* time_siro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time_siro.png; sourceTree = "<group>"; };
 		B03452CC1C12C73300C01A7C /* dumbbell_controller.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dumbbell_controller.png; sourceTree = "<group>"; };
 		B03452CF1C12CF4500C01A7C /* TitleLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleLayer.cpp; sourceTree = "<group>"; };
 		B03452D01C12CF4500C01A7C /* TitleLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TitleLayer.hpp; sourceTree = "<group>"; };
@@ -242,9 +255,7 @@
 		B07511B91C108B9C00225219 /* DebugLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DebugLayer.hpp; sourceTree = "<group>"; };
 		B07511C01C10967000225219 /* ScoreLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScoreLayer.cpp; sourceTree = "<group>"; };
 		B07511C11C10967000225219 /* ScoreLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScoreLayer.hpp; sourceTree = "<group>"; };
-		B07511C31C1099C300225219 /* score.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = score.png; sourceTree = "<group>"; };
-		B07511C91C109D5100225219 /* jun.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jun.fnt; sourceTree = "<group>"; };
-		B07511CA1C109D5100225219 /* jun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jun.png; sourceTree = "<group>"; };
+		B07511C31C1099C300225219 /* score_kuro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = score_kuro.png; sourceTree = "<group>"; };
 		B07511D01C10A39100225219 /* BackGroundLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BackGroundLayer.cpp; sourceTree = "<group>"; };
 		B07511D11C10A39100225219 /* BackGroundLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BackGroundLayer.hpp; sourceTree = "<group>"; };
 		B07511E01C10A6FA00225219 /* bg.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bg.plist; sourceTree = "<group>"; };
@@ -252,7 +263,7 @@
 		B07511E41C10A99C00225219 /* BackGroundType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BackGroundType.h; sourceTree = "<group>"; };
 		B07511EA1C10B1BE00225219 /* TimeLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TimeLayer.cpp; sourceTree = "<group>"; };
 		B07511EB1C10B1BE00225219 /* TimeLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TimeLayer.hpp; sourceTree = "<group>"; };
-		B07511ED1C10B2C700225219 /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
+		B07511ED1C10B2C700225219 /* time_kuro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time_kuro.png; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -383,6 +394,8 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B0109E141C189F6C00945BE9 /* score_siro.png */,
+				B0109E151C189F6C00945BE9 /* time_siro.png */,
 				B03452E81C13512300C01A7C /* retry_button.png */,
 				B03452E21C13448E00C01A7C /* result_back.png */,
 				B03452E41C13466900C01A7C /* nice_play.png */,
@@ -395,15 +408,17 @@
 				B07511B51C0DEF2000225219 /* controller.png */,
 				B07511B31C0DEB5300225219 /* control_area.png */,
 				AD2404071C0B630600764E67 /* se */,
-				B07511ED1C10B2C700225219 /* time.png */,
-				B07511C31C1099C300225219 /* score.png */,
+				B07511ED1C10B2C700225219 /* time_kuro.png */,
+				B07511C31C1099C300225219 /* score_kuro.png */,
 				AD2403FC1C0B4E1B00764E67 /* score_block.png */,
 				AD2403FA1C0B460F00764E67 /* obstacle.png */,
 				B07511A61C0AB19B00225219 /* check.png */,
-				B07511C91C109D5100225219 /* jun.fnt */,
-				B07511CA1C109D5100225219 /* jun.png */,
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
+				B0109E091C188C0000945BE9 /* kuro.fnt */,
+				B0109E0A1C188C0000945BE9 /* kuro.png */,
+				B0109E0D1C188C0E00945BE9 /* siro.fnt */,
+				B0109E0E1C188C0E00945BE9 /* siro.png */,
 				46880B7619C43A67006E1F66 /* CloseNormal.png */,
 				46880B7719C43A67006E1F66 /* CloseSelected.png */,
 				46880B7A19C43A67006E1F66 /* HelloWorld.png */,
@@ -544,6 +559,8 @@
 		B07511CD1C10A26B00225219 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				B0109E111C188E8100945BE9 /* BackGroundManager.cpp */,
+				B0109E121C188E8100945BE9 /* BackGroundManager.hpp */,
 				B07511D01C10A39100225219 /* BackGroundLayer.cpp */,
 				B07511D11C10A39100225219 /* BackGroundLayer.hpp */,
 				B07511E41C10A99C00225219 /* BackGroundType.h */,
@@ -683,8 +700,7 @@
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				B07511B61C0DEF2000225219 /* controller.png in Resources */,
 				AD2403FB1C0B460F00764E67 /* obstacle.png in Resources */,
-				B07511EE1C10B2C700225219 /* time.png in Resources */,
-				B07511CB1C109D5100225219 /* jun.fnt in Resources */,
+				B07511EE1C10B2C700225219 /* time_kuro.png in Resources */,
 				AD24040B1C0B636B00764E67 /* ookini.mp3 in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				B03452E71C13468700C01A7C /* best.png in Resources */,
@@ -696,15 +712,17 @@
 				46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */,
 				B03452E51C13466900C01A7C /* nice_play.png in Resources */,
 				B03452CD1C12C73300C01A7C /* dumbbell_controller.png in Resources */,
+				B0109E161C189F6C00945BE9 /* score_siro.png in Resources */,
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				B07511E31C10A6FA00225219 /* bg.png in Resources */,
+				B0109E0B1C188C0000945BE9 /* kuro.fnt in Resources */,
 				AD2404091C0B634900764E67 /* akan.mp3 in Resources */,
-				B07511CC1C109D5100225219 /* jun.png in Resources */,
+				B0109E101C188C0E00945BE9 /* siro.png in Resources */,
 				B03452E91C13512300C01A7C /* retry_button.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
-				B07511C41C1099C300225219 /* score.png in Resources */,
+				B07511C41C1099C300225219 /* score_kuro.png in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
 				B03452D31C12CFBF00C01A7C /* title.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
@@ -718,11 +736,14 @@
 				B07511E21C10A6FA00225219 /* bg.plist in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				B07511AA1C0AB19B00225219 /* check.png in Resources */,
+				B0109E0F1C188C0E00945BE9 /* siro.fnt in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
+				B0109E171C189F6C00945BE9 /* time_siro.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				B07511B41C0DEB5300225219 /* control_area.png in Resources */,
 				AD2404351C15D46D00764E67 /* dumbbell_right.png in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
+				B0109E0C1C188C0000945BE9 /* kuro.png in Resources */,
 				46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 				AD24043F1C15D4E400764E67 /* obstacle_block.png in Resources */,
@@ -756,6 +777,7 @@
 				AD2403F11C0AF9B100764E67 /* BlockManager.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				B03452E11C13438500C01A7C /* ResultLayer.cpp in Sources */,
+				B0109E131C188E8100945BE9 /* BackGroundManager.cpp in Sources */,
 				B07511C21C10967000225219 /* ScoreLayer.cpp in Sources */,
 				B0109E001C17283900945BE9 /* ScoreManager.cpp in Sources */,
 				B03452D61C12D11A00C01A7C /* UILayer.cpp in Sources */,
