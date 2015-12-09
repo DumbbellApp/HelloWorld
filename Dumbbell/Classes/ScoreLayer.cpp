@@ -28,8 +28,8 @@ bool ScoreLayer::init() {
     std::ostringstream oss;
     oss << setw(5) << setfill('0') << m_score;
     
-    m_scoreLabel = Label::createWithBMFont("jun.fnt", oss.str());
-    m_scoreLabel->setPosition(Point(visibleSize.width - 100, visibleSize.height - 64));
+    m_scoreLabel = Label::createWithBMFont("kuro.fnt", oss.str());
+    m_scoreLabel->setPosition(Point(visibleSize.width - 100, visibleSize.height - 55));
     addChild(m_scoreLabel);
     
     setOpacity(0);

@@ -24,9 +24,9 @@ bool TimeLayer::init() {
     m_timeSprite->setPosition(Vec2(0, visibleSize.height - 64));
     addChild(m_timeSprite);
     
-    m_timeLabel = Label::createWithBMFont("jun.fnt", to_string(m_time));
+    m_timeLabel = Label::createWithBMFont("kuro.fnt", to_string(m_time));
 
-    m_timeLabel->setPosition(Point(150, visibleSize.height - 64));
+    m_timeLabel->setPosition(Point(160, visibleSize.height - 55));
     addChild(m_timeLabel);
     
     setOpacity(0);

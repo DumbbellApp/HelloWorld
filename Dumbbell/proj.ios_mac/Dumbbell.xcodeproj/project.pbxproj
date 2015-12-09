@@ -73,6 +73,10 @@
 		AD24043F1C15D4E400764E67 /* obstacle_block.png in Resources */ = {isa = PBXBuildFile; fileRef = AD24043E1C15D4E400764E67 /* obstacle_block.png */; };
 		B0109E001C17283900945BE9 /* ScoreManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0109DFE1C17283900945BE9 /* ScoreManager.cpp */; };
 		B0109E071C17335A00945BE9 /* DumbbellMenuItemImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0109E051C17335A00945BE9 /* DumbbellMenuItemImage.cpp */; };
+		B0109E0B1C188C0000945BE9 /* kuro.fnt in Resources */ = {isa = PBXBuildFile; fileRef = B0109E091C188C0000945BE9 /* kuro.fnt */; };
+		B0109E0C1C188C0000945BE9 /* kuro.png in Resources */ = {isa = PBXBuildFile; fileRef = B0109E0A1C188C0000945BE9 /* kuro.png */; };
+		B0109E0F1C188C0E00945BE9 /* siro.fnt in Resources */ = {isa = PBXBuildFile; fileRef = B0109E0D1C188C0E00945BE9 /* siro.fnt */; };
+		B0109E101C188C0E00945BE9 /* siro.png in Resources */ = {isa = PBXBuildFile; fileRef = B0109E0E1C188C0E00945BE9 /* siro.png */; };
 		B03452CD1C12C73300C01A7C /* dumbbell_controller.png in Resources */ = {isa = PBXBuildFile; fileRef = B03452CC1C12C73300C01A7C /* dumbbell_controller.png */; };
 		B03452D11C12CF4500C01A7C /* TitleLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B03452CF1C12CF4500C01A7C /* TitleLayer.cpp */; };
 		B03452D31C12CFBF00C01A7C /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = B03452D21C12CFBF00C01A7C /* title.png */; };
@@ -212,6 +216,10 @@
 		B0109DFF1C17283900945BE9 /* ScoreManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScoreManager.hpp; sourceTree = "<group>"; };
 		B0109E051C17335A00945BE9 /* DumbbellMenuItemImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DumbbellMenuItemImage.cpp; sourceTree = "<group>"; };
 		B0109E061C17335A00945BE9 /* DumbbellMenuItemImage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DumbbellMenuItemImage.hpp; sourceTree = "<group>"; };
+		B0109E091C188C0000945BE9 /* kuro.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kuro.fnt; sourceTree = "<group>"; };
+		B0109E0A1C188C0000945BE9 /* kuro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kuro.png; sourceTree = "<group>"; };
+		B0109E0D1C188C0E00945BE9 /* siro.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = siro.fnt; sourceTree = "<group>"; };
+		B0109E0E1C188C0E00945BE9 /* siro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = siro.png; sourceTree = "<group>"; };
 		B03452CC1C12C73300C01A7C /* dumbbell_controller.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dumbbell_controller.png; sourceTree = "<group>"; };
 		B03452CF1C12CF4500C01A7C /* TitleLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleLayer.cpp; sourceTree = "<group>"; };
 		B03452D01C12CF4500C01A7C /* TitleLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TitleLayer.hpp; sourceTree = "<group>"; };
@@ -404,6 +412,10 @@
 				B07511CA1C109D5100225219 /* jun.png */,
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
+				B0109E091C188C0000945BE9 /* kuro.fnt */,
+				B0109E0A1C188C0000945BE9 /* kuro.png */,
+				B0109E0D1C188C0E00945BE9 /* siro.fnt */,
+				B0109E0E1C188C0E00945BE9 /* siro.png */,
 				46880B7619C43A67006E1F66 /* CloseNormal.png */,
 				46880B7719C43A67006E1F66 /* CloseSelected.png */,
 				46880B7A19C43A67006E1F66 /* HelloWorld.png */,
@@ -699,8 +711,10 @@
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				B07511E31C10A6FA00225219 /* bg.png in Resources */,
+				B0109E0B1C188C0000945BE9 /* kuro.fnt in Resources */,
 				AD2404091C0B634900764E67 /* akan.mp3 in Resources */,
 				B07511CC1C109D5100225219 /* jun.png in Resources */,
+				B0109E101C188C0E00945BE9 /* siro.png in Resources */,
 				B03452E91C13512300C01A7C /* retry_button.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
@@ -718,11 +732,13 @@
 				B07511E21C10A6FA00225219 /* bg.plist in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				B07511AA1C0AB19B00225219 /* check.png in Resources */,
+				B0109E0F1C188C0E00945BE9 /* siro.fnt in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				B07511B41C0DEB5300225219 /* control_area.png in Resources */,
 				AD2404351C15D46D00764E67 /* dumbbell_right.png in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
+				B0109E0C1C188C0000945BE9 /* kuro.png in Resources */,
 				46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 				AD24043F1C15D4E400764E67 /* obstacle_block.png in Resources */,
