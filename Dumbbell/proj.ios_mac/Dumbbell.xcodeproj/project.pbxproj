@@ -97,8 +97,6 @@
 		B07511BA1C108B9D00225219 /* DebugLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B07511B81C108B9C00225219 /* DebugLayer.cpp */; };
 		B07511C21C10967000225219 /* ScoreLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B07511C01C10967000225219 /* ScoreLayer.cpp */; };
 		B07511C41C1099C300225219 /* score.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511C31C1099C300225219 /* score.png */; };
-		B07511CB1C109D5100225219 /* jun.fnt in Resources */ = {isa = PBXBuildFile; fileRef = B07511C91C109D5100225219 /* jun.fnt */; };
-		B07511CC1C109D5100225219 /* jun.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511CA1C109D5100225219 /* jun.png */; };
 		B07511D21C10A39100225219 /* BackGroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B07511D01C10A39100225219 /* BackGroundLayer.cpp */; };
 		B07511E21C10A6FA00225219 /* bg.plist in Resources */ = {isa = PBXBuildFile; fileRef = B07511E01C10A6FA00225219 /* bg.plist */; };
 		B07511E31C10A6FA00225219 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B07511E11C10A6FA00225219 /* bg.png */; };
@@ -251,8 +249,6 @@
 		B07511C01C10967000225219 /* ScoreLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ScoreLayer.cpp; sourceTree = "<group>"; };
 		B07511C11C10967000225219 /* ScoreLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ScoreLayer.hpp; sourceTree = "<group>"; };
 		B07511C31C1099C300225219 /* score.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = score.png; sourceTree = "<group>"; };
-		B07511C91C109D5100225219 /* jun.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jun.fnt; sourceTree = "<group>"; };
-		B07511CA1C109D5100225219 /* jun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jun.png; sourceTree = "<group>"; };
 		B07511D01C10A39100225219 /* BackGroundLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BackGroundLayer.cpp; sourceTree = "<group>"; };
 		B07511D11C10A39100225219 /* BackGroundLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BackGroundLayer.hpp; sourceTree = "<group>"; };
 		B07511E01C10A6FA00225219 /* bg.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bg.plist; sourceTree = "<group>"; };
@@ -408,8 +404,6 @@
 				AD2403FC1C0B4E1B00764E67 /* score_block.png */,
 				AD2403FA1C0B460F00764E67 /* obstacle.png */,
 				B07511A61C0AB19B00225219 /* check.png */,
-				B07511C91C109D5100225219 /* jun.fnt */,
-				B07511CA1C109D5100225219 /* jun.png */,
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
 				B0109E091C188C0000945BE9 /* kuro.fnt */,
@@ -696,7 +690,6 @@
 				B07511B61C0DEF2000225219 /* controller.png in Resources */,
 				AD2403FB1C0B460F00764E67 /* obstacle.png in Resources */,
 				B07511EE1C10B2C700225219 /* time.png in Resources */,
-				B07511CB1C109D5100225219 /* jun.fnt in Resources */,
 				AD24040B1C0B636B00764E67 /* ookini.mp3 in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				B03452E71C13468700C01A7C /* best.png in Resources */,
@@ -713,7 +706,6 @@
 				B07511E31C10A6FA00225219 /* bg.png in Resources */,
 				B0109E0B1C188C0000945BE9 /* kuro.fnt in Resources */,
 				AD2404091C0B634900764E67 /* akan.mp3 in Resources */,
-				B07511CC1C109D5100225219 /* jun.png in Resources */,
 				B0109E101C188C0E00945BE9 /* siro.png in Resources */,
 				B03452E91C13512300C01A7C /* retry_button.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
