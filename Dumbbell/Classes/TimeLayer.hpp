@@ -21,7 +21,10 @@ public:
 public:
     Label* m_timeLabelKuro;
     Label* m_timeLabelSiro;
-    Sprite* m_timeSprite;
+    Sprite* m_timeSpriteKuro;
+    Sprite* m_timeSpriteSiro;
+    Node* m_kuro;
+    Node* m_siro;
     int m_time;
     BackGroundType m_backGroundType;
 };

@@ -20,7 +20,10 @@ public:
 public:
     Label* m_scoreLabelSiro;
     Label* m_scoreLabelKuro;
-    Sprite* m_scoreSprite;
+    Sprite* m_scoreSpriteSiro;
+    Sprite* m_scoreSpriteKuro;
+    Node* m_kuro;
+    Node* m_siro;
     int m_score;
     BackGroundType m_backGroundType;
 };

@@ -32,7 +32,7 @@ bool ResultLayer::init() {
     m_resultTitle->setPosition(Vec2(m_resultBack->getContentSize().width/2, m_resultBack->getContentSize().height/2 + 40));
     m_resultBack->addChild(m_resultTitle);
     
-    m_resultScore = Sprite::create("score.png");
+    m_resultScore = Sprite::create("score_kuro.png");
     m_resultScore->setScale(0.45);
     m_resultScore->setAnchorPoint(Vec2(0,0.5));
     m_resultScore->setPosition(Vec2(m_resultBack->getContentSize().width/2 - 70, m_resultBack->getContentSize().height/2 + 10));

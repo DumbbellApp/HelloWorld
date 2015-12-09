@@ -21,19 +21,32 @@ bool TimeLayer::init() {
     
     m_time = 0;
     
-    m_timeSprite = Sprite::create("time.png");
-    m_timeSprite->setAnchorPoint(Vec2(0,0.5));
-    m_timeSprite->setPosition(Vec2(0, visibleSize.height - 64));
-    addChild(m_timeSprite);
+    m_kuro = Node::create();
+    addChild(m_kuro, 2);
+    
+    m_timeSpriteKuro = Sprite::create("time_kuro.png");
+    m_timeSpriteKuro->setAnchorPoint(Vec2(0,0.5));
+    m_timeSpriteKuro->setPosition(Vec2(0, visibleSize.height - 64));
+    m_kuro->addChild(m_timeSpriteKuro, 2);
     
     m_timeLabelKuro = Label::createWithBMFont("kuro.fnt", to_string(m_time));
     m_timeLabelKuro->setPosition(Point(160, visibleSize.height - 55));
+    m_kuro->addChild(m_timeLabelKuro,2);
+    
+    m_siro = Node::create();
+    addChild(m_siro, 1);
+    
+    m_timeSpriteSiro = Sprite::create("time_siro.png");
+    m_timeSpriteSiro->setAnchorPoint(Vec2(0,0.5));
+    m_timeSpriteSiro->setPosition(Vec2(0, visibleSize.height - 64));
+    m_siro->addChild(m_timeSpriteSiro, 1);
     
     m_timeLabelSiro = Label::createWithBMFont("siro.fnt", to_string(m_time));
     m_timeLabelSiro->setPosition(Point(160, visibleSize.height - 55));
+    m_siro->addChild(m_timeLabelSiro,1);
     
-    addChild(m_timeLabelKuro,2);
-    addChild(m_timeLabelSiro,1);
+    m_kuro->setCascadeOpacityEnabled(true);
+    m_siro->setCascadeOpacityEnabled(true);
     
     setOpacity(0);
     setCascadeOpacityEnabled(true);
@@ -69,32 +82,32 @@ void TimeLayer::onEnter()
         if (type == BackGroundType::Type2 || type == BackGroundType::Type3) {
             if(m_backGroundType != BackGroundType::Type2 || m_backGroundType != BackGroundType::Type3)
             {
-                m_timeLabelSiro->setVisible(true);
+                m_siro->setVisible(true);
                 //白に変える
                 auto fade =  FadeOut::create(3);
                 auto callback = CallFunc::create([this](){
-                    m_timeLabelSiro->setZOrder(2);
-                    m_timeLabelKuro->setZOrder(1);
-                    m_timeLabelKuro->setOpacity(255);
-                    m_timeLabelKuro->setVisible(false);
+                    m_siro->setZOrder(2);
+                    m_kuro->setZOrder(1);
+                    m_kuro->setOpacity(255);
+                    m_kuro->setVisible(false);
                 });
-                m_timeLabelKuro->runAction(Sequence::create(fade,callback, NULL));
+                m_kuro->runAction(Sequence::create(fade,callback, NULL));
             }
         }
         else
         {
             if(m_backGroundType == BackGroundType::Type2 || m_backGroundType == BackGroundType::Type3)
             {
-                m_timeLabelKuro->setVisible(true);
+                m_kuro->setVisible(true);
                 //黒に変える
                 auto fade =  FadeOut::create(3);
                 auto callback = CallFunc::create([this](){
-                    m_timeLabelKuro->setZOrder(2);
-                    m_timeLabelSiro->setZOrder(1);
-                    m_timeLabelSiro->setOpacity(255);
-                    m_timeLabelSiro->setVisible(false);
+                    m_kuro->setZOrder(2);
+                    m_siro->setZOrder(1);
+                    m_siro->setOpacity(255);
+                    m_siro->setVisible(false);
                 });
-                m_timeLabelSiro->runAction(Sequence::create(fade,callback, NULL));
+                m_siro->runAction(Sequence::create(fade,callback, NULL));
             }
         }
         m_backGroundType = type;
