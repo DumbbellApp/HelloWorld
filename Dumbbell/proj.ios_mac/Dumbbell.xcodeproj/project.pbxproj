@@ -77,6 +77,7 @@
 		B0109E0C1C188C0000945BE9 /* kuro.png in Resources */ = {isa = PBXBuildFile; fileRef = B0109E0A1C188C0000945BE9 /* kuro.png */; };
 		B0109E0F1C188C0E00945BE9 /* siro.fnt in Resources */ = {isa = PBXBuildFile; fileRef = B0109E0D1C188C0E00945BE9 /* siro.fnt */; };
 		B0109E101C188C0E00945BE9 /* siro.png in Resources */ = {isa = PBXBuildFile; fileRef = B0109E0E1C188C0E00945BE9 /* siro.png */; };
+		B0109E131C188E8100945BE9 /* BackGroundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0109E111C188E8100945BE9 /* BackGroundManager.cpp */; };
 		B03452CD1C12C73300C01A7C /* dumbbell_controller.png in Resources */ = {isa = PBXBuildFile; fileRef = B03452CC1C12C73300C01A7C /* dumbbell_controller.png */; };
 		B03452D11C12CF4500C01A7C /* TitleLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B03452CF1C12CF4500C01A7C /* TitleLayer.cpp */; };
 		B03452D31C12CFBF00C01A7C /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = B03452D21C12CFBF00C01A7C /* title.png */; };
@@ -218,6 +219,8 @@
 		B0109E0A1C188C0000945BE9 /* kuro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kuro.png; sourceTree = "<group>"; };
 		B0109E0D1C188C0E00945BE9 /* siro.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = siro.fnt; sourceTree = "<group>"; };
 		B0109E0E1C188C0E00945BE9 /* siro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = siro.png; sourceTree = "<group>"; };
+		B0109E111C188E8100945BE9 /* BackGroundManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BackGroundManager.cpp; sourceTree = "<group>"; };
+		B0109E121C188E8100945BE9 /* BackGroundManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BackGroundManager.hpp; sourceTree = "<group>"; };
 		B03452CC1C12C73300C01A7C /* dumbbell_controller.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dumbbell_controller.png; sourceTree = "<group>"; };
 		B03452CF1C12CF4500C01A7C /* TitleLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleLayer.cpp; sourceTree = "<group>"; };
 		B03452D01C12CF4500C01A7C /* TitleLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TitleLayer.hpp; sourceTree = "<group>"; };
@@ -550,6 +553,8 @@
 		B07511CD1C10A26B00225219 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				B0109E111C188E8100945BE9 /* BackGroundManager.cpp */,
+				B0109E121C188E8100945BE9 /* BackGroundManager.hpp */,
 				B07511D01C10A39100225219 /* BackGroundLayer.cpp */,
 				B07511D11C10A39100225219 /* BackGroundLayer.hpp */,
 				B07511E41C10A99C00225219 /* BackGroundType.h */,
@@ -764,6 +769,7 @@
 				AD2403F11C0AF9B100764E67 /* BlockManager.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				B03452E11C13438500C01A7C /* ResultLayer.cpp in Sources */,
+				B0109E131C188E8100945BE9 /* BackGroundManager.cpp in Sources */,
 				B07511C21C10967000225219 /* ScoreLayer.cpp in Sources */,
 				B0109E001C17283900945BE9 /* ScoreManager.cpp in Sources */,
 				B03452D61C12D11A00C01A7C /* UILayer.cpp in Sources */,

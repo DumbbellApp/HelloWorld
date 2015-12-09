@@ -10,6 +10,7 @@
 #include "iomanip"
 #include "EventManager.hpp"
 #include "Message.hpp"
+#include "BackGroundType.h"
 
 using namespace std;
 bool ScoreLayer::init() {
@@ -28,13 +29,19 @@ bool ScoreLayer::init() {
     std::ostringstream oss;
     oss << setw(5) << setfill('0') << m_score;
     
-    m_scoreLabel = Label::createWithBMFont("kuro.fnt", oss.str());
-    m_scoreLabel->setPosition(Point(visibleSize.width - 100, visibleSize.height - 55));
-    addChild(m_scoreLabel);
+    m_scoreLabelKuro = Label::createWithBMFont("kuro.fnt", oss.str());
+    m_scoreLabelKuro->setPosition(Point(visibleSize.width - 100, visibleSize.height - 55));
+    addChild(m_scoreLabelKuro, 2);
+
+    m_scoreLabelSiro = Label::createWithBMFont("siro.fnt", oss.str());
+    m_scoreLabelSiro->setPosition(Point(visibleSize.width - 100, visibleSize.height - 55));
+    addChild(m_scoreLabelSiro, 1);
+    m_scoreLabelSiro->setVisible(false);
     
     setOpacity(0);
     setCascadeOpacityEnabled(true);
     
+    m_backGroundType = BackGroundType::Type1;
     return true;
 }
 
@@ -62,6 +69,44 @@ void ScoreLayer::onEnter()
         auto msg = static_cast<MSG_CHAGE_SCORE*>(event->getUserData());
         setScore(msg->getScore());
     });
+    
+    EventManager::getInstance()->addEventLister<MSG_CHAGE_BACK>([this](EventCustom* event){
+        auto msg = static_cast<MSG_CHAGE_BACK*>(event->getUserData());
+        auto type = msg->getBGType();
+        if (type == BackGroundType::Type2 || type == BackGroundType::Type3) {
+            if(m_backGroundType != BackGroundType::Type2 || m_backGroundType != BackGroundType::Type3)
+            {
+                m_scoreLabelSiro->setVisible(true);
+                //白に変える
+                auto fade =  FadeOut::create(3);
+                auto callback = CallFunc::create([this](){
+                    m_scoreLabelSiro->setZOrder(2);
+                    m_scoreLabelKuro->setZOrder(1);
+                    m_scoreLabelKuro->setOpacity(255);
+                    m_scoreLabelKuro->setVisible(false);
+                });
+                m_scoreLabelKuro->runAction(Sequence::create(fade,callback, NULL));
+            }
+        }
+        else
+        {
+            if(m_backGroundType == BackGroundType::Type2 || m_backGroundType == BackGroundType::Type3)
+            {
+                m_scoreLabelKuro->setVisible(true);
+                //黒に変える
+                auto fade =  FadeOut::create(3);
+                auto callback = CallFunc::create([this](){
+                    m_scoreLabelKuro->setZOrder(2);
+                    m_scoreLabelSiro->setZOrder(1);
+                    m_scoreLabelSiro->setOpacity(255);
+                    m_scoreLabelSiro->setVisible(false);
+                });
+                m_scoreLabelSiro->runAction(Sequence::create(fade,callback, NULL));
+            }
+        }
+        m_backGroundType = type;
+    });
+    
 }
 
 void ScoreLayer::setScore(int score)
@@ -69,5 +114,6 @@ void ScoreLayer::setScore(int score)
     m_score = score;
     std::ostringstream oss;
     oss << setw(5) << setfill('0') << m_score;
-    m_scoreLabel->setString(oss.str());
+    m_scoreLabelKuro->setString(oss.str());
+    m_scoreLabelSiro->setString(oss.str());
 }

@@ -10,6 +10,7 @@
 #define TimeLayer_hpp
 
 USING_NS_CC;
+enum class BackGroundType;
 class TimeLayer : public Layer
 {
 public:
@@ -18,9 +19,11 @@ public:
     CREATE_FUNC(TimeLayer);
     void setTime(float time);
 public:
-    Label* m_timeLabel;
+    Label* m_timeLabelKuro;
+    Label* m_timeLabelSiro;
     Sprite* m_timeSprite;
     int m_time;
+    BackGroundType m_backGroundType;
 };
 
 #endif /* TimeLayer_hpp */

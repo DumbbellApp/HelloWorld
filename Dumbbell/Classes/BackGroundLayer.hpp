@@ -21,6 +21,7 @@ public:
     };
 public:
     virtual bool init();
+    virtual void onEnter();
     CREATE_FUNC(BackGroundLayer);
     void chageBackGround(BackGroundType type);
 public:
