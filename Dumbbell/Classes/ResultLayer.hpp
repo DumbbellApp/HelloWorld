@@ -22,6 +22,9 @@ public:
     Sprite* m_resultScore;
     Sprite* m_resultBest;
     Menu* m_menu;
+    Label* m_bestScoreLabel;
+    Label* m_resultScoreLabel;
+    
 };
 
 #endif /* ResultLayer_hpp */
