@@ -27,11 +27,11 @@ bool TimeLayer::init() {
     m_timeSpriteKuro = Sprite::create("time_kuro.png");
     m_timeSpriteKuro->setAnchorPoint(Vec2(0,0.5));
     m_timeSpriteKuro->setPosition(Vec2(0, visibleSize.height - 64));
-    m_kuro->addChild(m_timeSpriteKuro, 2);
+    m_kuro->addChild(m_timeSpriteKuro);
     
     m_timeLabelKuro = Label::createWithBMFont("kuro.fnt", to_string(m_time));
-    m_timeLabelKuro->setPosition(Point(160, visibleSize.height - 55));
-    m_kuro->addChild(m_timeLabelKuro,2);
+    m_timeLabelKuro->setPosition(Point(160, visibleSize.height - 64));
+    m_kuro->addChild(m_timeLabelKuro);
     
     m_siro = Node::create();
     addChild(m_siro, 1);
@@ -39,11 +39,11 @@ bool TimeLayer::init() {
     m_timeSpriteSiro = Sprite::create("time_siro.png");
     m_timeSpriteSiro->setAnchorPoint(Vec2(0,0.5));
     m_timeSpriteSiro->setPosition(Vec2(0, visibleSize.height - 64));
-    m_siro->addChild(m_timeSpriteSiro, 1);
+    m_siro->addChild(m_timeSpriteSiro);
     
     m_timeLabelSiro = Label::createWithBMFont("siro.fnt", to_string(m_time));
-    m_timeLabelSiro->setPosition(Point(160, visibleSize.height - 55));
-    m_siro->addChild(m_timeLabelSiro,1);
+    m_timeLabelSiro->setPosition(Point(160, visibleSize.height - 64));
+    m_siro->addChild(m_timeLabelSiro);
     
     m_kuro->setCascadeOpacityEnabled(true);
     m_siro->setCascadeOpacityEnabled(true);
@@ -86,9 +86,6 @@ void TimeLayer::onEnter()
                 //白に変える
                 auto fade =  FadeOut::create(3);
                 auto callback = CallFunc::create([this](){
-                    m_siro->setZOrder(2);
-                    m_kuro->setZOrder(1);
-                    m_kuro->setOpacity(255);
                     m_kuro->setVisible(false);
                 });
                 m_kuro->runAction(Sequence::create(fade,callback, NULL));
@@ -100,14 +97,11 @@ void TimeLayer::onEnter()
             {
                 m_kuro->setVisible(true);
                 //黒に変える
-                auto fade =  FadeOut::create(3);
+                auto fade =  FadeIn::create(3);
                 auto callback = CallFunc::create([this](){
-                    m_kuro->setZOrder(2);
-                    m_siro->setZOrder(1);
-                    m_siro->setOpacity(255);
                     m_siro->setVisible(false);
                 });
-                m_siro->runAction(Sequence::create(fade,callback, NULL));
+                m_kuro->runAction(Sequence::create(fade,callback, NULL));
             }
         }
         m_backGroundType = type;

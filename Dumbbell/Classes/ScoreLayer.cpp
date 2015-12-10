@@ -32,7 +32,7 @@ bool ScoreLayer::init() {
     m_kuro->addChild(m_scoreSpriteKuro);
     
     m_scoreLabelKuro = Label::createWithBMFont("kuro.fnt", oss.str());
-    m_scoreLabelKuro->setPosition(Point(visibleSize.width - 100, visibleSize.height - 55));
+    m_scoreLabelKuro->setPosition(Point(visibleSize.width - 100, visibleSize.height - 64));
     m_kuro->addChild(m_scoreLabelKuro, 2);
 
     m_siro = Node::create();
@@ -43,7 +43,7 @@ bool ScoreLayer::init() {
     m_siro->addChild(m_scoreSpriteSiro);
     
     m_scoreLabelSiro = Label::createWithBMFont("siro.fnt", oss.str());
-    m_scoreLabelSiro->setPosition(Point(visibleSize.width - 100, visibleSize.height - 55));
+    m_scoreLabelSiro->setPosition(Point(visibleSize.width - 100, visibleSize.height - 64));
     m_siro->addChild(m_scoreLabelSiro, 1);
     
     m_siro->setVisible(false);
@@ -93,9 +93,6 @@ void ScoreLayer::onEnter()
                 //白に変える
                 auto fade =  FadeOut::create(3);
                 auto callback = CallFunc::create([this](){
-                    m_siro->setZOrder(2);
-                    m_kuro->setZOrder(1);
-                    m_kuro->setOpacity(255);
                     m_kuro->setVisible(false);
                 });
                 m_kuro->runAction(Sequence::create(fade,callback, NULL));
@@ -107,14 +104,11 @@ void ScoreLayer::onEnter()
             {
                 m_kuro->setVisible(true);
                 //黒に変える
-                auto fade =  FadeOut::create(3);
+                auto fade =  FadeIn::create(3);
                 auto callback = CallFunc::create([this](){
-                    m_kuro->setZOrder(2);
-                    m_siro->setZOrder(1);
-                    m_siro->setOpacity(255);
                     m_siro->setVisible(false);
                 });
-                m_siro->runAction(Sequence::create(fade,callback, NULL));
+                m_kuro->runAction(Sequence::create(fade,callback, NULL));
             }
         }
         m_backGroundType = type;
