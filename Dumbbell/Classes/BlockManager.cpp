@@ -85,6 +85,11 @@ int BlockManager::calcCollisionObstacleBlock(Dumbbell* dumbbell)
         
         //障害物とダンベルかさなっているか
         if(isHitCCSprite(dumbbell->m_plateR, (*itr)->getPosition())) {
+            ParticleSystemQuad* particle = ParticleSystemQuad::create("particle_texture_2.plist");
+            particle->setPosition((*itr)->getPosition());
+            particle->setAutoRemoveOnFinish(true);
+            addChild(particle);
+            
             collisionCnt++;
             (*itr)->removeFromParent();
             m_obstacles.erase(itr);
@@ -97,6 +102,11 @@ int BlockManager::calcCollisionObstacleBlock(Dumbbell* dumbbell)
             continue;
         }
         else if (isHitCCSprite(dumbbell->m_plateL, (*itr)->getPosition())) {
+            ParticleSystemQuad* particle = ParticleSystemQuad::create("particle_texture_2.plist");
+            particle->setPosition((*itr)->getPosition());
+            particle->setAutoRemoveOnFinish(true);
+            addChild(particle);
+            
             collisionCnt++;
             (*itr)->removeFromParent();
             m_obstacles.erase(itr);
@@ -124,6 +134,11 @@ int BlockManager::calcCollisionScoreBlock(Dumbbell *dumbbell)
         
         //障害物とダンベルかさなっているか
         if(isHitCCSprite(dumbbell->m_plateR, (*itr)->getPosition())) {
+            ParticleSystemQuad* particle = ParticleSystemQuad::create("particle_texture.plist");
+            particle->setPosition((*itr)->getPosition());
+            particle->setAutoRemoveOnFinish(true);
+            addChild(particle);
+            
             collisionCnt++;
             (*itr)->removeFromParent();
             m_scoreBlock.erase(itr);
@@ -136,6 +151,11 @@ int BlockManager::calcCollisionScoreBlock(Dumbbell *dumbbell)
             continue;
         }
         else if (isHitCCSprite(dumbbell->m_plateL, (*itr)->getPosition())) {
+            ParticleSystemQuad* particle = ParticleSystemQuad::create("particle_texture.plist");
+            particle->setPosition((*itr)->getPosition());
+            particle->setAutoRemoveOnFinish(true);
+            addChild(particle);
+            
             collisionCnt++;
             (*itr)->removeFromParent();
             m_scoreBlock.erase(itr);
