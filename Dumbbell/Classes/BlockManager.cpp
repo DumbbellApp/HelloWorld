@@ -27,7 +27,7 @@ bool BlockManager::init()
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("akan.mp3");
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("ookini.mp3");
     
-    m_scoreBlockPos = Node::create();
+    m_scoreBlockPos = Sprite::create("score_block_any.png");
     m_scoreBlockPos->setAnchorPoint(Point(0.5, 0.5));
     m_scoreBlockPos->setPosition(Vec2(winSize.width / 2.0, winSize.height / 2.0));
     addChild(m_scoreBlockPos);
@@ -46,7 +46,7 @@ void BlockManager::update(float dt)
     
     m_frameCnt++;
     
-    if (m_frameCnt % 30 == 0) {
+    if (m_frameCnt % 15 == 0) {
         moveScoreBlockPos();
     }
 //    calcCollision();
@@ -113,9 +113,36 @@ void BlockManager::moveScoreBlockPos()
     
     double angle = 45 * anglePattern;
     double rad = angle / 180 * M_PI;
-    m_lastTimeAnglePattern = anglePattern;
+    int tempAngle = anglePattern;
     
-    auto moveBy = MoveBy::create(1.0, Vec2(100*cos(rad), 100*sin(rad)));
+    Vec2 nextPosDist = Vec2(100*cos(rad), 100*sin(rad));
+    
+    //画面外に行きそうになったら
+    if (m_scoreBlockPos->getPositionX() + nextPosDist.x < 20 ||
+        m_scoreBlockPos->getPositionX() + nextPosDist.x > winSize.width - 20) {
+        nextPosDist.x = -2 * nextPosDist.x;
+        if (m_lastTimeAnglePattern == anglePattern) {
+            tempAngle = (tempAngle + 4) % 8;
+        }
+        else {
+            tempAngle = (tempAngle + 6) % 8;
+        }
+    }
+    if (m_scoreBlockPos->getPositionY() + nextPosDist.y < 200 ||
+        m_scoreBlockPos->getPositionY() + nextPosDist.y > winSize.height - 20) {
+        nextPosDist.y = -2 * nextPosDist.y;
+        if (m_lastTimeAnglePattern == anglePattern) {
+            tempAngle = (tempAngle + 4) % 8;
+        }
+        else {
+            tempAngle = (tempAngle + 6) % 8;
+        }
+    }
+    
+    m_lastTimeAnglePattern = tempAngle;
+
+    
+    auto moveBy = MoveBy::create(1.0, nextPosDist);
     moveBy->setTag(1);
     
     m_scoreBlockPos->runAction(moveBy);

@@ -36,7 +36,7 @@ public:
     std::vector<ScoreBlock*> m_scoreBlock;
     
 private:
-    Node* m_scoreBlockPos;
+    Sprite* m_scoreBlockPos;
     int m_lastTimeAnglePattern;
     int m_frameCnt;
     
