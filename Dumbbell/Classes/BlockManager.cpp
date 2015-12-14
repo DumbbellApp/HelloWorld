@@ -19,11 +19,22 @@ bool BlockManager::init()
         return false;
     }
     
+    m_frameCnt = 0;
+    
     auto winSize = Director::getInstance()->getWinSize();
     
     CocosDenshion::SimpleAudioEngine::getInstance()->setEffectsVolume(0.5);
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("akan.mp3");
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("ookini.mp3");
+    
+    m_scoreBlockPos = Node::create();
+    m_scoreBlockPos->setAnchorPoint(Point(0.5, 0.5));
+    m_scoreBlockPos->setPosition(Vec2(winSize.width / 2.0, winSize.height / 2.0));
+    addChild(m_scoreBlockPos);
+    srand((unsigned int)time(NULL));
+    int anglePattern = rand() % 8;
+    m_lastTimeAnglePattern = anglePattern;
+
 
     this->scheduleUpdate();
     return true;
@@ -31,8 +42,13 @@ bool BlockManager::init()
 
 void BlockManager::update(float dt)
 {
-    
     move();
+    
+    m_frameCnt++;
+    
+    if (m_frameCnt % 30 == 0) {
+        moveScoreBlockPos();
+    }
 //    calcCollision();
  
 }
@@ -55,15 +71,15 @@ void BlockManager::createObstacleBlock()
 
 void BlockManager::createScoreBlock()
 {
-    auto winSize = Director::getInstance()->getWinSize();
-    
-    srand((unsigned int)time(NULL));
-    int rand_x = rand() % ((int)winSize.width - 30) + 15;
-    int rand_y = rand() % ((int)winSize.height - 80) + 60;
+//    auto winSize = Director::getInstance()->getWinSize();
+//    
+//    srand((unsigned int)time(NULL));
+//    int rand_x = rand() % ((int)winSize.width - 30) + 15;
+//    int rand_y = rand() % ((int)winSize.height - 80) + 60;
     
     //spriteで生成
     auto scoreBlock = ScoreBlock::create();
-    scoreBlock->setPosition(Vec2(rand_x, rand_y));
+    scoreBlock->setPosition(m_scoreBlockPos->getPosition());
     addChild(scoreBlock);
     m_scoreBlock.push_back(scoreBlock);
 }
@@ -73,6 +89,36 @@ void BlockManager::move()
     for (auto itr : m_obstacles) {
         itr->move();
     }
+}
+
+void BlockManager::moveScoreBlockPos()
+{
+    auto act = getActionByTag(1);
+    if (act) {
+        m_scoreBlockPos->stopActionByTag(1);
+    }
+    
+    auto winSize = Director::getInstance()->getWinSize();
+
+    //前進んだ方向から180度の範囲で進行方向を決定（現在45度区切り）
+    srand((unsigned int)time(NULL));
+    int anglePattern = m_lastTimeAnglePattern + (rand() % 5 - 2);
+    
+    if (anglePattern < 0) {
+        anglePattern += 8;
+    }
+    else if (anglePattern > 7) {
+        anglePattern -= 8;
+    }
+    
+    double angle = 45 * anglePattern;
+    double rad = angle / 180 * M_PI;
+    m_lastTimeAnglePattern = anglePattern;
+    
+    auto moveBy = MoveBy::create(1.0, Vec2(100*cos(rad), 100*sin(rad)));
+    moveBy->setTag(1);
+    
+    m_scoreBlockPos->runAction(moveBy);
 }
 
 int BlockManager::calcCollisionObstacleBlock(Dumbbell* dumbbell)

@@ -26,6 +26,7 @@ public:
     void createObstacleBlock();
     void createScoreBlock();
     void move();
+    void moveScoreBlockPos();
     int calcCollisionObstacleBlock(Dumbbell* dumbbell);
     int calcCollisionScoreBlock(Dumbbell* dumbbell);
 
@@ -33,7 +34,11 @@ public:
     
     std::vector<ObstacleBlock*> m_obstacles;
     std::vector<ScoreBlock*> m_scoreBlock;
-
+    
+private:
+    Node* m_scoreBlockPos;
+    int m_lastTimeAnglePattern;
+    int m_frameCnt;
     
     
 };

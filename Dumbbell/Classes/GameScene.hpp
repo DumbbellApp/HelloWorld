@@ -48,7 +48,8 @@ public:
     
     int m_hitPoint;
     float m_leaveTime;
-    float m_playTime;
+    float m_obstacleItv;
+    float m_scoreBlockInv;
     
     Label* m_scoreLabel;
     Label* m_leaveTimeLabel;
