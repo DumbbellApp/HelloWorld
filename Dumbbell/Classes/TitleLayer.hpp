@@ -19,6 +19,7 @@ public:
     bool onTouchBegan(Touch *touch, Event *event);
 public:
     Sprite* m_titleSprite;
+    
 };
 
 #endif /* TitleLayer_hpp */

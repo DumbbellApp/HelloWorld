@@ -53,6 +53,8 @@ bool TitleLayer::onTouchBegan(Touch *touch, Event *event)
         EventManager::getInstance()->dispatch(msg);
     });
     m_titleSprite->runAction(Sequence::create(fade, callback, NULL));
-
+    
+    auto dispatcher = Director::getInstance()->getEventDispatcher();
+    dispatcher->removeEventListenersForTarget(this);
     return true;
 }
