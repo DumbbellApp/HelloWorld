@@ -22,6 +22,7 @@ public:
     Label* m_scoreLabelKuro;
     Sprite* m_scoreSpriteSiro;
     Sprite* m_scoreSpriteKuro;
+    Sprite* m_scoreBack;
     Node* m_kuro;
     Node* m_siro;
     int m_score;

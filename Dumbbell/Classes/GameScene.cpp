@@ -52,7 +52,7 @@ bool GameScene::init()
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
         
     m_dumbbell = Dumbbell::create();
-    m_dumbbell->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+    m_dumbbell->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height - 850 + origin.y));
     m_dumbbell->setScale(0.7);
     m_dumbbell->m_preAnchorX = 0;
     addChild(m_dumbbell, LAYER_MAIN);
@@ -138,12 +138,12 @@ void GameScene::onEnter()
             m_obstacleItv = 0;
             m_scoreBlockInv = 0;
             m_dumbbell->setRotation(0);
-            m_dumbbell->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+            m_dumbbell->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height - 850 + origin.y));
             
             auto func = CallFunc::create([this](){
                 this->scheduleUpdate();
             });
-            this->runAction(Sequence::create(DelayTime::create(1),func, NULL));
+            this->runAction(Sequence::create(DelayTime::create(2),func, NULL));
 
         }
         else if(msg->getStete() == STATE::RESULT)

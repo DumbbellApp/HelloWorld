@@ -16,8 +16,22 @@ bool ScoreBlock::init(){
     //spriteで生成
     auto scoreBlock = Sprite::create("score_block_any.png");
     scoreBlock->setAnchorPoint(Point(0.5,0.5));
+<<<<<<< HEAD
     scoreBlock->setScale(0.6);
+=======
+    scoreBlock->setScale(0.5);
+>>>>>>> develop
     addChild(scoreBlock);
+    
+    //spriteで生成
+    auto scoreAlpha = Sprite::create("score_block_alpha.png");
+    scoreAlpha->setAnchorPoint(Point(0,0));
+    scoreAlpha->setScale(2);
+    BlendFunc blend;
+    blend.src = GL_SRC_ALPHA;
+    blend.dst = GL_ONE;
+    scoreAlpha->setBlendFunc(blend);
+    scoreBlock->addChild(scoreAlpha);
     
     return true;
 }
