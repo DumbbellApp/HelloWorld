@@ -26,6 +26,15 @@ bool ObstacleBlock::init(){
     obstacle->setPosition(Vec2());
     addChild(obstacle);
     
+    //spriteで生成
+    auto obstacleAlpha = Sprite::create("obstacle_block_alpha.png");
+    obstacleAlpha->setAnchorPoint(Point(0,0));
+    BlendFunc blend;
+    blend.src = GL_SRC_ALPHA;
+    blend.dst = GL_ONE;
+    obstacleAlpha->setBlendFunc(blend);
+    obstacle->addChild(obstacleAlpha);
+    
     return true;
 }
 

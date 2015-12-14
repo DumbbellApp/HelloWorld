@@ -19,7 +19,8 @@ bool TitleLayer::init() {
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
     m_titleSprite = Sprite::create("title.png");
-    m_titleSprite->setPosition(Vec2(visibleSize.width/2, visibleSize.height - 200));
+    m_titleSprite->setScale(1.25);
+    m_titleSprite->setPosition(Vec2(visibleSize.width/2, visibleSize.height - 190));
     addChild(m_titleSprite);
 
     //タップイベントを作成

@@ -28,8 +28,8 @@ bool UILayer::init() {
     m_scoreLayer = ScoreLayer::create();
     addChild(m_scoreLayer);
     
-    m_timeLayer = TimeLayer::create();
-    addChild(m_timeLayer);
+//    m_timeLayer = TimeLayer::create();
+//    addChild(m_timeLayer);
     
     m_resultLayer = ResultLayer::create();
     addChild(m_resultLayer);

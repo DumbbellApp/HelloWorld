@@ -22,8 +22,10 @@ public:
     CREATE_FUNC(DumbbellController);
     double getRotationRate();
 private:
+    Node* m_controlNode;
     Sprite* m_controlArea;
     Sprite* m_controller;
+    Sprite* m_controllerAlpha;
     Node* m_touchArea;
     bool isEnable;
 };
