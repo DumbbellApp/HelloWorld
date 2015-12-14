@@ -26,13 +26,25 @@ bool Dumbbell::init() {
     m_plateR->setPositionX(this->getPosition().x + m_plateR->getContentSize().width / 2 - 20);
     m_plateR->setPositionY(0);
     addChild(m_plateR);
-
+    
+    auto plateRAlpha = Sprite::create("dumbbell_right_alpha.png");
+    plateRAlpha->setAnchorPoint(Point(0,0));
+    BlendFunc blend;
+    blend.src = GL_SRC_ALPHA;
+    blend.dst = GL_ONE;
+    plateRAlpha->setBlendFunc(blend);
+    m_plateR->addChild(plateRAlpha);
+    
     m_plateL = Sprite::create("dumbbell_left.png");
     m_plateL->setAnchorPoint(Point(0.5,0.5));
     m_plateL->setPositionX(this->getPosition().x - m_plateR->getContentSize().width / 2 + 20);
     m_plateL->setPositionY(0);
     addChild(m_plateL);
     
+    auto plateLAlpha = Sprite::create("dumbbell_left_alpha.png");
+    plateLAlpha->setAnchorPoint(Point(0,0));
+    plateLAlpha->setBlendFunc(blend);
+    m_plateL->addChild(plateLAlpha);
     
 //    setContentSize(Size(m_shaft->getContentSize().width*m_shaftlength, m_shaft->getContentSize().height));
     setAnchorPoint(Vec2(0.0,0.5));

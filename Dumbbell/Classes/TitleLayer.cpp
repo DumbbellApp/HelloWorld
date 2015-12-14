@@ -19,7 +19,8 @@ bool TitleLayer::init() {
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
     m_titleSprite = Sprite::create("title.png");
-    m_titleSprite->setPosition(Vec2(visibleSize.width/2, visibleSize.height - 200));
+    m_titleSprite->setScale(1.25);
+    m_titleSprite->setPosition(Vec2(visibleSize.width/2, visibleSize.height - 190));
     addChild(m_titleSprite);
 
     //タップイベントを作成
@@ -52,6 +53,8 @@ bool TitleLayer::onTouchBegan(Touch *touch, Event *event)
         EventManager::getInstance()->dispatch(msg);
     });
     m_titleSprite->runAction(Sequence::create(fade, callback, NULL));
-
+    
+    auto dispatcher = Director::getInstance()->getEventDispatcher();
+    dispatcher->removeEventListenersForTarget(this);
     return true;
 }
