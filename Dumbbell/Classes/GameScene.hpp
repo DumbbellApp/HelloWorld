@@ -9,14 +9,16 @@
 #ifndef GameScene_hpp
 #define GameScene_hpp
 
+#include "BlockManager.hpp"
+
 USING_NS_CC;
 
 #include "GameStateType.h"
 
 class Dumbbell;
-class BlockManager;
 class DumbbellController;
 class UILayer;
+
 class GameScene : public cocos2d::Layer
 {
 public:
@@ -49,7 +51,13 @@ public:
     int m_hitPoint;
     float m_leaveTime;
     float m_obstacleItv;
-    float m_scoreBlockInv;
+    float m_scoreBlockItv;
+    float m_changeScoreBlockItv;
+    
+    ScoreBlock::BlockType m_blockType;
+    int m_createScoreBlockCnt;
+    
+    bool m_isCreateScoreBlock;
     
     Label* m_scoreLabel;
     Label* m_leaveTimeLabel;

@@ -20,11 +20,10 @@ public:
     void move();
     void setMoveSpeed(float speed);
     
-    Sprite* m_sprite;
-    float m_moveSpeed;
-    
 private:
     ObstacleBlock();
+    Sprite* m_sprite;
+    float m_moveSpeed;
 };
 
 #endif /* defined(ObstacleBlock_hpp) */

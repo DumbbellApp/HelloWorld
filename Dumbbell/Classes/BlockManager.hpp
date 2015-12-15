@@ -9,9 +9,10 @@
 #ifndef BlockManager_hpp
 #define BlockManager_hpp
 
+#include "ScoreBlock.hpp"
+
 class Dumbbell;
 class ObstacleBlock;
-class ScoreBlock;
 
 USING_NS_CC;
 
@@ -24,7 +25,7 @@ public:
     void update(float dt);
     
     void createObstacleBlock();
-    void createScoreBlock();
+    void createScoreBlock(ScoreBlock::BlockType blockType);
     void move();
     void moveScoreBlockPos();
     int calcCollisionObstacleBlock(Dumbbell* dumbbell);

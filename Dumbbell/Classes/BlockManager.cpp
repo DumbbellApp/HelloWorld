@@ -46,7 +46,7 @@ void BlockManager::update(float dt)
     
     m_frameCnt++;
     
-    if (m_frameCnt % 15 == 0) {
+    if (m_frameCnt % 10 == 0) {
         moveScoreBlockPos();
     }
 //    calcCollision();
@@ -69,7 +69,7 @@ void BlockManager::createObstacleBlock()
     m_obstacles.push_back(obstacle);
 }
 
-void BlockManager::createScoreBlock()
+void BlockManager::createScoreBlock(ScoreBlock::BlockType blockType)
 {
 //    auto winSize = Director::getInstance()->getWinSize();
 //    
@@ -78,7 +78,7 @@ void BlockManager::createScoreBlock()
 //    int rand_y = rand() % ((int)winSize.height - 80) + 60;
     
     //spriteで生成
-    auto scoreBlock = ScoreBlock::create();
+    auto scoreBlock = ScoreBlock::createScoreBlock(blockType);
     scoreBlock->setPosition(m_scoreBlockPos->getPosition());
     addChild(scoreBlock);
     m_scoreBlock.push_back(scoreBlock);
@@ -102,7 +102,7 @@ void BlockManager::moveScoreBlockPos()
 
     //前進んだ方向から180度の範囲で進行方向を決定（現在45度区切り）
     srand((unsigned int)time(NULL));
-    int anglePattern = m_lastTimeAnglePattern + (rand() % 5 - 2);
+    int anglePattern = m_lastTimeAnglePattern + (rand() % 3 - 1);
     
     if (anglePattern < 0) {
         anglePattern += 8;
@@ -113,34 +113,23 @@ void BlockManager::moveScoreBlockPos()
     
     double angle = 45 * anglePattern;
     double rad = angle / 180 * M_PI;
-    int tempAngle = anglePattern;
+    m_lastTimeAnglePattern = anglePattern;
     
-    Vec2 nextPosDist = Vec2(100*cos(rad), 100*sin(rad));
+    Vec2 nextPosDist = Vec2(40*cos(rad), 40*sin(rad));
     
     //画面外に行きそうになったら
-    if (m_scoreBlockPos->getPositionX() + nextPosDist.x < 20 ||
-        m_scoreBlockPos->getPositionX() + nextPosDist.x > winSize.width - 20) {
-        nextPosDist.x = -2 * nextPosDist.x;
-        if (m_lastTimeAnglePattern == anglePattern) {
-            tempAngle = (tempAngle + 4) % 8;
-        }
-        else {
-            tempAngle = (tempAngle + 6) % 8;
-        }
+    if (m_scoreBlockPos->getPositionX() + nextPosDist.x < winSize.width * 0.05) {
+        m_scoreBlockPos->setPositionX(winSize.width * 0.95);
     }
-    if (m_scoreBlockPos->getPositionY() + nextPosDist.y < 200 ||
-        m_scoreBlockPos->getPositionY() + nextPosDist.y > winSize.height - 20) {
-        nextPosDist.y = -2 * nextPosDist.y;
-        if (m_lastTimeAnglePattern == anglePattern) {
-            tempAngle = (tempAngle + 4) % 8;
-        }
-        else {
-            tempAngle = (tempAngle + 6) % 8;
-        }
+    else if (m_scoreBlockPos->getPositionX() + nextPosDist.x > winSize.width * 0.95) {
+        m_scoreBlockPos->setPositionX(winSize.width * 0.05);
     }
-    
-    m_lastTimeAnglePattern = tempAngle;
-
+    if (m_scoreBlockPos->getPositionY() + nextPosDist.y < winSize.height * 0.1) {
+        m_scoreBlockPos->setPositionY(winSize.height * 0.9);
+    }
+    else if (m_scoreBlockPos->getPositionY() + nextPosDist.y > winSize.height * 0.9) {
+        m_scoreBlockPos->setPositionY(winSize.height * 0.1);
+    }
     
     auto moveBy = MoveBy::create(1.0, nextPosDist);
     moveBy->setTag(1);

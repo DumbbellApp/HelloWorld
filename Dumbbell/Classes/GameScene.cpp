@@ -45,7 +45,7 @@ bool GameScene::init()
     m_hitPoint = 5;
     m_leaveTime = 60;
     m_obstacleItv = 0;
-    m_scoreBlockInv = 0;
+    m_scoreBlockItv = 0;
     m_state = STATE::TITLE;
     
     Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -85,8 +85,12 @@ bool GameScene::init()
 
 void GameScene::update(float delta){
     m_obstacleItv += delta;
-    m_scoreBlockInv += delta;
+    m_scoreBlockItv += delta;
     m_leaveTime -= delta;
+    
+    if (!m_isCreateScoreBlock) {
+        m_changeScoreBlockItv += delta;
+    }
     
     int collisionCntObs = calcCollisionObstacleBlock();
     m_hitPoint -= collisionCntObs;
@@ -109,9 +113,20 @@ void GameScene::update(float delta){
         m_obstacleItv = 0;
     }
     
-    if (m_scoreBlockInv >= 2) {
-        m_blockManager->createScoreBlock();
-        m_scoreBlockInv = 0;
+    if (m_scoreBlockItv >= 1 && m_isCreateScoreBlock) {
+        m_blockManager->createScoreBlock(m_blockType);
+        m_createScoreBlockCnt++;
+        if (m_createScoreBlockCnt == 5) {
+            m_createScoreBlockCnt = 0;
+            m_isCreateScoreBlock = false;
+        }
+        
+        m_scoreBlockItv = 0;
+    }
+    
+    if (m_changeScoreBlockItv >= 3) {
+        m_isCreateScoreBlock = true;
+        m_changeScoreBlockItv = 0;
     }
     
     m_rotationRate = m_dumbbellcontroller->getRotationRate();
@@ -136,7 +151,11 @@ void GameScene::onEnter()
             m_hitPoint = 5;
             m_leaveTime = 60;
             m_obstacleItv = 0;
-            m_scoreBlockInv = 0;
+            m_scoreBlockItv = 0;
+            m_changeScoreBlockItv = 0;
+            m_createScoreBlockCnt = 0;
+            m_isCreateScoreBlock = true;
+            m_blockType = ScoreBlock::BlockType::ANY;
             m_dumbbell->setRotation(0);
             m_dumbbell->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height - 850 + origin.y));
             
