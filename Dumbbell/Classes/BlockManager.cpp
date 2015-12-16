@@ -27,7 +27,7 @@ bool BlockManager::init()
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("akan.mp3");
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("ookini.mp3");
     
-    m_scoreBlockPos = Sprite::create("score_block_any.png");
+    m_scoreBlockPos = Node::create();
     m_scoreBlockPos->setAnchorPoint(Point(0.5, 0.5));
     m_scoreBlockPos->setPosition(Vec2(winSize.width / 2.0, winSize.height / 2.0));
     addChild(m_scoreBlockPos);
@@ -71,11 +71,6 @@ void BlockManager::createObstacleBlock()
 
 void BlockManager::createScoreBlock(ScoreBlock::BlockType blockType)
 {
-//    auto winSize = Director::getInstance()->getWinSize();
-//    
-//    srand((unsigned int)time(NULL));
-//    int rand_x = rand() % ((int)winSize.width - 30) + 15;
-//    int rand_y = rand() % ((int)winSize.height - 80) + 60;
     
     //spriteで生成
     auto scoreBlock = ScoreBlock::createScoreBlock(blockType);
@@ -194,14 +189,20 @@ int BlockManager::calcCollisionScoreBlock(Dumbbell *dumbbell)
     for (auto itr = m_scoreBlock.begin(); itr != m_scoreBlock.end(); ) {
 
         
-        //障害物とダンベルかさなっているか
+        //スコアブロックとダンベルかさなっているか
         if(isHitCCSprite(dumbbell->m_plateR, (*itr)->getPosition())) {
             ParticleSystemQuad* particle = ParticleSystemQuad::create("particle_texture.plist");
             particle->setPosition((*itr)->getPosition());
             particle->setAutoRemoveOnFinish(true);
             addChild(particle);
             
-            collisionCnt++;
+            if ((*itr)->getBlockType() == ScoreBlock::BlockType::LEFT) {
+                collisionCnt--;
+            }
+            else {
+                collisionCnt++;
+            }
+      
             (*itr)->removeFromParent();
             m_scoreBlock.erase(itr);
             
@@ -218,7 +219,13 @@ int BlockManager::calcCollisionScoreBlock(Dumbbell *dumbbell)
             particle->setAutoRemoveOnFinish(true);
             addChild(particle);
             
-            collisionCnt++;
+            if ((*itr)->getBlockType() == ScoreBlock::BlockType::RIGHT) {
+                collisionCnt--;
+            }
+            else {
+                collisionCnt++;
+            }
+            
             (*itr)->removeFromParent();
             m_scoreBlock.erase(itr);
             

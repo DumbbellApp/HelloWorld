@@ -41,6 +41,8 @@ public:
     int calcCollisionObstacleBlock();
     int calcCollisionScoreBlock();
     
+    ScoreBlock::BlockType changeBlockType();
+    
 public:
     Dumbbell* m_dumbbell;
     DumbbellController* m_dumbbellcontroller;

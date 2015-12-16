@@ -72,3 +72,8 @@ bool ScoreBlock::init(BlockType blockType){
     return true;
 }
 
+ScoreBlock::BlockType ScoreBlock::getBlockType()
+{
+    return m_blockType;
+}
+

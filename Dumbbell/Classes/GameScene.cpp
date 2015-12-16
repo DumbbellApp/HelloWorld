@@ -126,6 +126,7 @@ void GameScene::update(float delta){
     
     if (m_changeScoreBlockItv >= 3) {
         m_isCreateScoreBlock = true;
+        m_blockType = changeBlockType();
         m_changeScoreBlockItv = 0;
     }
     
@@ -187,6 +188,28 @@ int GameScene::calcCollisionScoreBlock()
     collisionCnt = m_blockManager->calcCollisionScoreBlock(m_dumbbell);
     
     return collisionCnt;
+}
+
+ScoreBlock::BlockType GameScene::changeBlockType()
+{
+    srand((unsigned int)time(NULL));
+    int blockType = rand() % 3;
+    
+    switch (blockType) {
+        case (int)ScoreBlock::BlockType::LEFT:
+            return ScoreBlock::BlockType::LEFT;
+            break;
+        case (int)ScoreBlock::BlockType::RIGHT:
+            return ScoreBlock::BlockType::RIGHT;
+            break;
+        case (int)ScoreBlock::BlockType::ANY:
+            return ScoreBlock::BlockType::ANY;
+            break;
+        default:
+            break;
+    }
+    
+    return ScoreBlock::BlockType::ANY;
 }
 
 

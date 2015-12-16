@@ -27,6 +27,8 @@ public:
 //    CREATE_FUNC(ScoreBlock);
     static ScoreBlock* createScoreBlock(BlockType blockType);
     
+    BlockType getBlockType();
+    
 private:
     ScoreBlock();
     bool init(BlockType blockType);
