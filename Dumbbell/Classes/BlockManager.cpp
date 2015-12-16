@@ -19,11 +19,22 @@ bool BlockManager::init()
         return false;
     }
     
+    m_frameCnt = 0;
+    
     auto winSize = Director::getInstance()->getWinSize();
     
     CocosDenshion::SimpleAudioEngine::getInstance()->setEffectsVolume(0.5);
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("akan.mp3");
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("ookini.mp3");
+    
+    m_scoreBlockPos = Node::create();
+    m_scoreBlockPos->setAnchorPoint(Point(0.5, 0.5));
+    m_scoreBlockPos->setPosition(Vec2(winSize.width / 2.0, winSize.height / 2.0));
+    addChild(m_scoreBlockPos);
+    srand((unsigned int)time(NULL));
+    int anglePattern = rand() % 8;
+    m_lastTimeAnglePattern = anglePattern;
+
 
     this->scheduleUpdate();
     return true;
@@ -31,8 +42,13 @@ bool BlockManager::init()
 
 void BlockManager::update(float dt)
 {
-    
     move();
+    
+    m_frameCnt++;
+    
+    if (m_frameCnt % 10 == 0) {
+        moveScoreBlockPos();
+    }
 //    calcCollision();
  
 }
@@ -53,17 +69,12 @@ void BlockManager::createObstacleBlock()
     m_obstacles.push_back(obstacle);
 }
 
-void BlockManager::createScoreBlock()
+void BlockManager::createScoreBlock(ScoreBlock::BlockType blockType)
 {
-    auto winSize = Director::getInstance()->getWinSize();
-    
-    srand((unsigned int)time(NULL));
-    int rand_x = rand() % ((int)winSize.width - 30) + 15;
-    int rand_y = rand() % ((int)winSize.height - 80) + 60;
     
     //spriteで生成
-    auto scoreBlock = ScoreBlock::create();
-    scoreBlock->setPosition(Vec2(rand_x, rand_y));
+    auto scoreBlock = ScoreBlock::createScoreBlock(blockType);
+    scoreBlock->setPosition(m_scoreBlockPos->getPosition());
     addChild(scoreBlock);
     m_scoreBlock.push_back(scoreBlock);
 }
@@ -73,6 +84,52 @@ void BlockManager::move()
     for (auto itr : m_obstacles) {
         itr->move();
     }
+}
+
+void BlockManager::moveScoreBlockPos()
+{
+    auto act = getActionByTag(1);
+    if (act) {
+        m_scoreBlockPos->stopActionByTag(1);
+    }
+    
+    auto winSize = Director::getInstance()->getWinSize();
+
+    //前進んだ方向から180度の範囲で進行方向を決定（現在45度区切り）
+    srand((unsigned int)time(NULL));
+    int anglePattern = m_lastTimeAnglePattern + (rand() % 3 - 1);
+    
+    if (anglePattern < 0) {
+        anglePattern += 8;
+    }
+    else if (anglePattern > 7) {
+        anglePattern -= 8;
+    }
+    
+    double angle = 45 * anglePattern;
+    double rad = angle / 180 * M_PI;
+    m_lastTimeAnglePattern = anglePattern;
+    
+    Vec2 nextPosDist = Vec2(40*cos(rad), 40*sin(rad));
+    
+    //画面外に行きそうになったら
+    if (m_scoreBlockPos->getPositionX() + nextPosDist.x < winSize.width * 0.05) {
+        m_scoreBlockPos->setPositionX(winSize.width * 0.95);
+    }
+    else if (m_scoreBlockPos->getPositionX() + nextPosDist.x > winSize.width * 0.95) {
+        m_scoreBlockPos->setPositionX(winSize.width * 0.05);
+    }
+    if (m_scoreBlockPos->getPositionY() + nextPosDist.y < winSize.height * 0.1) {
+        m_scoreBlockPos->setPositionY(winSize.height * 0.9);
+    }
+    else if (m_scoreBlockPos->getPositionY() + nextPosDist.y > winSize.height * 0.9) {
+        m_scoreBlockPos->setPositionY(winSize.height * 0.1);
+    }
+    
+    auto moveBy = MoveBy::create(1.0, nextPosDist);
+    moveBy->setTag(1);
+    
+    m_scoreBlockPos->runAction(moveBy);
 }
 
 int BlockManager::calcCollisionObstacleBlock(Dumbbell* dumbbell)
@@ -132,14 +189,20 @@ int BlockManager::calcCollisionScoreBlock(Dumbbell *dumbbell)
     for (auto itr = m_scoreBlock.begin(); itr != m_scoreBlock.end(); ) {
 
         
-        //障害物とダンベルかさなっているか
+        //スコアブロックとダンベルかさなっているか
         if(isHitCCSprite(dumbbell->m_plateR, (*itr)->getPosition())) {
             ParticleSystemQuad* particle = ParticleSystemQuad::create("particle_texture.plist");
             particle->setPosition((*itr)->getPosition());
             particle->setAutoRemoveOnFinish(true);
             addChild(particle);
             
-            collisionCnt++;
+            if ((*itr)->getBlockType() == ScoreBlock::BlockType::LEFT) {
+                collisionCnt--;
+            }
+            else {
+                collisionCnt++;
+            }
+      
             (*itr)->removeFromParent();
             m_scoreBlock.erase(itr);
             
@@ -156,7 +219,13 @@ int BlockManager::calcCollisionScoreBlock(Dumbbell *dumbbell)
             particle->setAutoRemoveOnFinish(true);
             addChild(particle);
             
-            collisionCnt++;
+            if ((*itr)->getBlockType() == ScoreBlock::BlockType::RIGHT) {
+                collisionCnt--;
+            }
+            else {
+                collisionCnt++;
+            }
+            
             (*itr)->removeFromParent();
             m_scoreBlock.erase(itr);
             

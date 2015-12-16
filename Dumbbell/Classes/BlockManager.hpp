@@ -9,9 +9,10 @@
 #ifndef BlockManager_hpp
 #define BlockManager_hpp
 
+#include "ScoreBlock.hpp"
+
 class Dumbbell;
 class ObstacleBlock;
-class ScoreBlock;
 
 USING_NS_CC;
 
@@ -24,8 +25,9 @@ public:
     void update(float dt);
     
     void createObstacleBlock();
-    void createScoreBlock();
+    void createScoreBlock(ScoreBlock::BlockType blockType);
     void move();
+    void moveScoreBlockPos();
     int calcCollisionObstacleBlock(Dumbbell* dumbbell);
     int calcCollisionScoreBlock(Dumbbell* dumbbell);
 
@@ -33,7 +35,11 @@ public:
     
     std::vector<ObstacleBlock*> m_obstacles;
     std::vector<ScoreBlock*> m_scoreBlock;
-
+    
+private:
+    Node* m_scoreBlockPos;
+    int m_lastTimeAnglePattern;
+    int m_frameCnt;
     
     
 };
