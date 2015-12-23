@@ -56,12 +56,13 @@ bool Dumbbell::init() {
 
 //回転率(-1~1)に応じて回転させる
 //1->右回転，0->静止，-1->左回転
-void Dumbbell::addRotation(float rotationRate)
+void Dumbbell::addRotation(float rotationRate, float delta)
 {
 //    auto anchorX =  (1 - fabs(rotationRate));
+    static int fps = 60;
     auto anchorX =  rotationRate/2;
     setAnchorPoint(Vec2(anchorX, 0.5));
-    auto rotation = getRotation() + rotationRate*m_rotationSpeed;
+    auto rotation = getRotation() + rotationRate*m_rotationSpeed*delta*fps;
     setRotation(rotation);
     
     //anchorを変更した事による座標のズレを元にもどす
@@ -71,8 +72,9 @@ void Dumbbell::addRotation(float rotationRate)
     m_preAnchorX = anchorX;
 }
 
-void Dumbbell::move()
+void Dumbbell::move(float delta)
 {
+    static int fps = 60;
     auto moveRate = (1 - fabs(getAnchorPoint().x)*2);
     
     auto rad = -getRotation()*M_PI/180;
@@ -91,5 +93,5 @@ void Dumbbell::move()
         moveRate = 0.5;
     }
     
-    setPosition(getPosition() + (m_moveDirection*moveRate*m_moveSpeed));
+    setPosition(getPosition() + (m_moveDirection*moveRate*m_moveSpeed*delta*fps));
 }
