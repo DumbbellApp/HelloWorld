@@ -12,7 +12,7 @@
 #include "EventManager.hpp"
 
 namespace  {
-    static const double changeBackInterval = 5;
+    static const double changeBackInterval = 15;
 }
 
 bool BackGroundManager::init(void)
@@ -24,6 +24,7 @@ bool BackGroundManager::init(void)
     
     m_backGroundType = BackGroundType::Type1;
     m_time = 0;
+    m_type = BackGroundType::Type1;
     scheduleUpdate();
     return true;
 }
@@ -34,13 +35,14 @@ void BackGroundManager::update(float delta)
     
     if(m_time > changeBackInterval)
     {
+        int typeNum = static_cast<int>(m_type) + 1;
+        if (typeNum >= static_cast<int>(BackGroundType::Max)) {
+            typeNum = static_cast<int>(BackGroundType::Type1);
+        }
+        m_type = static_cast<BackGroundType>(typeNum);
         m_time = 0;
-        
-        std::random_device rnd;
-        std::mt19937 mt(rnd());
-        std::uniform_int_distribution<> rand(1, static_cast<int>(BackGroundType::Max) - 1);
-        
-        MSG_CHAGE_BACK msg(static_cast<BackGroundType>(rand(mt)));
+                
+        MSG_CHAGE_BACK msg(static_cast<BackGroundType>(m_type));
         EventManager::getInstance()->dispatch(msg);
     }
 }
