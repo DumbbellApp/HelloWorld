@@ -24,17 +24,11 @@ bool ResultLayer::init() {
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
     m_resultBack = Sprite::create("result_back.png");
-    m_resultBack->setScale(2.5);
-    m_resultBack->setPosition(Vec2(visibleSize.width/2, visibleSize.height/2));
+    m_resultBack->setAnchorPoint(Vec2(0.5, 0));
+    m_resultBack->setPosition(Vec2(320, 505));
     addChild(m_resultBack);
     
-    m_resultTitle = Sprite::create("nice_play.png");
-    m_resultTitle->setScale(0.5);
-    m_resultTitle->setAnchorPoint(Vec2(0.5,0.5));
-    m_resultTitle->setPosition(Vec2(m_resultBack->getContentSize().width/2, m_resultBack->getContentSize().height/2 + 40));
-    m_resultBack->addChild(m_resultTitle);
-    
-    m_resultScore = Sprite::create("score_kuro.png");
+    m_resultScore = Sprite::create("score_siro.png");
     m_resultScore->setScale(0.45);
     m_resultScore->setAnchorPoint(Vec2(0,0.5));
     m_resultScore->setPosition(Vec2(m_resultBack->getContentSize().width/2 - 70, m_resultBack->getContentSize().height/2 + 10));
@@ -43,7 +37,7 @@ bool ResultLayer::init() {
     std::ostringstream oss;
     oss << setw(5) << setfill('0') << ScoreManager::getInstance()->getScore();
     
-    m_resultScoreLabel = Label::createWithBMFont("kuro.fnt", oss.str());
+    m_resultScoreLabel = Label::createWithBMFont("siro.fnt", oss.str());
     m_resultScoreLabel->setPosition(Vec2(m_resultBack->getContentSize().width/2 + 30, m_resultBack->getContentSize().height/2 + 10));
     m_resultScoreLabel->setScale(0.5);
     m_resultBack->addChild(m_resultScoreLabel);
@@ -57,7 +51,7 @@ bool ResultLayer::init() {
     std::ostringstream oss2;
     oss2 << setw(5) << setfill('0') << 0;
     
-    m_bestScoreLabel = Label::createWithBMFont("kuro.fnt", oss2.str());
+    m_bestScoreLabel = Label::createWithBMFont("siro.fnt", oss2.str());
     m_bestScoreLabel->setPosition(Vec2(m_resultBack->getContentSize().width/2 + 30, m_resultBack->getContentSize().height/2 - 20));
     m_bestScoreLabel->setScale(0.5);
     m_resultBack->addChild(m_bestScoreLabel);
@@ -75,7 +69,7 @@ bool ResultLayer::init() {
     m_resultBack->addChild(m_menu);
     
     m_resultBack->setCascadeOpacityEnabled(true);
-    m_resultBack->setVisible(false);
+//    m_resultBack->setVisible(false);
 
     return true;
 }
