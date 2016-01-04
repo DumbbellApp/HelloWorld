@@ -114,26 +114,6 @@ bool DebugLayer::init() {
     m_text4->setPosition(Point(20, visibleSize.height-60));
     this->addChild(m_text4);
     
-    auto mItem5 = MenuItemImage::create("CloseNormal.png","CloseSelected.png",[this](Ref*sender){
-        m_dumbbell->setShaftLength(m_dumbbell->getShaftLength() + 0.5);
-        m_dumbbell->setScale(m_dumbbell->getShaftLength(), 1);
-        m_dumbbell->setContentSize(Size(m_dumbbell->getContentSize().width*m_dumbbell->getShaftLength(), m_dumbbell->getContentSize().height));
-    });
-    auto mItem6 = MenuItemImage::create("CloseNormal.png","CloseSelected.png",[this](Ref*sender){
-        m_dumbbell->setShaftLength(m_dumbbell->getShaftLength() - 0.5);
-        m_dumbbell->setScale(m_dumbbell->getShaftLength(), 1);
-        m_dumbbell->setContentSize(Size(m_dumbbell->getContentSize().width*m_dumbbell->getShaftLength(), m_dumbbell->getContentSize().height));
-    });
-    
-    mItem5->setPosition(Point(200, visibleSize.height-60));
-    mItem6->setPosition(Point(220, visibleSize.height-60));
-    mItem5->setAnchorPoint(Vec2(0,1));
-    mItem6->setAnchorPoint(Vec2(0,1));
-    mItem5->setScale(0.5);
-    mItem6->setScale(0.5);
-    m_menu->addChild(mItem5);
-    m_menu->addChild(mItem6);
-    
     //初期化
     auto mItem7 = MenuItemImage::create("CloseNormal.png","CloseSelected.png",[this](Ref*sender){
         Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -225,5 +205,4 @@ void DebugLayer::update(float delta)
     m_text1->setString(to_string(m_dumbbellController->getRotationRate()));
     m_text2->setString(to_string(m_dumbbell->getRotationSpeed()));
     m_text3->setString(to_string(m_dumbbell->getMoveSpeed()));
-    m_text4->setString(to_string(m_dumbbell->getShaftLength()));
 }

@@ -21,7 +21,6 @@ public:
 
     CC_SYNTHESIZE(double, m_rotationSpeed, RotationSpeed);
     CC_SYNTHESIZE(double, m_moveSpeed, MoveSpeed);
-    CC_SYNTHESIZE(double, m_shaftlength, ShaftLength);
 
 public:
     Sprite* m_plateR;

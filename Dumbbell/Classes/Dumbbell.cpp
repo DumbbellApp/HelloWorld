@@ -8,18 +8,19 @@
 
 #include "Dumbbell.hpp"
 
+namespace {
+    static const double defaultMoveSpeed = 360;
+    static const double defaultRotationSpeed = 600;
+    static const double moveThreshold = 0.5;
+    static const double decelerationRate = defaultMoveSpeed/3.0;
+}
+
 bool Dumbbell::init() {
     if (!Node::init()) {
         return false;
     }
-    m_preAnchorX = 0;
-    m_shaftlength = 10;
     
-//    m_shaft = Sprite::create("dumbbell_shaft2.png");
-//    m_shaft->setAnchorPoint(Point(0.5,0.5));
-//    m_shaft->setScale(m_shaftlength, 1);
-//    m_shaft->setPosition(Point::ZERO);
-//    addChild(m_shaft);
+    m_preAnchorX = 0;
     
     m_plateR = Sprite::create("dumbbell_right.png");
     m_plateR->setAnchorPoint(Point(0.5,0.5));
@@ -46,11 +47,10 @@ bool Dumbbell::init() {
     plateLAlpha->setBlendFunc(blend);
     m_plateL->addChild(plateLAlpha);
     
-//    setContentSize(Size(m_shaft->getContentSize().width*m_shaftlength, m_shaft->getContentSize().height));
     setAnchorPoint(Vec2(0.0,0.5));
     
-    m_rotationSpeed = 10;
-    m_moveSpeed = 6;
+    m_rotationSpeed = defaultRotationSpeed;
+    m_moveSpeed = defaultMoveSpeed;
     return true;
 }
 
@@ -58,11 +58,9 @@ bool Dumbbell::init() {
 //1->右回転，0->静止，-1->左回転
 void Dumbbell::addRotation(float rotationRate, float delta)
 {
-//    auto anchorX =  (1 - fabs(rotationRate));
-    static int fps = 60;
     auto anchorX =  rotationRate/2;
     setAnchorPoint(Vec2(anchorX, 0.5));
-    auto rotation = getRotation() + rotationRate*m_rotationSpeed*delta*fps;
+    auto rotation = getRotation() + rotationRate*m_rotationSpeed*delta;
     setRotation(rotation);
     
     //anchorを変更した事による座標のズレを元にもどす
@@ -74,24 +72,25 @@ void Dumbbell::addRotation(float rotationRate, float delta)
 
 void Dumbbell::move(float delta)
 {
-    static int fps = 60;
     auto moveRate = (1 - fabs(getAnchorPoint().x)*2);
-    
     auto rad = -getRotation()*M_PI/180;
-    double threshold = 0.5;
-    if(moveRate > threshold)
+    
+    if(moveRate > moveThreshold)
     {
         m_moveDirection = Vec2(-sin(rad), cos(rad));
+        m_moveSpeed = defaultMoveSpeed;
     }
     else
     {
         //0~1の範囲に
-        double rate = moveRate/threshold;
-        
-        m_moveDirection = (1-rate*rate)*m_moveDirection + rate*rate*Vec2(-sin(rad), cos(rad));
+        double rate = moveRate/moveThreshold;
+        rate = pow(rate, 3);
+        m_moveDirection = (1-rate)*m_moveDirection + rate*Vec2(-sin(rad), cos(rad));
         m_moveDirection = m_moveDirection/m_moveDirection.length();
-        moveRate = 0.5;
+        m_moveSpeed -= decelerationRate*delta;
+        m_moveSpeed = clampf(m_moveSpeed, 0, defaultMoveSpeed);
+        moveRate = moveThreshold;
     }
     
-    setPosition(getPosition() + (m_moveDirection*moveRate*m_moveSpeed*delta*fps));
+    setPosition(getPosition() + (m_moveDirection*moveRate*m_moveSpeed*delta));
 }
