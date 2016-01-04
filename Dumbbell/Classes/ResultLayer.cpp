@@ -24,36 +24,22 @@ bool ResultLayer::init() {
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
     m_resultBack = Sprite::create("result_back.png");
-    m_resultBack->setAnchorPoint(Vec2(0.5, 0));
-    m_resultBack->setPosition(Vec2(320, 505));
+    m_resultBack->setAnchorPoint(Vec2(0.5, 0.5));
+    m_resultBack->setPosition(Vec2(320, 605));
     addChild(m_resultBack);
     
-    m_resultScore = Sprite::create("score_siro.png");
-    m_resultScore->setScale(0.45);
-    m_resultScore->setAnchorPoint(Vec2(0,0.5));
-    m_resultScore->setPosition(Vec2(m_resultBack->getContentSize().width/2 - 70, m_resultBack->getContentSize().height/2 + 10));
-    m_resultBack->addChild(m_resultScore);
-
     std::ostringstream oss;
     oss << setw(5) << setfill('0') << ScoreManager::getInstance()->getScore();
     
     m_resultScoreLabel = Label::createWithBMFont("siro.fnt", oss.str());
-    m_resultScoreLabel->setPosition(Vec2(m_resultBack->getContentSize().width/2 + 30, m_resultBack->getContentSize().height/2 + 10));
-    m_resultScoreLabel->setScale(0.5);
+    m_resultScoreLabel->setPosition(Vec2(m_resultBack->getContentSize().width/2 + 80, 235));
     m_resultBack->addChild(m_resultScoreLabel);
-    
-    m_resultBest = Sprite::create("best.png");
-    m_resultBest->setScale(0.45);
-    m_resultBest->setAnchorPoint(Vec2(0,0.5));
-    m_resultBest->setPosition(Vec2(m_resultBack->getContentSize().width/2 - 70, m_resultBack->getContentSize().height/2 - 20));
-    m_resultBack->addChild(m_resultBest);
     
     std::ostringstream oss2;
     oss2 << setw(5) << setfill('0') << 0;
     
     m_bestScoreLabel = Label::createWithBMFont("siro.fnt", oss2.str());
-    m_bestScoreLabel->setPosition(Vec2(m_resultBack->getContentSize().width/2 + 30, m_resultBack->getContentSize().height/2 - 20));
-    m_bestScoreLabel->setScale(0.5);
+    m_bestScoreLabel->setPosition(Vec2(m_resultBack->getContentSize().width/2 + 80, 150));
     m_resultBack->addChild(m_bestScoreLabel);
     
     auto button = DumbellMenuItemImage::create("retry_button.png", "retry_button.png", [](Ref*sender){
@@ -61,15 +47,14 @@ bool ResultLayer::init() {
         EventManager::getInstance()->dispatch(msg);
     });
     
-    button->setScale(0.4);
     m_menu = Menu::create(button, NULL);
     m_menu->setAnchorPoint(Vec2(0.5,0.5));
-    m_menu->setPosition(Vec2(m_resultBack->getContentSize().width/2, 60));
+    m_menu->setPosition(Vec2(269, 40));
     m_menu->setEnabled(false);
     m_resultBack->addChild(m_menu);
     
     m_resultBack->setCascadeOpacityEnabled(true);
-//    m_resultBack->setVisible(false);
+    m_resultBack->setVisible(false);
 
     return true;
 }
