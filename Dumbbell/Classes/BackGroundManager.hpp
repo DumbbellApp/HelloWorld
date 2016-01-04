@@ -21,6 +21,7 @@ private:
     virtual void update(float delta);
     BackGroundType m_backGroundType;
     double m_time;
+    BackGroundType m_type;
 };
 
 #endif /* BackGroundManager_hpp */

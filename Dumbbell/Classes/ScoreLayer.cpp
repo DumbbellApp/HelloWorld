@@ -22,7 +22,7 @@ bool ScoreLayer::init() {
     
     m_score = 0;
     std::ostringstream oss;
-    oss << setw(6) << setfill('0') << m_score;
+    oss << setw(5) << setfill('0') << m_score;
     
     m_scoreBack = Sprite::create("score_back.png");
     m_scoreBack->setPosition(Vec2(visibleSize.width/2, visibleSize.height + m_scoreBack->getContentSize().height/2));
@@ -104,6 +104,6 @@ void ScoreLayer::setScore(int score)
 {
     m_score = score;
     std::ostringstream oss;
-    oss << setw(6) << setfill('0') << m_score;
+    oss << setw(5) << setfill('0') << m_score;
     m_scoreLabelSiro->setString(oss.str());
 }
