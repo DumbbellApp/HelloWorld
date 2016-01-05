@@ -160,6 +160,8 @@ void GameScene::onEnter()
             m_dumbbell->setRotation(0);
             m_dumbbell->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height - 850 + origin.y));
             
+            m_blockManager->resetBlocks();
+            
             auto func = CallFunc::create([this](){
                 this->scheduleUpdate();
             });

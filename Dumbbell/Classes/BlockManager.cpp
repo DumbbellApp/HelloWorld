@@ -40,6 +40,26 @@ bool BlockManager::init()
     return true;
 }
 
+void BlockManager::resetBlocks()
+{
+    for (auto itr = m_obstacles.begin(); itr != m_obstacles.end(); ) {
+        (*itr)->removeFromParent();
+        m_obstacles.erase(itr);
+        continue;
+    }
+    
+    for (auto itr = m_scoreBlock.begin(); itr != m_scoreBlock.end(); ) {
+        (*itr)->removeFromParent();
+        m_scoreBlock.erase(itr);
+        continue;
+    }
+    
+//    this->removeAllChildren();
+//    m_obstacles.clear();
+//    m_scoreBlock.clear();
+//    addChild(m_scoreBlockPos);
+}
+
 void BlockManager::update(float dt)
 {
     move();
@@ -49,6 +69,8 @@ void BlockManager::update(float dt)
     if (m_frameCnt % 10 == 0) {
         moveScoreBlockPos();
     }
+    
+    deleteScoreBlock();
 //    calcCollision();
  
 }
@@ -77,6 +99,18 @@ void BlockManager::createScoreBlock(ScoreBlock::BlockType blockType)
     scoreBlock->setPosition(m_scoreBlockPos->getPosition());
     addChild(scoreBlock);
     m_scoreBlock.push_back(scoreBlock);
+}
+
+void BlockManager::deleteScoreBlock()
+{
+    for (auto itr = m_scoreBlock.begin(); itr != m_scoreBlock.end(); ) {
+        if ((*itr)->isDelete()) {
+            (*itr)->removeFromParent();
+            m_scoreBlock.erase(itr);
+            continue;
+        }
+        itr++;
+    }
 }
 
 void BlockManager::move()

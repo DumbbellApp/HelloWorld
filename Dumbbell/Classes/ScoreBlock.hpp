@@ -27,11 +27,17 @@ public:
 //    CREATE_FUNC(ScoreBlock);
     static ScoreBlock* createScoreBlock(BlockType blockType);
     
+    void update(float delta);
+    
+    bool isDelete();
     BlockType getBlockType();
     
 private:
     ScoreBlock();
     bool init(BlockType blockType);
+    
+    double m_existsTime;
+    bool m_isDelete;
     
     Sprite* m_sprite;
     BlockType m_blockType;

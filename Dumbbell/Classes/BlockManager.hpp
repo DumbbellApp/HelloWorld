@@ -30,6 +30,8 @@ public:
     void moveScoreBlockPos();
     int calcCollisionObstacleBlock(Dumbbell* dumbbell);
     int calcCollisionScoreBlock(Dumbbell* dumbbell);
+    
+    void resetBlocks();
 
     bool isHitCCSprite(Sprite* sprite, Point glPoint);
     
@@ -40,6 +42,8 @@ private:
     Node* m_scoreBlockPos;
     int m_lastTimeAnglePattern;
     int m_frameCnt;
+    
+    void deleteScoreBlock();
     
     
 };

@@ -40,6 +40,8 @@ bool ScoreBlock::init(BlockType blockType){
     }
     
     Sprite* scoreBlock;
+    m_existsTime = false;
+    m_isDelete = 0;
     
     if (blockType == BlockType::LEFT) {
         scoreBlock = Sprite::create("score_block_left.png");
@@ -69,7 +71,23 @@ bool ScoreBlock::init(BlockType blockType){
     scoreAlpha->setBlendFunc(blend);
     scoreBlock->addChild(scoreAlpha);
     
+    this->scheduleUpdate();
+    
     return true;
+}
+
+void ScoreBlock::update(float delta)
+{
+    m_existsTime += delta;
+    
+    if (m_existsTime > 4) {
+        m_isDelete = true;
+    }
+}
+
+bool ScoreBlock::isDelete()
+{
+    return m_isDelete;
 }
 
 ScoreBlock::BlockType ScoreBlock::getBlockType()
