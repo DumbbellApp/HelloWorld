@@ -9,7 +9,7 @@
 #include "Dumbbell.hpp"
 
 namespace {
-    static const double defaultMoveSpeed = 360;
+    static const double defaultMoveSpeed = 360; // 元は360
     static const double defaultRotationSpeed = 600;
     static const double moveThreshold = 0.5;
     static const double decelerationRate = defaultMoveSpeed/3.0;
@@ -51,6 +51,7 @@ bool Dumbbell::init() {
     
     m_rotationSpeed = defaultRotationSpeed;
     m_moveSpeed = defaultMoveSpeed;
+        
     return true;
 }
 
@@ -72,6 +73,8 @@ void Dumbbell::addRotation(float rotationRate, float delta)
 
 void Dumbbell::move(float delta)
 {
+    m_lastPosition = this->getPosition();
+    
     auto moveRate = (1 - fabs(getAnchorPoint().x)*2);
     auto rad = -getRotation()*M_PI/180;
     
@@ -93,4 +96,24 @@ void Dumbbell::move(float delta)
     }
     
     setPosition(getPosition() + (m_moveDirection*moveRate*m_moveSpeed*delta));
+}
+
+Vec2 Dumbbell::getLastPosition()
+{
+    return m_lastPosition;
+}
+
+int Dumbbell::getOrdinal()
+{
+    return m_ordinal;
+}
+
+void Dumbbell::setOrdinal(int ordinal)
+{
+    m_ordinal = ordinal;
+}
+
+void Dumbbell::setLastPosition(Vec2 lastPos)
+{
+    m_lastPosition = lastPos;
 }

@@ -41,10 +41,15 @@ public:
     int calcCollisionObstacleBlock();
     int calcCollisionScoreBlock();
     
+    bool isCreateDumbbellClone(Dumbbell* dumbbell);
+    void createDumbbellclone(Dumbbell* dumbbell);
+    bool isDeleteDumbbell(Dumbbell* dumbbell);
+    void deleteDumbbell(std::vector<Dumbbell*>::iterator itr);
+    
     ScoreBlock::BlockType changeBlockType();
     
 public:
-    Dumbbell* m_dumbbell;
+    std::vector<Dumbbell*> m_dumbbell;
     DumbbellController* m_dumbbellcontroller;
     UILayer* m_uiLayer;
     BlockManager* m_blockManager;
@@ -68,6 +73,18 @@ public:
     Label* m_leaveTimeHeaderLabel;
     
     STATE m_state;
+    
+    const float SCORE_LABEL_CORRECTION = 0.9372;
+        
+    const float CREATE_CLONE_LINE_X_L = Director::getInstance()->getWinSize().width * 0.2;
+    const float CREATE_CLONE_LINE_X_R = Director::getInstance()->getWinSize().width * 0.8;
+    const float CREATE_CLONE_LINE_Y_T = Director::getInstance()->getWinSize().height * 0.94 * 0.8;
+    const float CREATE_CLONE_LINE_Y_B = Director::getInstance()->getWinSize().height * 0.94 * 0.2;
+    
+    const float DELETE_D_LINE_X_L = CREATE_CLONE_LINE_X_R - Director::getInstance()->getWinSize().width;
+    const float DELETE_D_LINE_X_R = CREATE_CLONE_LINE_X_L + Director::getInstance()->getWinSize().width;
+    const float DELETE_D_LINE_Y_T = CREATE_CLONE_LINE_Y_B + Director::getInstance()->getWinSize().height * SCORE_LABEL_CORRECTION;
+    const float DELETE_D_LINE_Y_B = CREATE_CLONE_LINE_Y_T - Director::getInstance()->getWinSize().height * SCORE_LABEL_CORRECTION;
 };
 
 #endif /* GameScene_hpp */

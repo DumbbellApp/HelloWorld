@@ -54,10 +54,6 @@ void BlockManager::resetBlocks()
         continue;
     }
     
-//    this->removeAllChildren();
-//    m_obstacles.clear();
-//    m_scoreBlock.clear();
-//    addChild(m_scoreBlockPos);
 }
 
 void BlockManager::update(float dt)
@@ -80,7 +76,7 @@ void BlockManager::createObstacleBlock()
     auto winSize = Director::getInstance()->getWinSize();
     
     srand((unsigned int)time(NULL));
-    int rand_x = rand() % (int)winSize.width;
+    int rand_x = rand() % (int)winSize.width * 0.9 + (int)winSize.width * 0.05;
     float speed = (float)(rand() % 4 + 4) / 5;
     
     //spriteで生成
@@ -166,112 +162,112 @@ void BlockManager::moveScoreBlockPos()
     m_scoreBlockPos->runAction(moveBy);
 }
 
-int BlockManager::calcCollisionObstacleBlock(Dumbbell* dumbbell)
+int BlockManager::calcCollisionObstacleBlock(std::vector<Dumbbell*> dumbbell)
 {
     int collisionCnt = 0;
     
-    for (auto itr = m_obstacles.begin(); itr != m_obstacles.end(); ) {
-        //pImg1とpImg2の表示領域を取得
-        Rect rect = (*itr)->boundingBox();
-        
-        //障害物とダンベルかさなっているか
-        if(isHitCCSprite(dumbbell->m_plateR, (*itr)->getPosition())) {
-            ParticleSystemQuad* particle = ParticleSystemQuad::create("particle_texture_2.plist");
-            particle->setPosition((*itr)->getPosition());
-            particle->setAutoRemoveOnFinish(true);
-            addChild(particle);
+    for (auto dum : dumbbell) {
+        for (auto itr = m_obstacles.begin(); itr != m_obstacles.end(); ) {
+            //pImg1とpImg2の表示領域を取得
+            Rect rect = (*itr)->boundingBox();
             
-            collisionCnt++;
-            (*itr)->removeFromParent();
-            m_obstacles.erase(itr);
+            //障害物とダンベルかさなっているか
+            if(isHitCCSprite(dum->m_plateR, (*itr)->getPosition())) {
+                ParticleSystemQuad* particle = ParticleSystemQuad::create("particle_texture_2.plist");
+                particle->setPosition((*itr)->getPosition());
+                particle->setAutoRemoveOnFinish(true);
+                addChild(particle);
+                
+                collisionCnt++;
+                (*itr)->removeFromParent();
+                m_obstacles.erase(itr);
+                
+                //音楽を再生する
+                //
+                int soundID;
+                soundID = CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("akan.mp3");
+                log("障害物に衝突");
+                continue;
+            }
+            else if (isHitCCSprite(dum->m_plateL, (*itr)->getPosition())) {
+                ParticleSystemQuad* particle = ParticleSystemQuad::create("particle_texture_2.plist");
+                particle->setPosition((*itr)->getPosition());
+                particle->setAutoRemoveOnFinish(true);
+                addChild(particle);
+                
+                collisionCnt++;
+                (*itr)->removeFromParent();
+                m_obstacles.erase(itr);
+                
+                //音楽を再生する
+                //
+                int soundID;
+                soundID = CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("akan.mp3");
+                log("障害物に衝突");
+                continue;
+            }
+            itr++;
             
-            //音楽を再生する
-            //
-            int soundID;
-            soundID = CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("akan.mp3");
-            log("障害物に衝突");
-            continue;
         }
-        else if (isHitCCSprite(dumbbell->m_plateL, (*itr)->getPosition())) {
-            ParticleSystemQuad* particle = ParticleSystemQuad::create("particle_texture_2.plist");
-            particle->setPosition((*itr)->getPosition());
-            particle->setAutoRemoveOnFinish(true);
-            addChild(particle);
-            
-            collisionCnt++;
-            (*itr)->removeFromParent();
-            m_obstacles.erase(itr);
-            
-            //音楽を再生する
-            //
-            int soundID;
-            soundID = CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("akan.mp3");
-            log("障害物に衝突");
-            continue;
-        }
-        itr++;
-        
     }
     
     return collisionCnt;
 }
 
-int BlockManager::calcCollisionScoreBlock(Dumbbell *dumbbell)
+int BlockManager::calcCollisionScoreBlock(std::vector<Dumbbell*> dumbbell)
 {
     int collisionCnt = 0;
     
-    for (auto itr = m_scoreBlock.begin(); itr != m_scoreBlock.end(); ) {
+    for (auto dum : dumbbell) {
+        for (auto itr = m_scoreBlock.begin(); itr != m_scoreBlock.end(); ) {
 
-        
-        //スコアブロックとダンベルかさなっているか
-        if(isHitCCSprite(dumbbell->m_plateR, (*itr)->getPosition())) {
-            ParticleSystemQuad* particle = ParticleSystemQuad::create("particle_texture.plist");
-            particle->setPosition((*itr)->getPosition());
-            particle->setAutoRemoveOnFinish(true);
-            addChild(particle);
             
-            if ((*itr)->getBlockType() == ScoreBlock::BlockType::LEFT) {
-                collisionCnt--;
+            //スコアブロックとダンベルかさなっているか
+            if(isHitCCSprite(dum->m_plateR, (*itr)->getPosition())) {
+
+                if ((*itr)->getBlockType() != ScoreBlock::BlockType::LEFT) {
+                    ParticleSystemQuad* particle = ParticleSystemQuad::create("particle_texture.plist");
+                    particle->setPosition((*itr)->getPosition());
+                    particle->setAutoRemoveOnFinish(true);
+                    addChild(particle);
+                    
+                    collisionCnt++;
+                    
+                    (*itr)->removeFromParent();
+                    m_scoreBlock.erase(itr);
+                    
+                    //音楽を再生する
+                    //
+                    int soundID;
+                    soundID = CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("ookini.mp3");
+                    log("スコアブロック獲得");
+                    continue;
+                }
             }
-            else {
-                collisionCnt++;
+            else if (isHitCCSprite(dum->m_plateL, (*itr)->getPosition())) {
+                
+                if ((*itr)->getBlockType() != ScoreBlock::BlockType::RIGHT) {
+                    ParticleSystemQuad* particle = ParticleSystemQuad::create("particle_texture.plist");
+                    particle->setPosition((*itr)->getPosition());
+                    particle->setAutoRemoveOnFinish(true);
+                    addChild(particle);
+                    
+                    collisionCnt++;
+                    
+                    (*itr)->removeFromParent();
+                    m_scoreBlock.erase(itr);
+                    
+                    //音楽を再生する
+                    //
+                    int soundID;
+                    soundID = CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("ookini.mp3");
+                    log("スコアブロック獲得");
+                    continue;
+                }
             }
-      
-            (*itr)->removeFromParent();
-            m_scoreBlock.erase(itr);
+            itr++;
             
-            //音楽を再生する
-            //
-            int soundID;
-            soundID = CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("ookini.mp3");
-            log("スコアブロック獲得");
-            continue;
         }
-        else if (isHitCCSprite(dumbbell->m_plateL, (*itr)->getPosition())) {
-            ParticleSystemQuad* particle = ParticleSystemQuad::create("particle_texture.plist");
-            particle->setPosition((*itr)->getPosition());
-            particle->setAutoRemoveOnFinish(true);
-            addChild(particle);
-            
-            if ((*itr)->getBlockType() == ScoreBlock::BlockType::RIGHT) {
-                collisionCnt--;
-            }
-            else {
-                collisionCnt++;
-            }
-            
-            (*itr)->removeFromParent();
-            m_scoreBlock.erase(itr);
-            
-            //音楽を再生する
-            //
-            int soundID;
-            soundID = CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("ookini.mp3");
-            log("スコアブロック獲得");
-            continue;
-        }
-        itr++;
-        
     }
     
     return collisionCnt;
