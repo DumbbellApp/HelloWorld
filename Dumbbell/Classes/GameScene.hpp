@@ -78,8 +78,8 @@ public:
         
     const float CREATE_CLONE_LINE_X_L = Director::getInstance()->getWinSize().width * 0.2;
     const float CREATE_CLONE_LINE_X_R = Director::getInstance()->getWinSize().width * 0.8;
-    const float CREATE_CLONE_LINE_Y_T = Director::getInstance()->getWinSize().height * 0.94 * 0.8;
-    const float CREATE_CLONE_LINE_Y_B = Director::getInstance()->getWinSize().height * 0.94 * 0.2;
+    const float CREATE_CLONE_LINE_Y_T = Director::getInstance()->getWinSize().height * SCORE_LABEL_CORRECTION * 0.8;
+    const float CREATE_CLONE_LINE_Y_B = Director::getInstance()->getWinSize().height * SCORE_LABEL_CORRECTION * 0.2;
     
     const float DELETE_D_LINE_X_L = CREATE_CLONE_LINE_X_R - Director::getInstance()->getWinSize().width;
     const float DELETE_D_LINE_X_R = CREATE_CLONE_LINE_X_L + Director::getInstance()->getWinSize().width;
