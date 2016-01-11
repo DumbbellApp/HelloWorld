@@ -203,6 +203,6 @@ bool DebugLayer::init() {
 void DebugLayer::update(float delta)
 {
     m_text1->setString(to_string(m_dumbbellController->getRotationRate()));
-    m_text2->setString(to_string(m_dumbbell->getRotationSpeed()));
-    m_text3->setString(to_string(m_dumbbell->getMoveSpeed()));
+//    m_text2->setString(to_string(m_dumbbell->getRotationSpeed()));
+//    m_text3->setString(to_string(m_dumbbell->getMoveSpeed()));
 }

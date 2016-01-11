@@ -28,8 +28,8 @@ public:
     void createScoreBlock(ScoreBlock::BlockType blockType);
     void move();
     void moveScoreBlockPos();
-    int calcCollisionObstacleBlock(Dumbbell* dumbbell);
-    int calcCollisionScoreBlock(Dumbbell* dumbbell);
+    int calcCollisionObstacleBlock(std::vector<Dumbbell*> dumbbell);
+    int calcCollisionScoreBlock(std::vector<Dumbbell*> dumbbell);
     
     void resetBlocks();
 

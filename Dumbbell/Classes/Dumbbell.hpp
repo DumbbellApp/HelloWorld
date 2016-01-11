@@ -18,15 +18,23 @@ public:
     CREATE_FUNC(Dumbbell);
     void addRotation(float rotationRate, float delta);
     void move(float delta);
+    
+    int getOrdinal();
+    void setOrdinal(int ordinal);
+    Vec2 getLastPosition();
+    void setLastPosition(Vec2 lastPos);
 
     CC_SYNTHESIZE(double, m_rotationSpeed, RotationSpeed);
     CC_SYNTHESIZE(double, m_moveSpeed, MoveSpeed);
 
-public:
+public:    
     Sprite* m_plateR;
     Sprite* m_plateL;
     double m_preAnchorX;
     Vec2 m_moveDirection;
+
+    Vec2 m_lastPosition;
+    int m_ordinal;
 };
 
 

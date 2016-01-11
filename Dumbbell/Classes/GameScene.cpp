@@ -50,12 +50,14 @@ bool GameScene::init()
     
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
-        
-    m_dumbbell = Dumbbell::create();
-    m_dumbbell->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height - 850 + origin.y));
-    m_dumbbell->setScale(0.7);
-    m_dumbbell->m_preAnchorX = 0;
-    addChild(m_dumbbell, LAYER_MAIN);
+    
+    Dumbbell* dumbbell;
+    dumbbell = Dumbbell::create();
+    dumbbell->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height - 850 + origin.y));
+    dumbbell->setScale(0.7);
+    dumbbell->m_preAnchorX = 0;
+    addChild(dumbbell, LAYER_MAIN);
+    m_dumbbell.push_back(dumbbell);
     
     m_blockManager = BlockManager::create();
     addChild(m_blockManager, LAYER_MAIN);
@@ -75,7 +77,7 @@ bool GameScene::init()
 #ifdef COCOS2D_DEBUG
     //デバックレイヤー
     auto debugLayer = DebugLayer::create();
-    debugLayer->m_dumbbell = m_dumbbell;
+    debugLayer->m_dumbbell = m_dumbbell.front();
     debugLayer->m_dumbbellController = m_dumbbellcontroller;
     debugLayer->m_backGroundLayer = bgLayer;
     addChild(debugLayer, 100);
@@ -130,10 +132,33 @@ void GameScene::update(float delta){
         m_changeScoreBlockItv = 0;
     }
     
+    
+    for (auto itr : m_dumbbell) {
+        if (isCreateDumbbellClone(itr)) {
+            createDumbbellclone(itr);
+            log("クローン生成");
+        }
+    }
+    
+    if (m_dumbbell.size() > 0) {
+        for (auto itr = m_dumbbell.begin(); itr != m_dumbbell.end(); ) {
+            if (isDeleteDumbbell((*itr))) {
+                deleteDumbbell(itr);
+                log("ダンベル削除");
+                continue;
+            }
+            itr++;
+        }
+    }
+    
     m_rotationRate = m_dumbbellcontroller->getRotationRate();
     
-    m_dumbbell->addRotation(m_rotationRate, delta);
-    m_dumbbell->move(delta);
+    if (m_dumbbell.size() > 0) {
+        for (auto itr : m_dumbbell) {
+            itr->addRotation(m_rotationRate, delta);
+            itr->move(delta);
+        }
+    }
 
 }
 
@@ -157,8 +182,21 @@ void GameScene::onEnter()
             m_createScoreBlockCnt = 0;
             m_isCreateScoreBlock = true;
             m_blockType = ScoreBlock::BlockType::ANY;
-            m_dumbbell->setRotation(0);
-            m_dumbbell->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height - 850 + origin.y));
+            Dumbbell* dumbbell = m_dumbbell.front();
+            dumbbell->setRotation(0);
+            dumbbell->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height - 850 + origin.y));
+            dumbbell->setOrdinal(1);
+            
+            std::vector<Dumbbell*>::iterator itr = m_dumbbell.begin();
+            itr++;
+            
+            for (; itr != m_dumbbell.end(); itr++) {
+                (*itr)->removeFromParent();
+            }
+            
+            m_dumbbell.clear();
+            m_dumbbell.push_back(dumbbell);
+            
             
             m_blockManager->resetBlocks();
             
@@ -214,7 +252,91 @@ ScoreBlock::BlockType GameScene::changeBlockType()
     return ScoreBlock::BlockType::ANY;
 }
 
+bool GameScene::isCreateDumbbellClone(Dumbbell* dumbbell)
+{
+        
+    Vec2 dumbbellPos = dumbbell->getPosition();
+    Vec2 dumlastPosition = dumbbell->getLastPosition();
+    
+    if (dumlastPosition.x < CREATE_CLONE_LINE_X_R && dumbbellPos.x >= CREATE_CLONE_LINE_X_R) {
+        return true;
+    }
+    if (dumlastPosition.x > CREATE_CLONE_LINE_X_L && dumbbellPos.x <= CREATE_CLONE_LINE_X_L) {
+        return true;
+    }
+    if (dumlastPosition.y < CREATE_CLONE_LINE_Y_T && dumbbellPos.y >= CREATE_CLONE_LINE_Y_T) {
+        return true;
+    }
+    if (dumlastPosition.y > CREATE_CLONE_LINE_Y_B && dumbbellPos.y <= CREATE_CLONE_LINE_Y_B) {
+        return true;
+    }
+    
+    return false;
+}
 
+bool GameScene::isDeleteDumbbell(Dumbbell* dumbbell)
+{
+    
+    Vec2 dumbbellPos = dumbbell->getPosition();
+    Vec2 dumlastPosition = dumbbell->getLastPosition();
+
+    if (dumlastPosition.x < DELETE_D_LINE_X_R && dumbbellPos.x >= DELETE_D_LINE_X_R) {
+        return true;
+    }
+    if (dumlastPosition.x > DELETE_D_LINE_X_L && dumbbellPos.x <= DELETE_D_LINE_X_L) {
+        return true;
+    }
+    if (dumlastPosition.y < DELETE_D_LINE_Y_T && dumbbellPos.y >= DELETE_D_LINE_Y_T) {
+        return true;
+    }
+    if (dumlastPosition.y > DELETE_D_LINE_Y_B && dumbbellPos.y <= DELETE_D_LINE_Y_B) {
+        return true;
+    }
+    
+    return false;
+}
+
+void GameScene::createDumbbellclone(Dumbbell* dumbbell)
+{
+    Dumbbell* dumbbellClone = Dumbbell::create();
+    float pos_x;
+    float pos_y;
+    
+    if (dumbbell->getPositionX() >= CREATE_CLONE_LINE_X_R) {
+        pos_x = dumbbell->getPositionX() - Director::getInstance()->getWinSize().width;
+    }
+    else if (dumbbell->getPositionX() <= CREATE_CLONE_LINE_X_L){
+        pos_x = dumbbell->getPositionX() + Director::getInstance()->getWinSize().width;
+    }
+    else {
+        pos_x = dumbbell->getPositionX();
+    }
+    
+    if (dumbbell->getPositionY() >= CREATE_CLONE_LINE_Y_T) {
+        pos_y = dumbbell->getPositionY() - Director::getInstance()->getWinSize().height * SCORE_LABEL_CORRECTION;
+    }
+    else if (dumbbell->getPositionY() <= CREATE_CLONE_LINE_Y_B) {
+        pos_y = dumbbell->getPositionY() + Director::getInstance()->getWinSize().height * SCORE_LABEL_CORRECTION;
+    }
+    else {
+        pos_y = dumbbell->getPositionY();
+    }
+    
+    dumbbellClone->setPosition(Vec2(pos_x, pos_y));
+    dumbbellClone->setScale(0.7);
+    dumbbellClone->setRotation(dumbbell->getRotation());
+    dumbbellClone->m_preAnchorX = 0;
+    dumbbellClone->setOrdinal(2);
+    dumbbellClone->setLastPosition(Vec2(pos_x, pos_y));
+    addChild(dumbbellClone, LAYER_MAIN);
+    m_dumbbell.push_back(dumbbellClone);
+}
+
+void GameScene::deleteDumbbell(std::vector<Dumbbell*>::iterator itr)
+{
+    (*itr)->removeFromParent();
+    m_dumbbell.erase(itr);
+}
 
 
 
