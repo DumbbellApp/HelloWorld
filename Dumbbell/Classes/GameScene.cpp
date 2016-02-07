@@ -110,7 +110,7 @@ void GameScene::update(float delta){
         log("ゲーム終了");
     }
     
-    if (m_obstacleItv >= 5) {
+    if (m_obstacleItv >= 3) {
         m_blockManager->createObstacleBlock();
         m_obstacleItv = 0;
     }

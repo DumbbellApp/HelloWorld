@@ -24,8 +24,8 @@ bool BlockManager::init()
     auto winSize = Director::getInstance()->getWinSize();
     
     CocosDenshion::SimpleAudioEngine::getInstance()->setEffectsVolume(0.5);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("akan.mp3");
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("ookini.mp3");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("hit_obstacle.mp3");
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("get_score.mp3");
     
     m_scoreBlockPos = Node::create();
     m_scoreBlockPos->setAnchorPoint(Point(0.5, 0.5));
@@ -77,7 +77,7 @@ void BlockManager::createObstacleBlock()
     
     srand((unsigned int)time(NULL));
     int rand_x = rand() % (int)winSize.width * 0.9 + (int)winSize.width * 0.05;
-    float speed = (float)(rand() % 4 + 4) / 5;
+    float speed = (float)(rand() % 4 + 2) * 2;
     
     //spriteで生成
     auto obstacle = ObstacleBlock::create();
@@ -185,7 +185,7 @@ int BlockManager::calcCollisionObstacleBlock(std::vector<Dumbbell*> dumbbell)
                 //音楽を再生する
                 //
                 int soundID;
-                soundID = CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("akan.mp3");
+                soundID = CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("hit_obstacle.mp3");
                 log("障害物に衝突");
                 continue;
             }
@@ -202,7 +202,7 @@ int BlockManager::calcCollisionObstacleBlock(std::vector<Dumbbell*> dumbbell)
                 //音楽を再生する
                 //
                 int soundID;
-                soundID = CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("akan.mp3");
+                soundID = CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("hit_obstacle.mp3");
                 log("障害物に衝突");
                 continue;
             }
@@ -239,7 +239,7 @@ int BlockManager::calcCollisionScoreBlock(std::vector<Dumbbell*> dumbbell)
                     //音楽を再生する
                     //
                     int soundID;
-                    soundID = CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("ookini.mp3");
+                    soundID = CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("get_score.mp3");
                     log("スコアブロック獲得");
                     continue;
                 }
@@ -260,7 +260,7 @@ int BlockManager::calcCollisionScoreBlock(std::vector<Dumbbell*> dumbbell)
                     //音楽を再生する
                     //
                     int soundID;
-                    soundID = CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("ookini.mp3");
+                    soundID = CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("get_score.mp3");
                     log("スコアブロック獲得");
                     continue;
                 }
