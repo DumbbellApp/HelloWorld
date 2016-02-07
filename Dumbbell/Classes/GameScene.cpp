@@ -132,14 +132,6 @@ void GameScene::update(float delta){
         m_changeScoreBlockItv = 0;
     }
     
-    
-    for (auto itr : m_dumbbell) {
-        if (isCreateDumbbellClone(itr)) {
-            createDumbbellclone(itr);
-            log("クローン生成");
-        }
-    }
-    
     if (m_dumbbell.size() > 0) {
         for (auto itr = m_dumbbell.begin(); itr != m_dumbbell.end(); ) {
             if (isDeleteDumbbell((*itr))) {
@@ -148,6 +140,14 @@ void GameScene::update(float delta){
                 continue;
             }
             itr++;
+        }
+    }
+    
+    
+    for (auto itr : m_dumbbell) {
+        if (isCreateDumbbellClone(itr)) {
+            createDumbbellclone(itr);
+            log("クローン生成");
         }
     }
     
@@ -301,33 +301,48 @@ void GameScene::createDumbbellclone(Dumbbell* dumbbell)
     Dumbbell* dumbbellClone = Dumbbell::create();
     float pos_x;
     float pos_y;
+    float lastPos_x;
+    float lastPos_y;
     
     if (dumbbell->getPositionX() >= CREATE_CLONE_LINE_X_R) {
         pos_x = dumbbell->getPositionX() - Director::getInstance()->getWinSize().width;
+        lastPos_x = dumbbell->getLastPosition().x - Director::getInstance()->getWinSize().width;
     }
     else if (dumbbell->getPositionX() <= CREATE_CLONE_LINE_X_L){
         pos_x = dumbbell->getPositionX() + Director::getInstance()->getWinSize().width;
+        lastPos_x = dumbbell->getLastPosition().x + Director::getInstance()->getWinSize().width;
+
     }
     else {
         pos_x = dumbbell->getPositionX();
+        lastPos_x = dumbbell->getLastPosition().x;
     }
     
     if (dumbbell->getPositionY() >= CREATE_CLONE_LINE_Y_T) {
         pos_y = dumbbell->getPositionY() - Director::getInstance()->getWinSize().height * SCORE_LABEL_CORRECTION;
+        lastPos_y = dumbbell->getLastPosition().y - Director::getInstance()->getWinSize().height * SCORE_LABEL_CORRECTION;
     }
     else if (dumbbell->getPositionY() <= CREATE_CLONE_LINE_Y_B) {
         pos_y = dumbbell->getPositionY() + Director::getInstance()->getWinSize().height * SCORE_LABEL_CORRECTION;
+        lastPos_y = dumbbell->getLastPosition().y + Director::getInstance()->getWinSize().height * SCORE_LABEL_CORRECTION;
+
     }
     else {
         pos_y = dumbbell->getPositionY();
+        lastPos_y = dumbbell->getLastPosition().y;
+
     }
     
     dumbbellClone->setPosition(Vec2(pos_x, pos_y));
+    dumbbellClone->setLastPosition(Vec2(lastPos_x, lastPos_y));
     dumbbellClone->setScale(0.7);
     dumbbellClone->setRotation(dumbbell->getRotation());
-    dumbbellClone->m_preAnchorX = 0;
+    dumbbellClone->setRotationSpeed(dumbbell->getRotationSpeed());
+    dumbbellClone->setMoveSpeed(dumbbell->getMoveSpeed());
+    dumbbellClone->m_moveDirection = dumbbell->m_moveDirection;
+    dumbbellClone->m_preAnchorX = dumbbell->m_preAnchorX;
     dumbbellClone->setOrdinal(2);
-    dumbbellClone->setLastPosition(Vec2(pos_x, pos_y));
+
     addChild(dumbbellClone, LAYER_MAIN);
     m_dumbbell.push_back(dumbbellClone);
 }
