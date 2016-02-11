@@ -42,12 +42,13 @@ bool ResultLayer::init() {
     m_bestScoreLabel->setPosition(Vec2(m_resultBack->getContentSize().width/2 + 80, 150));
     m_resultBack->addChild(m_bestScoreLabel);
     
-    auto button = DumbellMenuItemImage::create("retry_button.png", "retry_button.png", [](Ref*sender){
+    m_retryBtn = DumbellMenuItemImage::create("retry_button.png", "retry_button.png", [this](Ref*sender){
         MSG_CHAGE_STATE msg(STATE::GAME);
         EventManager::getInstance()->dispatch(msg);
+        m_retryBtn->setScale(1);
     });
     
-    m_menu = Menu::create(button, NULL);
+    m_menu = Menu::create(m_retryBtn, NULL);
     m_menu->setAnchorPoint(Vec2(0.5,0.5));
     m_menu->setPosition(Vec2(269, 40));
     m_menu->setEnabled(false);

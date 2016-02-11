@@ -26,6 +26,19 @@ bool BackGroundManager::init(void)
     m_time = 0;
     m_type = BackGroundType::Type1;
     scheduleUpdate();
+    
+    //Stateが変わった時の処理
+    EventManager::getInstance()->addEventLister<MSG_CHAGE_STATE>([this](EventCustom* event){
+        auto msg = static_cast<MSG_CHAGE_STATE*>(event->getUserData());
+        if (msg->getStete() == STATE::GAME)
+        {
+            m_type = BackGroundType::Type1;
+            m_time = 0;
+            MSG_RESET_BACK msg;
+            EventManager::getInstance()->dispatch(msg);
+        }
+    });
+
     return true;
 }
 

@@ -18,13 +18,16 @@ public:
     {
         LAYER_NEXT = 1,
         LAYER_NOW,
+        LAYER_DEFAULT
     };
 public:
     virtual bool init();
     virtual void onEnter();
     CREATE_FUNC(BackGroundLayer);
     void chageBackGround(BackGroundType type);
+    void resetBackGround();
 public:
+    Sprite* m_resetBackGroundSprite;
     Sprite* m_nowBackGroundSprite;
     Sprite* m_nextBackGroundSprite;
 private:

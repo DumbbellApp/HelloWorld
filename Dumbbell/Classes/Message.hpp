@@ -61,4 +61,13 @@ public:
     static string id;
 };
 
+class MSG_RESET_BACK
+{
+public:
+    MSG_RESET_BACK()
+    {
+    }
+    static string id;
+};
+
 #endif /* Message_hpp */

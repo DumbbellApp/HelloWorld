@@ -10,6 +10,7 @@
 #define ResultLayer_hpp
 
 USING_NS_CC;
+class DumbellMenuItemImage;
 class ResultLayer : public Layer
 {
 public:
@@ -22,6 +23,7 @@ public:
     Sprite* m_resultScore;
     Sprite* m_resultBest;
     Menu* m_menu;
+    DumbellMenuItemImage* m_retryBtn;
     Label* m_bestScoreLabel;
     Label* m_resultScoreLabel;
     
