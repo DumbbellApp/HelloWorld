@@ -43,7 +43,6 @@ bool GameScene::init()
     }
     
     m_hitPoint = 5;
-    m_leaveTime = 60;
     m_obstacleItv = 0;
     m_scoreBlockItv = 0;
     m_state = STATE::TITLE;
@@ -88,7 +87,6 @@ bool GameScene::init()
 void GameScene::update(float delta){
     m_obstacleItv += delta;
     m_scoreBlockItv += delta;
-    m_leaveTime -= delta;
     
     if (!m_isCreateScoreBlock) {
         m_changeScoreBlockItv += delta;
@@ -99,10 +97,10 @@ void GameScene::update(float delta){
     
     ScoreManager::getInstance()->addScore(calcCollisionScoreBlock());
 
-    MSG_CHAGE_TIME timeChangeMsg((int)m_leaveTime);
-    EventManager::getInstance()->dispatch(timeChangeMsg);
+//    MSG_CHAGE_TIME timeChangeMsg((int)m_leaveTime);
+//    EventManager::getInstance()->dispatch(timeChangeMsg);
     
-    if (m_hitPoint <= 0 || m_leaveTime < 0)
+    if (m_hitPoint <= 0)
     {
         //終了
         MSG_CHAGE_STATE msg(STATE::RESULT);
@@ -120,14 +118,14 @@ void GameScene::update(float delta){
         m_createScoreBlockCnt++;
         if (m_createScoreBlockCnt == 5) {
             m_createScoreBlockCnt = 0;
-            m_isCreateScoreBlock = false;
+//            m_isCreateScoreBlock = false;
         }
         
         m_scoreBlockItv = 0;
     }
     
     if (m_changeScoreBlockItv >= 3) {
-        m_isCreateScoreBlock = true;
+//        m_isCreateScoreBlock = true;
         m_blockType = changeBlockType();
         m_changeScoreBlockItv = 0;
     }
@@ -175,7 +173,6 @@ void GameScene::onEnter()
             Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
             m_hitPoint = 5;
-            m_leaveTime = 60;
             m_obstacleItv = 0;
             m_scoreBlockItv = 0;
             m_changeScoreBlockItv = 0;

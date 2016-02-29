@@ -56,7 +56,6 @@ public:
     double m_rotationRate;
     
     int m_hitPoint;
-    float m_leaveTime;
     float m_obstacleItv;
     float m_scoreBlockItv;
     float m_changeScoreBlockItv;

@@ -34,8 +34,9 @@ bool BlockManager::init()
     srand((unsigned int)time(NULL));
     int anglePattern = rand() % 8;
     m_lastTimeAnglePattern = anglePattern;
-
-
+    
+    m_moveType = MoveType::CIRCLE;
+    
     this->scheduleUpdate();
     return true;
 }
@@ -118,29 +119,97 @@ void BlockManager::move()
 
 void BlockManager::moveScoreBlockPos()
 {
-    auto act = getActionByTag(1);
-    if (act) {
-        m_scoreBlockPos->stopActionByTag(1);
-    }
+//    auto act = getActionByTag(1);
+//    if (act) {
+//        m_scoreBlockPos->stopActionByTag(1);
+//    }
     
     auto winSize = Director::getInstance()->getWinSize();
+    Vec2 nextPosDist = Vec2(winSize.width / 2, winSize.height / 2);
+    
+    switch (m_moveType) {
+        case MoveType::RANDOM:
+        {
+            //前進んだ方向から180度の範囲で進行方向を決定（現在45度区切り）
+            srand((unsigned int)time(NULL));
+            int anglePattern = m_lastTimeAnglePattern + (rand() % 3 - 1);
+            
+            if (anglePattern < 0) {
+                anglePattern += 8;
+            }
+            else if (anglePattern > 7) {
+                anglePattern -= 8;
+            }
+            
+            double angle = 45 * anglePattern;
+            double rad = angle / 180 * M_PI;
+            m_lastTimeAnglePattern = anglePattern;
+            
+            nextPosDist = Vec2(40*cos(rad), 40*sin(rad));
+            break;
+        }
+        case MoveType::LINE:
+        {
+            int anglePattern = m_lastTimeAnglePattern;
+            
+            
+            if (anglePattern < 0) {
+                anglePattern += 8;
+            }
+            else if (anglePattern > 7) {
+                anglePattern -= 8;
+            }
+            
+            double angle = 45 * anglePattern;
+            double rad = angle / 180 * M_PI;
+            m_lastTimeAnglePattern = anglePattern;
+            
+            nextPosDist = Vec2(35*cos(rad), 35*sin(rad));
+            break;
+        }
+        case MoveType::SQUARE:
+        {
+            int anglePattern = m_lastTimeAnglePattern + 2;
+            
+            
+            if (anglePattern < 0) {
+                anglePattern += 8;
+            }
+            else if (anglePattern > 7) {
+                anglePattern -= 8;
+            }
+            
+            double angle = 45 * anglePattern;
+            double rad = angle / 180 * M_PI;
+            m_lastTimeAnglePattern = anglePattern;
+            
+            nextPosDist = Vec2(80*cos(rad), 80*sin(rad));
+            break;
+        }
+        case MoveType::CIRCLE:
+        {
+            int anglePattern = m_lastTimeAnglePattern + 1;
+            
+            
+            if (anglePattern < 0) {
+                anglePattern += 8;
+            }
+            else if (anglePattern > 7) {
+                anglePattern -= 8;
+            }
+            
+            double angle = 45 * anglePattern;
+            double rad = angle / 180 * M_PI;
+            m_lastTimeAnglePattern = anglePattern;
+            
+            nextPosDist = Vec2(40*cos(rad), 40*sin(rad));
+            break;
+        }
+        default:
+            break;
+    }
 
-    //前進んだ方向から180度の範囲で進行方向を決定（現在45度区切り）
-    srand((unsigned int)time(NULL));
-    int anglePattern = m_lastTimeAnglePattern + (rand() % 3 - 1);
-    
-    if (anglePattern < 0) {
-        anglePattern += 8;
-    }
-    else if (anglePattern > 7) {
-        anglePattern -= 8;
-    }
-    
-    double angle = 45 * anglePattern;
-    double rad = angle / 180 * M_PI;
-    m_lastTimeAnglePattern = anglePattern;
-    
-    Vec2 nextPosDist = Vec2(40*cos(rad), 40*sin(rad));
+
     
     //画面外に行きそうになったら
     if (m_scoreBlockPos->getPositionX() + nextPosDist.x < winSize.width * 0.05) {
@@ -157,7 +226,7 @@ void BlockManager::moveScoreBlockPos()
     }
     
     auto moveBy = MoveBy::create(1.0, nextPosDist);
-    moveBy->setTag(1);
+//    moveBy->setTag(1);
     
     m_scoreBlockPos->runAction(moveBy);
 }

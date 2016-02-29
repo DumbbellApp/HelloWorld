@@ -38,10 +38,18 @@ public:
     std::vector<ObstacleBlock*> m_obstacles;
     std::vector<ScoreBlock*> m_scoreBlock;
     
+    enum class MoveType{
+        RANDOM,
+        LINE,
+        SQUARE,
+        CIRCLE
+    };
+    
 private:
     Node* m_scoreBlockPos;
     int m_lastTimeAnglePattern;
     int m_frameCnt;
+    MoveType m_moveType;
     
     void deleteScoreBlock();
     
