@@ -146,6 +146,25 @@ void BlockManager::moveScoreBlockPos()
             m_lastTimeAnglePattern = anglePattern;
             
             nextPosDist = Vec2(40*cos(rad), 40*sin(rad));
+            
+            //画面外に行きそうになったら
+            if (m_scoreBlockPos->getPositionX() + nextPosDist.x < winSize.width * 0.05) {
+                m_scoreBlockPos->setPositionX(winSize.width * 0.95);
+            }
+            else if (m_scoreBlockPos->getPositionX() + nextPosDist.x > winSize.width * 0.95) {
+                m_scoreBlockPos->setPositionX(winSize.width * 0.05);
+            }
+            if (m_scoreBlockPos->getPositionY() + nextPosDist.y < winSize.height * 0.1) {
+                m_scoreBlockPos->setPositionY(winSize.height * 0.9);
+            }
+            else if (m_scoreBlockPos->getPositionY() + nextPosDist.y > winSize.height * 0.9) {
+                m_scoreBlockPos->setPositionY(winSize.height * 0.1);
+            }
+            
+            auto moveBy = MoveBy::create(1.0, nextPosDist);
+            //    moveBy->setTag(1);
+            
+            m_scoreBlockPos->runAction(moveBy);
             break;
         }
         case MoveType::LINE:
@@ -164,45 +183,86 @@ void BlockManager::moveScoreBlockPos()
             double rad = angle / 180 * M_PI;
             m_lastTimeAnglePattern = anglePattern;
             
-            nextPosDist = Vec2(35*cos(rad), 35*sin(rad));
+            nextPosDist = Vec2(200*cos(rad), 200*sin(rad));
+            
+            auto moveBy = MoveBy::create(1.0, nextPosDist);
+
+            //ラムダ式入れる
+            auto callBack = CallFunc::create([this](){
+                m_moveType = MoveType::RANDOM;
+            });
+            
+            auto line = Sequence::create(moveBy, callBack, NULL);
+            
+            m_scoreBlockPos->runAction(line);
             break;
         }
         case MoveType::SQUARE:
         {
-            int anglePattern = m_lastTimeAnglePattern + 2;
-            
-            
-            if (anglePattern < 0) {
-                anglePattern += 8;
+            std::vector<MoveBy *> moveBy;
+            for (int i = 0; i < 4; i++){
+                int anglePattern = m_lastTimeAnglePattern + 2;
+                
+                
+                if (anglePattern < 0) {
+                    anglePattern += 8;
+                }
+                else if (anglePattern > 7) {
+                    anglePattern -= 8;
+                }
+                
+                double angle = 45 * anglePattern;
+                double rad = angle / 180 * M_PI;
+                m_lastTimeAnglePattern = anglePattern;
+                
+                nextPosDist = Vec2(80*cos(rad), 80*sin(rad));
+                
+                moveBy.push_back(MoveBy::create(1.0, nextPosDist));
+                
             }
-            else if (anglePattern > 7) {
-                anglePattern -= 8;
-            }
             
-            double angle = 45 * anglePattern;
-            double rad = angle / 180 * M_PI;
-            m_lastTimeAnglePattern = anglePattern;
+            auto callBack = CallFunc::create([this](){
+                m_moveType = MoveType::RANDOM;
+            });
             
-            nextPosDist = Vec2(80*cos(rad), 80*sin(rad));
+            auto square = Sequence::create(moveBy.at(0), moveBy.at(1), moveBy.at(2), moveBy.at(3), callBack, NULL);
+            
+            m_scoreBlockPos->runAction(square);
+            
+            moveBy.clear();
             break;
         }
         case MoveType::CIRCLE:
         {
-            int anglePattern = m_lastTimeAnglePattern + 1;
+            std::vector<MoveBy *> moveBy;
+            for (int i = 0; i < 8; i++) {
             
-            
-            if (anglePattern < 0) {
-                anglePattern += 8;
+                int anglePattern = m_lastTimeAnglePattern + 1;
+                
+                if (anglePattern < 0) {
+                    anglePattern += 8;
+                }
+                else if (anglePattern > 7) {
+                    anglePattern -= 8;
+                }
+                
+                double angle = 45 * anglePattern;
+                double rad = angle / 180 * M_PI;
+                m_lastTimeAnglePattern = anglePattern;
+                
+                nextPosDist = Vec2(40*cos(rad), 40*sin(rad));
+                
             }
-            else if (anglePattern > 7) {
-                anglePattern -= 8;
-            }
             
-            double angle = 45 * anglePattern;
-            double rad = angle / 180 * M_PI;
-            m_lastTimeAnglePattern = anglePattern;
+            auto callBack = CallFunc::create([this](){
+                m_moveType = MoveType::RANDOM;
+            });
             
-            nextPosDist = Vec2(40*cos(rad), 40*sin(rad));
+            auto square = Sequence::create(moveBy.at(0), moveBy.at(1), moveBy.at(2), moveBy.at(3), moveBy.at(4),
+                                           moveBy.at(5), moveBy.at(6), moveBy.at(7), callBack, NULL);
+            
+            m_scoreBlockPos->runAction(square);
+            
             break;
         }
         default:
@@ -210,25 +270,6 @@ void BlockManager::moveScoreBlockPos()
     }
 
 
-    
-    //画面外に行きそうになったら
-    if (m_scoreBlockPos->getPositionX() + nextPosDist.x < winSize.width * 0.05) {
-        m_scoreBlockPos->setPositionX(winSize.width * 0.95);
-    }
-    else if (m_scoreBlockPos->getPositionX() + nextPosDist.x > winSize.width * 0.95) {
-        m_scoreBlockPos->setPositionX(winSize.width * 0.05);
-    }
-    if (m_scoreBlockPos->getPositionY() + nextPosDist.y < winSize.height * 0.1) {
-        m_scoreBlockPos->setPositionY(winSize.height * 0.9);
-    }
-    else if (m_scoreBlockPos->getPositionY() + nextPosDist.y > winSize.height * 0.9) {
-        m_scoreBlockPos->setPositionY(winSize.height * 0.1);
-    }
-    
-    auto moveBy = MoveBy::create(1.0, nextPosDist);
-//    moveBy->setTag(1);
-    
-    m_scoreBlockPos->runAction(moveBy);
 }
 
 int BlockManager::calcCollisionObstacleBlock(std::vector<Dumbbell*> dumbbell)
