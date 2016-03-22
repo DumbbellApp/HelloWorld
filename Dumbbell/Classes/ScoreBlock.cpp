@@ -80,7 +80,7 @@ void ScoreBlock::update(float delta)
 {
     m_existsTime += delta;
     
-    if (m_existsTime > 4) {
+    if (m_existsTime > 6) {
         m_isDelete = true;
     }
 }
