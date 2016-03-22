@@ -26,6 +26,7 @@ public:
     
     void createObstacleBlock();
     void createScoreBlock(ScoreBlock::BlockType blockType);
+    bool isCreateScoreBlock();
     void move();
     void moveScoreBlockPos();
     int calcCollisionObstacleBlock(std::vector<Dumbbell*> dumbbell);
@@ -50,6 +51,7 @@ private:
     int m_lastTimeAnglePattern;
     int m_frameCnt;
     MoveType m_moveType;
+    ScoreBlock::BlockType m_blockType;
     
     void deleteScoreBlock();
     

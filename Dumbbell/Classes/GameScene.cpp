@@ -113,10 +113,10 @@ void GameScene::update(float delta){
         m_obstacleItv = 0;
     }
     
-    if (m_scoreBlockItv >= 1 && m_isCreateScoreBlock) {
+    if (m_scoreBlockItv >= 0.7 && m_isCreateScoreBlock) {
         m_blockManager->createScoreBlock(m_blockType);
         m_createScoreBlockCnt++;
-        if (m_createScoreBlockCnt == 5) {
+        if (m_createScoreBlockCnt == 7) {
             m_createScoreBlockCnt = 0;
 //            m_isCreateScoreBlock = false;
         }

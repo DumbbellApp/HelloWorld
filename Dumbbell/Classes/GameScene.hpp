@@ -72,7 +72,7 @@ public:
     Label* m_leaveTimeHeaderLabel;
     
     STATE m_state;
-    
+        
     const float SCORE_LABEL_CORRECTION = 0.9372;
         
     const float CREATE_CLONE_LINE_X_L = Director::getInstance()->getWinSize().width * 0.2;
