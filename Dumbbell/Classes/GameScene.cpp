@@ -133,7 +133,8 @@ void GameScene::update(float delta){
     if (m_dumbbell.size() > 0) {
         for (auto itr = m_dumbbell.begin(); itr != m_dumbbell.end(); ) {
             if (isDeleteDumbbell((*itr))) {
-                deleteDumbbell(itr);
+                (*itr)->removeFromParent();
+                itr = m_dumbbell.erase(itr);
                 log("ダンベル削除");
                 continue;
             }
@@ -141,12 +142,15 @@ void GameScene::update(float delta){
         }
     }
     
-    
+    std::vector<Dumbbell*> addList;
     for (auto itr : m_dumbbell) {
         if (isCreateDumbbellClone(itr)) {
-            createDumbbellclone(itr);
+            addList.push_back(itr);
             log("クローン生成");
         }
+    }
+    for (auto adit : addList) {
+        createDumbbellclone(adit);
     }
     
     m_rotationRate = m_dumbbellcontroller->getRotationRate();
@@ -342,12 +346,6 @@ void GameScene::createDumbbellclone(Dumbbell* dumbbell)
 
     addChild(dumbbellClone, LAYER_MAIN);
     m_dumbbell.push_back(dumbbellClone);
-}
-
-void GameScene::deleteDumbbell(std::vector<Dumbbell*>::iterator itr)
-{
-    (*itr)->removeFromParent();
-    m_dumbbell.erase(itr);
 }
 
 
